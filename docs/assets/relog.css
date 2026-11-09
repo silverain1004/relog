@@ -1,7 +1,7 @@
 /* Re.log — editorial site styles */
 :root{
   --ink:#0E0E0C; --ink-2:#1A1A18; --paper:#F4F3EF; --white:#FFFFFF;
-  --ember:#FF5B22; --ember-soft:#FFF1EA; --ember-deep:#9A3A12;
+  --ember:#FF2D6B; --ember-ink:#D81B50; --ember-pale:#F7D0DC; --gold:#D4B483;
   --line:#DCDAD3; --line-2:#CFCDC5; --stone:#B9B7AF; --sand:#E4E2DB;
   --muted:#55554F; --muted-2:#6E6E68;
   --on-ink-line:rgba(244,243,239,.14); --on-ink-muted:rgba(244,243,239,.62); --on-ink-faint:rgba(244,243,239,.45);
@@ -27,7 +27,8 @@ img,svg{display:block}
 .kr{font-family:var(--kr)}
 .mono{font-family:var(--mono)}
 .serif{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:-.02em}
-.ember{color:var(--ember)}
+.ember{color:var(--ember-ink)}
+.dark .ember{color:var(--ember)}
 .eyebrow{font-size:13px;letter-spacing:.08em;color:var(--muted-2);text-transform:uppercase}
 .dark{background:var(--ink);color:var(--paper)}
 .dark .eyebrow{color:var(--on-ink-faint)}
@@ -36,7 +37,8 @@ img,svg{display:block}
 .site-head{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px var(--gutter);border-bottom:1px solid var(--line)}
 .dark .site-head,.site-head.on-ink{border-bottom-color:var(--on-ink-line)}
 .brand{font-size:30px;font-weight:700;letter-spacing:-.04em;line-height:1}
-.brand b{color:var(--ember);font-weight:700}
+.brand b{color:var(--ember-ink);font-weight:700}
+.dark .brand b,.on-ink .brand b{color:var(--ember)}
 .nav{display:flex;gap:52px;font-size:14px;font-weight:500;letter-spacing:.08em}
 .nav a[aria-current=page]{text-decoration:underline;text-underline-offset:7px;text-decoration-thickness:1px}
 .menu-btn{display:none;width:44px;height:44px;border:0;background:transparent;color:inherit;cursor:pointer;align-items:center;justify-content:center}
@@ -81,9 +83,10 @@ img,svg{display:block}
 .tile-ember{flex:1 1 0;background:var(--ember)}
 .tile-white{flex:1 1 0;background:var(--white);border:1px solid var(--line)}
 .pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:6px 14px;font-family:var(--kr);font-size:14px;font-weight:700}
-.pill-warn{background:var(--ember);color:var(--ink)}
-.pill-ok{background:var(--sand);color:var(--ink)}
+.pill-warn{background:var(--gold);color:var(--ink)}
+.pill-ok{background:var(--white);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line-2)}
 .pill-bad{background:var(--ink);color:var(--paper);box-shadow:inset 0 0 0 1px var(--on-ink-line)}
+.pill-bad i{font-style:normal;color:var(--ember)}
 .pill-dim{background:transparent;color:inherit;border:1px solid currentColor;font-weight:500;opacity:.8}
 .stat{margin:0;font-size:88px;line-height:1;font-weight:500;letter-spacing:-.05em}
 .stat small{font-size:32px;letter-spacing:-.02em}
@@ -119,7 +122,7 @@ img,svg{display:block}
 .steps{border-top:1px solid var(--ink)}
 .step{display:flex;gap:48px;padding:48px 0;border-bottom:1px solid var(--line)}
 .step .idx{flex:0 0 200px;font-size:96px;line-height:.9;font-weight:300;letter-spacing:-.05em;color:var(--stone)}
-.step .idx.on{color:var(--ember)}
+.step .idx.on{color:var(--ember-ink)}
 .step h2{margin:0;font-size:44px;font-weight:500;letter-spacing:-.04em}
 .step h2 span{font-family:var(--kr);font-size:22px;font-weight:400;color:var(--muted-2);letter-spacing:0}
 .step p{margin:16px 0 0;max-width:520px;font-family:var(--kr);font-size:16px;line-height:1.8;color:var(--muted)}
@@ -169,8 +172,8 @@ img,svg{display:block}
 .bars{display:flex;align-items:flex-end;gap:14px;height:300px;margin-top:28px;border-bottom:1px solid var(--ink)}
 .bars>div{flex:1 1 0;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px}
 .bars span{font-size:13px;color:var(--muted-2)}
-.bars i{display:block;width:100%;background:var(--sand);border-radius:6px 6px 0 0;transform-origin:bottom;transition:transform 1s var(--ease)}
-.bars .peak span{color:var(--ink);font-weight:700}
+.bars i{display:block;width:100%;background:var(--ember-pale);border-radius:6px 6px 0 0;transform-origin:bottom;transition:transform 1s var(--ease)}
+.bars .peak span{color:var(--ember-ink);font-weight:700}
 .bars .peak i{background:var(--ember)}
 .axis{display:flex;gap:14px;margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--muted-2)}
 .axis span{flex:1 1 0;text-align:center}

@@ -69,7 +69,7 @@
       fetch(url, { cache: 'no-cache' }).then(function (r) { return r.text(); }).then(function (t) {
         var v = /종합:\s*(정상|주의|위험)/.exec(t);
         var cls = { '정상': 'pill-ok', '주의': 'pill-warn', '위험': 'pill-bad' };
-        dd.innerHTML = v ? '<span class="pill ' + cls[v[1]] + '">● ' + v[1] + '</span>'
+        dd.innerHTML = v ? '<span class="pill ' + cls[v[1]] + '"><i>●</i> ' + v[1] + '</span>'
           : '<span class="pill pill-dim">AI 요약 없음</span>';
       }).catch(function () { dd.textContent = '—'; });
     }
