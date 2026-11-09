@@ -235,7 +235,8 @@ img,svg{display:block}
 .rrr-side{display:flex;flex-direction:column;align-items:flex-end;gap:28px;padding-bottom:10px}
 .rrr-4u{display:flex;align-items:flex-start;gap:14px}
 .rrr-for{margin-top:34px;font-size:13px;letter-spacing:.12em;color:var(--on-ink-faint);writing-mode:vertical-rl}
-.rrr-4u p{margin:0;font-size:clamp(120px,16.6vw,240px);line-height:.8;letter-spacing:-.03em}
+.rrr-4u p{margin:0;display:flex;flex-direction:column;align-items:flex-end;font-size:clamp(120px,15vw,216px);line-height:.8;letter-spacing:-.03em}
+.rrr-4u p span{margin-top:14px;font-family:var(--sans);font-style:normal;font-size:clamp(28px,3.4vw,48px);font-weight:500;letter-spacing:-.04em;line-height:1}
 .rrr-copy{margin:0;text-align:right;font-family:var(--kr);font-size:18px;line-height:1.75;font-weight:300;color:var(--on-ink-muted)}
 .rrr-copy strong{color:var(--paper);font-weight:500}
 
@@ -304,5 +305,6 @@ img,svg{display:block}
   .site-foot{flex-direction:column}
   .rrr{flex-direction:column;align-items:flex-start;gap:24px;padding-top:72px;padding-bottom:64px}
   .rrr-side{align-items:flex-start}
+  .rrr-4u p{align-items:flex-start}
   .rrr-copy{text-align:left}
 }
