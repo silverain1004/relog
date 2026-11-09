@@ -225,6 +225,20 @@ img,svg{display:block}
 }
 
 /* responsive */
+/* Read · Report · Rest (contact) */
+.rrr{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;padding-top:40px;padding-bottom:120px;border-top:1px solid var(--on-ink-line)}
+.rrr-words{margin:40px 0 0;font-size:clamp(76px,10.8vw,156px);line-height:.9;font-weight:500;letter-spacing:-.055em}
+.rrr-words span{display:block}
+.rrr-words em,.rrr-4u p{font-family:var(--serif);font-style:italic;font-weight:400}
+.rrr-words em{letter-spacing:-.01em;color:var(--ember);padding-right:.04em}
+.rrr-words b,.rrr-4u b{color:var(--ember);font-weight:inherit}
+.rrr-side{display:flex;flex-direction:column;align-items:flex-end;gap:28px;padding-bottom:10px}
+.rrr-4u{display:flex;align-items:flex-start;gap:14px}
+.rrr-for{margin-top:34px;font-size:13px;letter-spacing:.12em;color:var(--on-ink-faint);writing-mode:vertical-rl}
+.rrr-4u p{margin:0;font-size:clamp(120px,16.6vw,240px);line-height:.8;letter-spacing:-.03em}
+.rrr-copy{margin:0;text-align:right;font-family:var(--kr);font-size:18px;line-height:1.75;font-weight:300;color:var(--on-ink-muted)}
+.rrr-copy strong{color:var(--paper);font-weight:500}
+
 @media (max-width:1080px){
   .split{gap:48px}
   .step .aside{flex-basis:280px}
@@ -288,4 +302,7 @@ img,svg{display:block}
   .form input[type=email]{font-size:22px}
   .term{padding:24px 20px;font-size:12px}
   .site-foot{flex-direction:column}
+  .rrr{flex-direction:column;align-items:flex-start;gap:24px;padding-bottom:80px}
+  .rrr-side{align-items:flex-start}
+  .rrr-copy{text-align:left}
 }
