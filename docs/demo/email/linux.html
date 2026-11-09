@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E-BIZ 시스템 통합 로그 리포트 — 2026년 44주 (2026-10-26 ~ 2026-11-01)</title></head>
+<body style="margin:0;padding:0;background:#f3f4f6;font-family:'Segoe UI',Arial,sans-serif;color:#1f2937">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3f4f6">
+<tr><td align="center" style="padding:24px 12px">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%">
+<tr><td style="padding-bottom:16px">
+<div style="font-size:20px;font-weight:700;color:#1f2937">E-BIZ 시스템 통합 로그 리포트</div>
+</td></tr>
+<tr><td style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;padding:16px;font-size:13px;color:#6b7280;line-height:1.7">
+플랫폼: Linux<br>분석 기간: 2026년 44주 (2026-10-26 ~ 2026-11-01)<br>생성 시각: 2026-11-09 13:16:16<br><br>- [AI] 종합: 정상 — L4 편차는 임계치(15%) 이내이며, 노이즈 대부분은 알려진 스캔 시그니처입니다.<br>- [AI] WEB2: 10/29 14시 upstream prematurely closed 9건(미분류) — 결재 API 응답 지연 여부 확인 권장<br>- [AI] WAS1: 같은 시각 메일 게이트웨이 SocketTimeoutException 6건 — WEB2 미분류 건과 연관 가능성<br>- [AI] FortiOS·WordPress·정찰성 스캔은 404로 차단되어 조치 불필요<br><br>- L4: WEB1(230,719) vs WEB2(222,002) | 편차 1.9% [정상]<br>- WEB1: 트래픽 230,719 / 노이즈 599건<br>- WEB2: 트래픽 222,002 / 노이즈 680건<br>- WAS1: 트래픽 132,715 / 노이즈 29건<br>- WAS2: 트래픽 128,109 / 노이즈 34건
+</td></tr>
+<tr><td style="height:16px;font-size:0;line-height:0">&nbsp;</td></tr>
+<tr><td><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-left:4px solid #2563eb;border-radius:4px;margin-bottom:16px">
+<tr><td style="padding:14px 16px">
+<div style="font-size:12px;color:#6b7280;margin-bottom:4px">AI 요약 (Claude)</div>
+<div style="font-size:14px;font-weight:700;color:#2563eb;margin-bottom:6px">종합: 정상 — L4 편차는 임계치(15%) 이내이며, 노이즈 대부분은 알려진 스캔 시그니처입니다.</div>
+<div style="padding:3px 0;color:#1f2937;font-size:13px;line-height:1.6">- WEB2: 10/29 14시 upstream prematurely closed 9건(미분류) — 결재 API 응답 지연 여부 확인 권장</div><div style="padding:3px 0;color:#1f2937;font-size:13px;line-height:1.6">- WAS1: 같은 시각 메일 게이트웨이 SocketTimeoutException 6건 — WEB2 미분류 건과 연관 가능성</div><div style="padding:3px 0;color:#1f2937;font-size:13px;line-height:1.6">- FortiOS·WordPress·정찰성 스캔은 404로 차단되어 조치 불필요</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#f3f4f6;border-left:4px solid #2563eb;border-radius:4px;margin-bottom:16px">
+<tr><td style="padding:14px 16px">
+<div style="font-size:13px;font-weight:600;color:#1f2937;margin-bottom:6px">조치 가이드</div>
+<div style="padding:3px 0;color:#1f2937;font-size:13px;line-height:1.6">- WEB1: 노이즈 599건 발생 (대부분 알려진 스캔 시그니처) — 참고용, 조치 불필요</div><div style="padding:3px 0;color:#1f2937;font-size:13px;line-height:1.6">- WEB2: 노이즈 680건 발생 (대부분 알려진 스캔 시그니처) — 참고용, 조치 불필요</div><div style="padding:3px 0;color:#1f2937;font-size:13px;line-height:1.6">- WAS1: 미분류 노이즈 29건 — 알려진 스캔 시그니처와 불일치, 실제 에러 여부 확인 권장</div><div style="padding:3px 0;color:#1f2937;font-size:13px;line-height:1.6">- WAS2: 미분류 노이즈 34건 — 알려진 스캔 시그니처와 불일치, 실제 에러 여부 확인 권장</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">WEB1 트래픽</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">230,719</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">&nbsp;</div>
+</td></tr></table></td><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">WEB2 트래픽</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">222,002</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">&nbsp;</div>
+</td></tr></table></td><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">L4 편차율</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">1.9%</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">정상</div>
+</td></tr></table></td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td width="50%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">WEB1</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">230,719</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">노이즈 599건</div>
+</td></tr></table></td><td width="50%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">WEB2</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">222,002</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">노이즈 680건</div>
+</td></tr></table></td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td width="50%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">WAS1</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">132,715</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">노이즈 29건</div>
+</td></tr></table></td><td width="50%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">WAS2</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">128,109</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">노이즈 34건</div>
+</td></tr></table></td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">일별 WEB 트래픽 추이</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-26</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="92%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="8%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">77,302</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-27</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="95%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="5%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">79,655</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-28</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="92%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="8%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">77,117</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-29</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="93%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="7%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">78,438</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-30</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="100%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="0%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">83,972</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-31</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="33%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="67%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">28,091</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">11-01</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="34%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="66%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">28,146</td>
+</tr></table>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">일별 노이즈 추이 (전 노드 합산)</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-26</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="92%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="8%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">218</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-27</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="72%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="28%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">170</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-28</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="100%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="0%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">237</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-29</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="85%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="15%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">202</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-30</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="73%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="27%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">174</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-31</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="73%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="27%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">174</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">11-01</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="70%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="30%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">167</td>
+</tr></table>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">노이즈 유형 분류 (스캔 시그니처 기반, 전 노드 합산)</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">일반 정찰성 스캔</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="100%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="0%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">513</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">WordPress 스캔</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="96%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="4%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">491</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">FortiOS VPN 취약점 스캔</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="52%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="48%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">266</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">기타(미분류)</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="14%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="86%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">72</td>
+</tr></table>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">WEB1 — 노이즈 미리보기 (599건)</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">일반 정찰성 스캔</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="100%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="0%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">243</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">WordPress 스캔</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="96%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="4%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">233</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">FortiOS VPN 취약점 스캔</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="51%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="49%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">123</td>
+</tr></table><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">2026/10/26 05:02:46 [error] 1873#0: *59389 open() &quot;/usr/share/nginx/html/wp-login.php&quot; failed (2: No such file or directory), client: 198.51.100.23, server: _, request: &quot;GET /wp-login.php HTTP/1.1&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">2026/10/26 07:17:09 [error] 1873#0: *57868 open() &quot;/usr/share/nginx/html/wp-login.php&quot; failed (2: No such file or directory), client: 192.0.2.66, server: _, request: &quot;GET /wp-login.php HTTP/1.1&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">2026/10/26 08:27:50 [error] 1873#0: *5222 open() &quot;/usr/share/nginx/html/xmlrpc.php&quot; failed (2: No such file or directory), client: 203.0.113.45, server: _, request: &quot;GET /xmlrpc.php HTTP/1.1&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">2026/10/26 07:27:24 [error] 1873#0: *1064 open() &quot;/usr/share/nginx/html/.env&quot; failed (2: No such file or directory), client: 203.0.113.45, server: _, request: &quot;GET /.env HTTP/1.1&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">2026/10/26 02:11:18 [error] 1873#0: *11262 open() &quot;/usr/share/nginx/html/remote/logincheck&quot; failed (2: No such file or directory), client: 198.51.100.23, server: _, request: &quot;GET /remote/logincheck HTTP/1.1&quot;</div><div style="font-size:11px;color:#6b7280;padding-top:6px">외 594건 — 첨부 ZIP에서 전체 확인</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">WEB2 — 노이즈 미리보기 (680건)</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">일반 정찰성 스캔</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="100%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="0%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">270</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">WordPress 스캔</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="96%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="4%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">258</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">FortiOS VPN 취약점 스캔</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="53%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="47%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">143</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">기타(미분류)</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="3%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="97%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">9</td>
+</tr></table><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">2026/10/26 14:13:10 [error] 1873#0: *45351 open() &quot;/usr/share/nginx/html/remote/logincheck&quot; failed (2: No such file or directory), client: 198.51.100.23, server: _, request: &quot;GET /remote/logincheck HTTP/1.1&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">2026/10/26 13:12:52 [error] 1873#0: *26551 open() &quot;/usr/share/nginx/html/.git/config&quot; failed (2: No such file or directory), client: 198.51.100.180, server: _, request: &quot;GET /.git/config HTTP/1.1&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">2026/10/26 16:17:56 [error] 1873#0: *20560 open() &quot;/usr/share/nginx/html/remote/logincheck&quot; failed (2: No such file or directory), client: 192.0.2.66, server: _, request: &quot;GET /remote/logincheck HTTP/1.1&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">2026/10/26 23:10:30 [error] 1873#0: *66936 open() &quot;/usr/share/nginx/html/remote/logincheck&quot; failed (2: No such file or directory), client: 198.51.100.23, server: _, request: &quot;GET /remote/logincheck HTTP/1.1&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">2026/10/26 13:38:06 [error] 1873#0: *36509 open() &quot;/usr/share/nginx/html/xmlrpc.php&quot; failed (2: No such file or directory), client: 192.0.2.66, server: _, request: &quot;GET /xmlrpc.php HTTP/1.1&quot;</div><div style="font-size:11px;color:#6b7280;padding-top:6px">외 675건 — 첨부 ZIP에서 전체 확인</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">WAS1 — 노이즈 미리보기 (29건)</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">기타(미분류)</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="100%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="0%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">29</td>
+</tr></table><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">26-Oct-2026 11:04:07.000 WARNING [http-nio-8080-exec-3] o.a.c.util.SessionIdGeneratorBase Creation of SecureRandom instance took [873] ms</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">26-Oct-2026 13:22:50.000 WARNING [http-nio-8080-exec-3] o.a.c.util.SessionIdGeneratorBase Creation of SecureRandom instance took [529] ms</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">27-Oct-2026 15:02:29.000 WARNING [http-nio-8080-exec-3] o.a.c.util.SessionIdGeneratorBase Creation of SecureRandom instance took [659] ms</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">27-Oct-2026 23:43:50.000 WARNING [http-nio-8080-exec-3] o.a.c.util.SessionIdGeneratorBase Creation of SecureRandom instance took [613] ms</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">27-Oct-2026 16:42:12.000 WARNING [http-nio-8080-exec-3] o.a.c.util.SessionIdGeneratorBase Creation of SecureRandom instance took [384] ms</div><div style="font-size:11px;color:#6b7280;padding-top:6px">외 24건 — 첨부 ZIP에서 전체 확인</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">WAS2 — 노이즈 미리보기 (34건)</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">기타(미분류)</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="100%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="0%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">34</td>
+</tr></table><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">26-Oct-2026 00:27:42.000 WARNING [http-nio-8080-exec-3] o.a.c.util.SessionIdGeneratorBase Creation of SecureRandom instance took [740] ms</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">26-Oct-2026 11:42:42.000 WARNING [http-nio-8080-exec-3] o.a.c.util.SessionIdGeneratorBase Creation of SecureRandom instance took [683] ms</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">26-Oct-2026 22:32:16.000 WARNING [http-nio-8080-exec-3] o.a.c.util.SessionIdGeneratorBase Creation of SecureRandom instance took [383] ms</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">26-Oct-2026 20:22:21.000 WARNING [http-nio-8080-exec-3] o.a.c.util.SessionIdGeneratorBase Creation of SecureRandom instance took [595] ms</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">26-Oct-2026 05:07:51.000 WARNING [http-nio-8080-exec-3] o.a.c.util.SessionIdGeneratorBase Creation of SecureRandom instance took [753] ms</div><div style="font-size:11px;color:#6b7280;padding-top:6px">외 29건 — 첨부 ZIP에서 전체 확인</div>
+</td></tr></table></td></tr>
+<tr><td style="padding-top:8px;font-size:12px;color:#6b7280">
+상세 로그 및 인터랙티브 대시보드는 첨부된 ZIP 파일을 열어 확인하실 수 있습니다.
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body></html>

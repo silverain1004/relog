@@ -1,0 +1,7 @@
+# tools/mask_words.txt 로 복사해서 쓰세요 (그 파일은 git에 올라가지 않습니다).
+# 한 줄에 하나: 정규식<TAB>치환어 (치환어 생략 시 masked). 긴 단어부터 적으세요.
+acmesteel	customer
+acme\b	customer
+에이크미	고객사
+mycompany	company
+\bops_kim\b	appuser

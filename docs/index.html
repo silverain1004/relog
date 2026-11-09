@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Re.log — We Read Your Logs.</title>
+<meta name="description" content="매주 월요일 아침, 서버 5대 · 로그 7종을 읽고 한 줄로 판정해 메일로 보내는 로그 리포트 자동화.">
+<meta name="theme-color" content="#0E0E0C">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/relog.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<section class="hero dark">
+  <div class="logbg" aria-hidden="true"><div class="logbg-inner">192.0.2.66 - - [29/Oct/2026:13:58:02 +0900] "GET /.env HTTP/1.1" 404 512 "-" "zgrab/0.x"
+198.51.100.23 - - [29/Oct/2026:13:58:45 +0900] "GET /wp-login.php HTTP/1.1" 404 2361 "-" "Mozilla/5.0"
+203.0.113.77 - - [29/Oct/2026:13:59:20 +0900] "GET /backup.bak HTTP/1.1" 404 5520 "-" "zgrab/0.x"
+198.51.100.23 - - [29/Oct/2026:14:00:31 +0900] "POST /api/auth/refresh HTTP/1.1" 401 88 "-" "okhttp/4.9"
+192.0.2.66 - - [29/Oct/2026:14:01:41 +0900] "GET /.git/config HTTP/1.1" 404 1536 "-" "zgrab/0.x"
+<span class="hit">2026-10-29 14:02:13 WARN  HikariPool-1 - Connection is not available, request timed out after 30000ms.</span>
+198.51.100.180 - - [29/Oct/2026:14:02:14 +0900] "POST /api/orders/submit HTTP/1.1" 500 231 "-" "Mozilla/5.0"
+203.0.113.45 - - [29/Oct/2026:14:02:19 +0900] "GET /phpmyadmin/ HTTP/1.1" 404 512 "-" "masscan/1.3"
+192.0.2.66 - - [29/Oct/2026:14:03:02 +0900] "GET /cgi-bin/luci HTTP/1.1" 404 2361 "-" "zgrab/0.x"
+198.51.100.180 - - [29/Oct/2026:14:03:44 +0900] "POST /api/orders/submit HTTP/1.1" 500 231 "-" "Mozilla/5.0"
+203.0.113.77 - - [29/Oct/2026:14:04:10 +0900] "GET /admin HTTP/1.1" 403 199 "-" "curl/7.68"
+198.51.100.23 - - [29/Oct/2026:14:05:31 +0900] "POST /api/auth/refresh HTTP/1.1" 401 88 "-" "okhttp/4.9"
+192.0.2.66 - - [29/Oct/2026:14:06:18 +0900] "GET /etc/passwd HTTP/1.1" 404 512 "-" "zgrab/0.x"
+203.0.113.45 - - [29/Oct/2026:14:07:02 +0900] "GET /xmlrpc.php HTTP/1.1" 404 512 "-" "masscan/1.3"
+198.51.100.23 - - [29/Oct/2026:14:08:45 +0900] "GET /wp-login.php HTTP/1.1" 404 2361 "-" "Mozilla/5.0"
+192.0.2.66 - - [29/Oct/2026:14:09:20 +0900] "GET /remote/logincheck HTTP/1.1" 404 512 "-" "zgrab/0.x"
+192.0.2.66 - - [29/Oct/2026:13:58:02 +0900] "GET /.env HTTP/1.1" 404 512 "-" "zgrab/0.x"
+198.51.100.23 - - [29/Oct/2026:13:58:45 +0900] "GET /wp-login.php HTTP/1.1" 404 2361 "-" "Mozilla/5.0"
+203.0.113.77 - - [29/Oct/2026:13:59:20 +0900] "GET /backup.bak HTTP/1.1" 404 5520 "-" "zgrab/0.x"
+198.51.100.23 - - [29/Oct/2026:14:00:31 +0900] "POST /api/auth/refresh HTTP/1.1" 401 88 "-" "okhttp/4.9"
+192.0.2.66 - - [29/Oct/2026:14:01:41 +0900] "GET /.git/config HTTP/1.1" 404 1536 "-" "zgrab/0.x"
+<span class="hit">2026-10-29 14:02:13 WARN  HikariPool-1 - Connection is not available, request timed out after 30000ms.</span>
+198.51.100.180 - - [29/Oct/2026:14:02:14 +0900] "POST /api/orders/submit HTTP/1.1" 500 231 "-" "Mozilla/5.0"
+203.0.113.45 - - [29/Oct/2026:14:02:19 +0900] "GET /phpmyadmin/ HTTP/1.1" 404 512 "-" "masscan/1.3"
+192.0.2.66 - - [29/Oct/2026:14:03:02 +0900] "GET /cgi-bin/luci HTTP/1.1" 404 2361 "-" "zgrab/0.x"
+198.51.100.180 - - [29/Oct/2026:14:03:44 +0900] "POST /api/orders/submit HTTP/1.1" 500 231 "-" "Mozilla/5.0"
+203.0.113.77 - - [29/Oct/2026:14:04:10 +0900] "GET /admin HTTP/1.1" 403 199 "-" "curl/7.68"
+198.51.100.23 - - [29/Oct/2026:14:05:31 +0900] "POST /api/auth/refresh HTTP/1.1" 401 88 "-" "okhttp/4.9"
+192.0.2.66 - - [29/Oct/2026:14:06:18 +0900] "GET /etc/passwd HTTP/1.1" 404 512 "-" "zgrab/0.x"
+203.0.113.45 - - [29/Oct/2026:14:07:02 +0900] "GET /xmlrpc.php HTTP/1.1" 404 512 "-" "masscan/1.3"
+198.51.100.23 - - [29/Oct/2026:14:08:45 +0900] "GET /wp-login.php HTTP/1.1" 404 2361 "-" "Mozilla/5.0"
+192.0.2.66 - - [29/Oct/2026:14:09:20 +0900] "GET /remote/logincheck HTTP/1.1" 404 512 "-" "zgrab/0.x"</div></div>
+
+  <header class="site-head on-ink">
+    <a class="brand" href="./" aria-label="Re.log 홈">Re<b>.</b>log</a>
+    <button class="menu-btn" type="button" aria-label="메뉴" aria-expanded="false" aria-controls="nav">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="주 메뉴">
+      <a href="process.html">PROCESS</a>
+      <a href="report.html">REPORT</a>
+      <a href="impact.html">IMPACT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <div class="hero-body">
+    <h1 class="display">We Read</h1>
+    <div class="hero-row">
+      <p class="hero-sub">로그는 열지 마세요.</p>
+      <p class="display">Your <span class="serif">Logs.</span></p>
+      <a class="icon-link" href="contact.html" aria-label="메일로 받아보기">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <a class="cta" href="contact.html">GET THE REPORT</a>
+    <p>매주 월요일 아침, 서버 5대 · 로그 7종을 읽고 한 줄로 판정해 메일로 보냅니다.</p>
+    <a class="scroll" href="#main">[SCROLL DOWN]</a>
+  </div>
+</section>
+
+<main id="main">
+  <section class="wrap sec">
+    <div class="split reveal" style="align-items:flex-start">
+      <h2 class="h-l" style="flex:1 1 640px">사람은 판단만 하고,<br>읽는 건 맡기세요.</h2>
+      <div style="flex:0 1 400px;display:flex;flex-direction:column;gap:24px;padding-top:12px">
+        <p class="lede">원격 접속하고, 폴더 열고, grep 치고, 스캐너 404 수백 건 사이에서 진짜 장애를 찾던 55분. 이제 스크립트가 수집·분류하고, Claude가 “이번 주 괜찮은가”를 첫 줄에 씁니다.</p>
+        <div class="chips"><span class="chip">Windows 1 · Linux 4</span><span class="chip">Nginx · Tomcat</span><span class="chip">Claude API</span></div>
+      </div>
+    </div>
+
+    <div class="bento reveal">
+      <a class="tile tile-ink" href="report.html">
+        <span class="eyebrow" style="color:var(--on-ink-faint)">MONDAY 08:00 — WEEK 44</span>
+        <div>
+          <span class="pill pill-warn">● 주의</span>
+          <p class="kr" style="margin:20px 0 0;font-size:clamp(20px,2vw,28px);line-height:1.45;font-weight:500;letter-spacing:-.03em">10/29(목) 14시대 주문 API 500 오류가 몰렸고, 같은 시각 DB 커넥션 풀 고갈 로그가 있습니다.</p>
+          <p class="kr" style="margin:18px 0 0;font-size:13px;color:var(--on-ink-faint)">데모 리포트의 AI 요약 첫 줄 · 전체 보기 →</p>
+        </div>
+      </a>
+      <div class="tile-col">
+        <div class="tile tile-ember">
+          <span class="kr" style="font-size:14px;font-weight:500">주간 점검 시간</span>
+          <p class="stat">55→3<small>min</small></p>
+        </div>
+        <div class="tile tile-white">
+          <span class="kr" style="font-size:14px;font-weight:500;color:var(--muted)">스캔 소음 자동 분리</span>
+          <p class="stat" style="font-size:56px">218 <small class="kr" style="font-size:18px;font-weight:400;letter-spacing:0;color:var(--muted)">건 / 주</small></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-bottom:140px">
+    <div class="sec-label reveal">
+      <span class="eyebrow" style="color:var(--ink)">(01) What we read</span>
+      <span style="font-size:13px;color:var(--muted-2)">7 logs / 5 servers</span>
+    </div>
+    <div class="rows reveal">
+      <details>
+        <summary><span class="no">01</span><span class="name">Nginx</span><span class="desc">상태코드·키워드 집계, 스캔 시그니처 소음 처리</span><span class="plus" aria-hidden="true">+</span></summary>
+        <div class="body"><p>404·500·401 같은 상태코드와 .env·wp-login·.git 같은 경로 키워드를 일별·IP별·URL별로 집계합니다. 알려진 스캐너 요청은 따로 떼어 ‘노이즈’로 보여 줍니다.</p><code>NGINX  주요 564  /  노이즈 218
+10-29  ████████████  225</code></div>
+      </details>
+      <details>
+        <summary><span class="no">02</span><span class="name">Tomcat E-OUT</span><span class="desc">Exception · HikariPool 커넥션 고갈 탐지</span><span class="plus" aria-hidden="true">+</span></summary>
+        <div class="body"><p>catalina 로그에서 Exception, timed out, Connection is not available 같은 신호를 시간대별로 묶어, 같은 시각 Nginx 500과 함께 읽을 수 있게 합니다.</p><code>WARN HikariPool-1 - Connection is
+not available ... 30000ms   × 60</code></div>
+      </details>
+      <details>
+        <summary><span class="no">03</span><span class="name">Tomcat IN-OUT</span><span class="desc">unauthorized · fail 키워드 분류</span><span class="plus" aria-hidden="true">+</span></summary>
+        <div class="body"><p>인증 실패, 외부 연동 실패 키워드를 분류하고, 토큰 재발급 과정에서 생기는 정상적인 401은 소음으로 걸러냅니다.</p><code>TOMCAT_INOUT  주요 19
+refresh-token 401  → noise</code></div>
+      </details>
+      <details>
+        <summary><span class="no">04</span><span class="name">L4 Balance</span><span class="desc">WEB1 / WEB2 트래픽 편차 자동 계산</span><span class="plus" aria-hidden="true">+</span></summary>
+        <div class="body"><p>이중화된 WEB 두 대의 요청 수를 비교해 편차율을 계산합니다. 임계치 15%를 넘으면 리포트 맨 위에서 알립니다.</p><code>WEB1 230,719  vs  WEB2 222,002
+편차 1.9%  [정상]</code></div>
+      </details>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="wrap split reveal" style="padding-top:120px;padding-bottom:120px;align-items:flex-end;gap:40px">
+      <h2 class="h-band">See it<br>in your <span class="serif">inbox.</span></h2>
+      <a class="btn btn-paper" href="contact.html">데모 리포트 메일 받기 <span aria-hidden="true">→</span></a>
+    </div>
+    <footer class="wrap site-foot">
+      <span>AIVE Challenge 2026 · H2</span>
+      <span class="kr">데모 IP는 RFC 5737 문서용 대역, 실제 IP는 10.20.x.x · 198.18.x.x로 치환</span>
+      <span>© 2026 Re.log</span>
+    </footer>
+  </section>
+</main>
+<script src="assets/relog.js"></script>
+</body>
+</html>

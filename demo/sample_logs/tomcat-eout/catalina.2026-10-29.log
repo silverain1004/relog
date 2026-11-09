@@ -1,0 +1,81 @@
+29-Oct-2026 00:09:18.727 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+29-Oct-2026 03:23:29.476 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+29-Oct-2026 06:59:35.945 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+29-Oct-2026 09:45:46.390 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+29-Oct-2026 12:08:38.299 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+29-Oct-2026 14:02:18.468 WARNING [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected
+29-Oct-2026 14:02:21.153 SEVERE [http-nio-8080-exec-44] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:02:23.022 WARNING [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected
+29-Oct-2026 14:02:57.323 SEVERE [http-nio-8080-exec-46] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:03:07.781 SEVERE [http-nio-8080-exec-32] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:04:24.151 SEVERE [http-nio-8080-exec-20] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:07:00.448 SEVERE [http-nio-8080-exec-25] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:07:44.866 SEVERE [http-nio-8080-exec-18] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:08:10.533 SEVERE [http-nio-8080-exec-17] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:08:47.764 SEVERE [http-nio-8080-exec-37] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:10:04.619 SEVERE [http-nio-8080-exec-13] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:10:22.126 SEVERE [http-nio-8080-exec-18] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:12:52.383 SEVERE [http-nio-8080-exec-38] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:13:18.756 SEVERE [http-nio-8080-exec-8] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:13:31.857 SEVERE [http-nio-8080-exec-8] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:13:35.017 SEVERE [http-nio-8080-exec-12] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:14:49.035 WARNING [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected
+29-Oct-2026 14:16:58.416 SEVERE [http-nio-8080-exec-26] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:17:25.047 SEVERE [http-nio-8080-exec-37] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:17:53.550 SEVERE [http-nio-8080-exec-5] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:18:28.594 SEVERE [http-nio-8080-exec-15] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:18:43.643 SEVERE [http-nio-8080-exec-30] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:19:11.694 SEVERE [http-nio-8080-exec-7] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:20:31.691 WARNING [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected
+29-Oct-2026 14:20:55.745 SEVERE [http-nio-8080-exec-24] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:21:19.614 SEVERE [http-nio-8080-exec-38] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:22:13.138 SEVERE [http-nio-8080-exec-17] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:22:41.758 SEVERE [http-nio-8080-exec-28] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:22:54.742 SEVERE [http-nio-8080-exec-37] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:23:38.627 WARNING [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected
+29-Oct-2026 14:26:32.760 SEVERE [http-nio-8080-exec-25] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:32:53.891 SEVERE [http-nio-8080-exec-3] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:33:41.086 SEVERE [http-nio-8080-exec-39] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:34:25.662 SEVERE [http-nio-8080-exec-47] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:35:37.085 SEVERE [http-nio-8080-exec-22] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:36:11.520 SEVERE [http-nio-8080-exec-48] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:38:56.823 WARNING [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected
+29-Oct-2026 14:40:42.858 WARNING [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected
+29-Oct-2026 14:40:57.129 SEVERE [http-nio-8080-exec-34] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:41:02.774 WARNING [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected
+29-Oct-2026 14:41:21.392 SEVERE [http-nio-8080-exec-10] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:45:24.686 SEVERE [http-nio-8080-exec-16] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:45:36.571 SEVERE [http-nio-8080-exec-18] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:46:43.283 SEVERE [http-nio-8080-exec-22] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:47:43.787 SEVERE [http-nio-8080-exec-32] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:47:46.082 WARNING [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected
+29-Oct-2026 14:47:54.925 SEVERE [http-nio-8080-exec-22] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:48:36.428 SEVERE [http-nio-8080-exec-6] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:49:11.605 SEVERE [http-nio-8080-exec-35] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:55:21.481 WARNING [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected
+29-Oct-2026 14:55:46.654 SEVERE [http-nio-8080-exec-28] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:56:04.164 SEVERE [http-nio-8080-exec-13] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:56:36.419 WARNING [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected
+29-Oct-2026 14:57:17.384 SEVERE [http-nio-8080-exec-25] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 14:58:51.188 WARNING [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected
+29-Oct-2026 14:59:13.970 SEVERE [http-nio-8080-exec-14] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:03:31.855 SEVERE [http-nio-8080-exec-27] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:03:43.280 SEVERE [http-nio-8080-exec-37] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:04:20.084 SEVERE [http-nio-8080-exec-22] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:15:32.535 SEVERE [http-nio-8080-exec-48] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:18:25.040 SEVERE [http-nio-8080-exec-27] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:24:50.062 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+29-Oct-2026 15:31:03.744 SEVERE [http-nio-8080-exec-4] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:33:18.001 SEVERE [http-nio-8080-exec-47] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:34:25.138 SEVERE [http-nio-8080-exec-20] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:34:54.174 SEVERE [http-nio-8080-exec-39] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:37:00.885 SEVERE [http-nio-8080-exec-31] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:38:37.112 SEVERE [http-nio-8080-exec-13] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:44:30.116 SEVERE [http-nio-8080-exec-3] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:50:40.775 SEVERE [http-nio-8080-exec-5] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:50:54.597 WARNING [http-nio-8080-exec-45] o.a.c.c.C.[.[localhost] login fail: unauthorized access (invalid password)
+29-Oct-2026 15:51:19.591 SEVERE [http-nio-8080-exec-45] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:55:11.829 SEVERE [http-nio-8080-exec-32] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 15:58:52.915 SEVERE [http-nio-8080-exec-46] com.example.order.OrderService.submit java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.
+29-Oct-2026 18:17:22.812 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+29-Oct-2026 21:08:34.565 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — Re.log</title>
+<meta name="description" content="실제 운영 메일과 같은 리포트를 사내 메일로 받아보세요.">
+<meta name="theme-color" content="#0E0E0C">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/relog.css">
+</head>
+<body class="dark">
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-head on-ink">
+  <a class="brand" href="./" aria-label="Re.log 홈">Re<b>.</b>log</a>
+  <button class="menu-btn" type="button" aria-label="메뉴" aria-expanded="false" aria-controls="nav">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+  </button>
+  <nav class="nav" id="nav" aria-label="주 메뉴">
+    <a href="process.html">PROCESS</a>
+    <a href="report.html">REPORT</a>
+    <a href="impact.html">IMPACT</a>
+    <a href="contact.html" aria-current="page">CONTACT</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="wrap split" style="padding-top:120px;padding-bottom:120px;gap:96px">
+    <div style="flex:1 1 0" class="reveal">
+      <span class="eyebrow">(05) Contact</span>
+      <h1 class="h-xl" style="margin-top:32px;font-size:clamp(64px,9.4vw,136px);letter-spacing:-.06em">Get the<br><span class="serif">report.</span></h1>
+      <p class="lede" style="margin-top:32px;max-width:420px">실제 운영 메일과 똑같은 HTML 본문과 상세 리포트 ZIP을 받아보세요. 보통 1분 안에 도착합니다.</p>
+    </div>
+
+    <form class="form reveal" id="mail-form" novalidate aria-label="리포트 메일 받기">
+      <div>
+        <label class="lbl" for="mail-to">받을 이메일 (사내 주소만)</label>
+        <input id="mail-to" name="email" type="email" placeholder="name@vntgcorp.com" autocomplete="email" required maxlength="100">
+      </div>
+      <div class="hp" aria-hidden="true"><label>웹사이트<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <fieldset>
+        <legend>리포트</legend>
+        <div class="opts">
+          <label><input type="radio" name="source" value="demo" checked> 데모</label>
+          <label><input type="radio" name="source" value="live"> 실제 주간</label>
+          <label><input type="radio" name="source" value="live-monthly"> 실제 월간</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>플랫폼</legend>
+        <div class="opts">
+          <label><input type="radio" name="kind" value="windows" checked> Windows</label>
+          <label><input type="radio" name="kind" value="linux"> Linux</label>
+        </div>
+      </fieldset>
+      <button class="btn btn-ember send" id="mail-send" type="submit">보내기 <span aria-hidden="true">→</span></button>
+      <p class="msg" id="mail-msg" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section class="wrap" style="padding-bottom:120px">
+    <div class="sec-label" style="margin-bottom:24px">
+      <span class="eyebrow" style="color:var(--paper)">Run it yourself</span>
+      <a href="https://github.com/silverain1004/relog" style="font-size:13px;color:var(--on-ink-faint)">github.com/silverain1004/relog ↗</a>
+    </div>
+    <pre class="term"><span class="p">$</span> git clone https://github.com/silverain1004/relog.git &amp;&amp; cd relog
+<span class="p">$</span> python demo/generate_demo.py               <span class="c"># 데모 리포트 생성</span>
+<span class="p">$</span> python tools/mask_live.py ../real-reports  <span class="c"># 실제 리포트 마스킹</span>
+<span class="p">$</span> python demo/generate_demo.py --refresh-ai  <span class="c"># Claude로 요약 새로 받기</span>
+<span class="p">$</span> python -m pytest tests                     <span class="c"># 테스트</span></pre>
+  </section>
+
+  <footer class="wrap site-foot">
+    <span>AIVE Challenge 2026 · H2</span>
+    <span class="kr">데모 IP는 RFC 5737 문서용 대역, 실제 IP는 10.20.x.x · 198.18.x.x로 치환</span>
+    <a class="next" href="./">Back to top ↑</a>
+  </footer>
+</main>
+<script src="assets/relog.js"></script>
+</body>
+</html>

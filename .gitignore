@@ -1,0 +1,22 @@
+# 비밀 정보 (서버에서 직접 작성)
+config.json
+*.ppk
+*.pem
+mask_map.txt
+
+# 실행 산출물
+app/reports/
+app/logs/
+build/
+dist/
+*.zip
+
+# 파이썬
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# 마스킹 금칙어 (현장 정보)
+tools/mask_words.txt

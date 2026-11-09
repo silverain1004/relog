@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Impact — Re.log</title>
+<meta name="description" content="주간 점검 55분에서 3분으로. 연간 약 70시간 절감.">
+<meta name="theme-color" content="#F4F3EF">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/relog.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-head">
+  <a class="brand" href="./" aria-label="Re.log 홈">Re<b>.</b>log</a>
+  <button class="menu-btn" type="button" aria-label="메뉴" aria-expanded="false" aria-controls="nav">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+  </button>
+  <nav class="nav" id="nav" aria-label="주 메뉴">
+    <a href="process.html">PROCESS</a>
+    <a href="report.html">REPORT</a>
+    <a href="impact.html" aria-current="page">IMPACT</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="wrap" style="padding-top:100px;padding-bottom:120px">
+    <span class="eyebrow">(04) Impact</span>
+    <h1 class="sr-only">효과 — 주간 점검 55분에서 3분으로</h1>
+    <div style="margin-top:40px;border-top:1px solid var(--ink)">
+      <div class="big-row reveal">
+        <span class="lbl">주간 점검</span>
+        <p class="big"><s>55</s> 3<small>min</small></p>
+      </div>
+      <div class="big-row reveal">
+        <span class="lbl">월간 리포트 작성</span>
+        <p class="big"><s>2h</s> 0<small>min</small></p>
+      </div>
+      <div class="big-row reveal">
+        <div style="padding-bottom:20px"><span class="lbl" style="padding:0">연간 절감</span><p style="margin:8px 0 0;font-size:13px;color:var(--muted-2)">52 min × 52 wk + 2 h × 12 mo</p></div>
+        <p class="big ember">≈70<small>h/yr</small></p>
+      </div>
+    </div>
+    <p class="kr" style="margin:24px 0 0;max-width:760px;font-size:13px;line-height:1.8;color:var(--muted-2)">Before 시간은 단계별 추정치입니다. Windows 원격 접속·로그 3종 확인 15분 + Linux 4대 SSH·grep 20분 + 스캔 소음 걸러내고 장애 판단 10분 + L4 편차 계산·공유 메일 작성 10분.</p>
+  </section>
+
+  <section class="wrap" style="padding-bottom:140px">
+    <div class="ba reveal">
+      <div class="before">
+        <span class="eyebrow">Before</span>
+        <h3>사람이 직접,<br>매주 55분.</h3>
+        <ol>
+          <li><span>01</span>Windows 원격 접속 → Nginx·Tomcat 로그 폴더 열기</li>
+          <li><span>02</span>WEB 2대·WAS 2대 SSH 접속 → grep</li>
+          <li><span>03</span>스캐너 404 수백 건 속 진짜 장애 골라내기</li>
+          <li><span>04</span>WEB1/WEB2 트래픽 편차는 계산기로</li>
+        </ol>
+      </div>
+      <div class="after">
+        <span class="eyebrow" style="color:var(--ember)">After</span>
+        <h3>월요일 아침,<br>메일 한 통.</h3>
+        <ol>
+          <li><span>01</span>직전 주 로그 자동 수집·집계</li>
+          <li><span>02</span>FortiOS·WordPress 스캔은 자동 소음 처리</li>
+          <li><span>03</span>맨 위에 Claude 판정 — 정상 / 주의 / 위험</li>
+          <li><span>04</span>주의·위험일 때만 상세 리포트 열기</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap site-foot">
+    <a href="report.html">← Report</a><a class="next" href="contact.html">Next — Contact →</a>
+  </footer>
+</main>
+<script src="assets/relog.js"></script>
+</body>
+</html>

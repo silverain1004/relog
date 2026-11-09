@@ -1,0 +1,45 @@
+{
+  "email": {
+    "enabled": true,
+    "smtp_host": "smtp.example.com",
+    "smtp_port": 587,
+    "use_tls": true,
+    "username": "your@company.com",
+    "password": "YOUR_PASSWORD_OR_APP_PASSWORD",
+    "from_addr": "log-report@company.com",
+    "to_addrs": ["you@company.com"],
+    "subject_prefix": "[로그리포트]"
+  },
+  "ai": {
+    "enabled": true,
+    "api_key": "YOUR_ANTHROPIC_API_KEY",
+    "model": "claude-haiku-4-5",
+    "max_tokens": 600,
+    "timeout_sec": 60
+  },
+  "report": {
+    "auto_type": "weekly"
+  },
+  "linux": {
+    "ssh_user": "appuser",
+    "key_path": "/home/appuser/app_key.pem",
+    "ssh_timeout_sec": 10,
+    "l4_threshold_pct": 15,
+    "servers": [
+      {"name": "WEB1", "ip": "10.20.30.11", "role": "WEB", "is_local": true},
+      {"name": "WEB2", "ip": "10.20.30.12", "role": "WEB", "is_local": false},
+      {"name": "WAS1", "ip": "10.20.30.21", "role": "WAS", "is_local": false},
+      {"name": "WAS2", "ip": "10.20.30.22", "role": "WAS", "is_local": false}
+    ],
+    "log_paths": {
+      "WEB": {
+        "access": "/var/log/nginx/access.log",
+        "error": "/var/log/nginx/error.log"
+      },
+      "WAS": {
+        "catalina": "/usr/share/apache-tomcat-9.0.82/logs/catalina.{}.log",
+        "ebiz": "/usr/share/apache-tomcat-9.0.82/logs/ebiz/ebiz.log.{}"
+      }
+    }
+  }
+}

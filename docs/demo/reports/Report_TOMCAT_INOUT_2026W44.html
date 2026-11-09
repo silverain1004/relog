@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TOMCAT_INOUT 리포트 — 2026년 44주 (2026-10-26 ~ 2026-11-01)</title>
+<style>
+:root { --bg:#0f1419; --card:#1a2332; --border:#2d3a4f; --text:#e7ecf3; --muted:#8b9cb3;
+        --accent:#3b82f6; --warn:#f59e0b; --danger:#ef4444; --ok:#22c55e; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.5; padding:24px; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.header { margin-bottom:24px; }
+.header h1 { font-size:1.5rem; margin-bottom:4px; }
+.header .sub { color:var(--muted); font-size:0.9rem; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-bottom:24px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px; }
+.card .label { color:var(--muted); font-size:0.8rem; margin-bottom:4px; }
+.card .value { font-size:1.8rem; font-weight:700; }
+.card.warn .value { color:var(--warn); }
+.card.danger .value { color:var(--danger); }
+.card.ok .value { color:var(--ok); }
+section { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:20px; margin-bottom:20px; }
+section h2 { font-size:1.1rem; margin-bottom:16px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+.bar-row { display:grid; grid-template-columns:100px 1fr 60px; gap:8px; align-items:center; margin-bottom:6px; font-size:0.85rem; }
+.bar-label { color:var(--muted); text-align:right; }
+.bar-track { background:var(--bg); border-radius:4px; height:18px; overflow:hidden; }
+.bar-fill { background:var(--accent); height:100%; border-radius:4px; min-width:2px; }
+.bar-fill.daily { background:#6366f1; }
+.bar-value { text-align:right; font-variant-numeric:tabular-nums; }
+.empty { color:var(--muted); font-style:italic; }
+.top-table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+.top-table th,.top-table td { padding:8px 12px; text-align:left; border-bottom:1px solid var(--border); }
+.top-table th { color:var(--muted); font-weight:600; }
+.top-table .num { text-align:right; font-variant-numeric:tabular-nums; }
+.badge { display:inline-block; padding:2px 10px; border-radius:12px; font-size:0.75rem; font-weight:600; }
+.badge.ok { background:rgba(34,197,94,.2); color:var(--ok); }
+.badge.warn { background:rgba(245,158,11,.2); color:var(--warn); }
+.log-controls { display:flex; gap:12px; margin-bottom:12px; flex-wrap:wrap; }
+.log-controls input,.log-controls select { background:var(--bg); border:1px solid var(--border); color:var(--text); padding:8px 12px; border-radius:6px; font-size:0.85rem; }
+.log-controls input { flex:1; min-width:200px; }
+.log-table { width:100%; border-collapse:collapse; font-size:0.78rem; }
+.log-table th,.log-table td { padding:6px 8px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+.log-table th { color:var(--muted); position:sticky; top:0; background:var(--card); }
+.log-table tr:hover { background:rgba(59,130,246,.08); }
+.log-table .raw { max-width:600px; word-break:break-all; color:var(--muted); }
+.log-wrap { max-height:500px; overflow:auto; }
+details { margin-top:12px; }
+details summary { cursor:pointer; color:var(--muted); padding:8px 0; }
+.btn-more { background:var(--accent); color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; margin-top:8px; font-size:0.85rem; }
+.btn-more:hover { opacity:.9; }
+.index-list { list-style:none; }
+.index-list li { padding:12px 0; border-bottom:1px solid var(--border); }
+.l4-bars { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.l4-bar-item .name { margin-bottom:6px; font-weight:600; }
+</style></head><body>
+<div class="header">
+  <p><a href="index_2026W44.html">← 목차</a></p>
+  <h1>TOMCAT_INOUT 로그 분석</h1>
+  <p class="sub">2026년 44주 (2026-10-26 ~ 2026-11-01)</p>
+</div>
+<div class="grid">
+  <div class="card"><div class="label">주요 탐지</div><div class="value">19</div></div>
+  <div class="card warn"><div class="label">노이즈 (refresh-token 401)</div><div class="value">0</div></div>
+  <div class="card"><div class="label">분석 일수</div><div class="value">7</div></div>
+</div>
+<section><h2>키워드 / 상태코드 분류</h2><div class="bar-row"><span class="bar-label">Exception</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-value">19</span></div>
+<div class="bar-row"><span class="bar-label">ERROR</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-value">19</span></div></section>
+<section><h2>일별 추이</h2><div class="bar-row"><span class="bar-label">10-26</span><div class="bar-track"><div class="bar-fill daily" style="width:25%"></div></div><span class="bar-value">1</span></div>
+<div class="bar-row"><span class="bar-label">10-27</span><div class="bar-track"><div class="bar-fill daily" style="width:75%"></div></div><span class="bar-value">3</span></div>
+<div class="bar-row"><span class="bar-label">10-28</span><div class="bar-track"><div class="bar-fill daily" style="width:75%"></div></div><span class="bar-value">3</span></div>
+<div class="bar-row"><span class="bar-label">10-29</span><div class="bar-track"><div class="bar-fill daily" style="width:50%"></div></div><span class="bar-value">2</span></div>
+<div class="bar-row"><span class="bar-label">10-30</span><div class="bar-track"><div class="bar-fill daily" style="width:50%"></div></div><span class="bar-value">2</span></div>
+<div class="bar-row"><span class="bar-label">10-31</span><div class="bar-track"><div class="bar-fill daily" style="width:100%"></div></div><span class="bar-value">4</span></div>
+<div class="bar-row"><span class="bar-label">11-01</span><div class="bar-track"><div class="bar-fill daily" style="width:100%"></div></div><span class="bar-value">4</span></div></section>
+<section><h2>시간대별 분포</h2><div class="bar-row"><span class="bar-label">06시</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-value">3</span></div>
+<div class="bar-row"><span class="bar-label">20시</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-value">3</span></div>
+<div class="bar-row"><span class="bar-label">00시</span><div class="bar-track"><div class="bar-fill" style="width:67%"></div></div><span class="bar-value">2</span></div>
+<div class="bar-row"><span class="bar-label">01시</span><div class="bar-track"><div class="bar-fill" style="width:67%"></div></div><span class="bar-value">2</span></div>
+<div class="bar-row"><span class="bar-label">08시</span><div class="bar-track"><div class="bar-fill" style="width:67%"></div></div><span class="bar-value">2</span></div>
+<div class="bar-row"><span class="bar-label">22시</span><div class="bar-track"><div class="bar-fill" style="width:67%"></div></div><span class="bar-value">2</span></div>
+<div class="bar-row"><span class="bar-label">05시</span><div class="bar-track"><div class="bar-fill" style="width:33%"></div></div><span class="bar-value">1</span></div>
+<div class="bar-row"><span class="bar-label">12시</span><div class="bar-track"><div class="bar-fill" style="width:33%"></div></div><span class="bar-value">1</span></div>
+<div class="bar-row"><span class="bar-label">16시</span><div class="bar-track"><div class="bar-fill" style="width:33%"></div></div><span class="bar-value">1</span></div>
+<div class="bar-row"><span class="bar-label">19시</span><div class="bar-track"><div class="bar-fill" style="width:33%"></div></div><span class="bar-value">1</span></div>
+<div class="bar-row"><span class="bar-label">21시</span><div class="bar-track"><div class="bar-fill" style="width:33%"></div></div><span class="bar-value">1</span></div></section>
+<section><h2>Top IP</h2><p class="empty">데이터 없음</p></section>
+<section><h2>Top URL</h2><p class="empty">데이터 없음</p></section>
+<section><h2>상세 로그 (주요 탐지)</h2>
+<div class="log-controls">
+  <input type="text" id="main-logs-search" placeholder="검색 (IP, URL, 메시지...)">
+  <select id="main-logs-filter"><option value="">전체 키워드</option><option value="ERROR">ERROR</option><option value="Exception">Exception</option></select>
+</div>
+<div class="log-wrap">
+<table class="log-table" id="main-logs">
+<thead><tr><th>날짜</th><th>시간</th><th>파일</th><th>IP</th><th>상태</th><th>URL</th><th>내용</th></tr></thead>
+<tbody><tr data-keywords='Exception,ERROR'><td>2026-10-26</td><td>08시</td><td>catalina.2026-10-26.log</td><td></td><td class=''></td><td></td><td class='raw'>26-Oct-2026 08:25:55.805 INFO [http-nio-8080-exec-7] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-10-27</td><td>06시</td><td>catalina.2026-10-27.log</td><td></td><td class=''></td><td></td><td class='raw'>27-Oct-2026 06:31:21.862 INFO [http-nio-8080-exec-6] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-10-27</td><td>16시</td><td>catalina.2026-10-27.log</td><td></td><td class=''></td><td></td><td class='raw'>27-Oct-2026 16:41:02.342 INFO [http-nio-8080-exec-8] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-10-27</td><td>20시</td><td>catalina.2026-10-27.log</td><td></td><td class=''></td><td></td><td class='raw'>27-Oct-2026 20:22:35.589 INFO [http-nio-8080-exec-9] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-10-28</td><td>00시</td><td>catalina.2026-10-28.log</td><td></td><td class=''></td><td></td><td class='raw'>28-Oct-2026 00:15:58.398 INFO [http-nio-8080-exec-16] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-10-28</td><td>12시</td><td>catalina.2026-10-28.log</td><td></td><td class=''></td><td></td><td class='raw'>28-Oct-2026 12:40:11.189 INFO [http-nio-8080-exec-13] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-10-28</td><td>20시</td><td>catalina.2026-10-28.log</td><td></td><td class=''></td><td></td><td class='raw'>28-Oct-2026 20:52:00.034 INFO [http-nio-8080-exec-10] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-10-29</td><td>01시</td><td>catalina.2026-10-29.log</td><td></td><td class=''></td><td></td><td class='raw'>29-Oct-2026 01:35:18.740 INFO [http-nio-8080-exec-18] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-10-29</td><td>21시</td><td>catalina.2026-10-29.log</td><td></td><td class=''></td><td></td><td class='raw'>29-Oct-2026 21:13:51.266 INFO [http-nio-8080-exec-8] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-10-30</td><td>00시</td><td>catalina.2026-10-30.log</td><td></td><td class=''></td><td></td><td class='raw'>30-Oct-2026 00:01:38.161 INFO [http-nio-8080-exec-1] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-10-30</td><td>06시</td><td>catalina.2026-10-30.log</td><td></td><td class=''></td><td></td><td class='raw'>30-Oct-2026 06:37:17.320 INFO [http-nio-8080-exec-18] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-10-31</td><td>06시</td><td>catalina.2026-10-31.log</td><td></td><td class=''></td><td></td><td class='raw'>31-Oct-2026 06:25:03.337 INFO [http-nio-8080-exec-20] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-10-31</td><td>08시</td><td>catalina.2026-10-31.log</td><td></td><td class=''></td><td></td><td class='raw'>31-Oct-2026 08:08:23.758 INFO [http-nio-8080-exec-8] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-10-31</td><td>19시</td><td>catalina.2026-10-31.log</td><td></td><td class=''></td><td></td><td class='raw'>31-Oct-2026 19:31:07.496 INFO [http-nio-8080-exec-3] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-10-31</td><td>22시</td><td>catalina.2026-10-31.log</td><td></td><td class=''></td><td></td><td class='raw'>31-Oct-2026 22:55:27.268 INFO [http-nio-8080-exec-8] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-11-01</td><td>01시</td><td>catalina.2026-11-01.log</td><td></td><td class=''></td><td></td><td class='raw'>01-Nov-2026 01:40:28.850 INFO [http-nio-8080-exec-11] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-11-01</td><td>05시</td><td>catalina.2026-11-01.log</td><td></td><td class=''></td><td></td><td class='raw'>01-Nov-2026 05:37:25.549 INFO [http-nio-8080-exec-14] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-11-01</td><td>20시</td><td>catalina.2026-11-01.log</td><td></td><td class=''></td><td></td><td class='raw'>01-Nov-2026 20:52:04.774 INFO [http-nio-8080-exec-11] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr><tr data-keywords='Exception,ERROR'><td>2026-11-01</td><td>22시</td><td>catalina.2026-11-01.log</td><td></td><td class=''></td><td></td><td class='raw'>01-Nov-2026 22:07:29.636 INFO [http-nio-8080-exec-20] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens</td></tr></tbody>
+</table>
+</div>
+<button class="btn-more" id="main-logs-more" style="display:none">더 보기</button>
+
+<script>
+(function() {
+  const rows = Array.from(document.querySelectorAll('#main-logs tbody tr'));
+  const search = document.getElementById('main-logs-search');
+  const filter = document.getElementById('main-logs-filter');
+  const btn = document.getElementById('main-logs-more');
+  let visibleLimit = 200;
+
+  function applyFilter() {
+    const q = (search?.value || '').toLowerCase();
+    const kw = filter?.value || '';
+    let shown = 0, matched = 0;
+    rows.forEach(row => {
+      const text = row.textContent.toLowerCase();
+      const kws = row.dataset.keywords || '';
+      const ok = (!q || text.includes(q)) && (!kw || kws.includes(kw));
+      if (ok) {
+        matched++;
+        row.style.display = shown < visibleLimit ? '' : 'none';
+        if (shown < visibleLimit) shown++;
+      } else {
+        row.style.display = 'none';
+      }
+    });
+    if (btn) btn.style.display = matched > visibleLimit ? '' : 'none';
+  }
+
+  if (search) search.addEventListener('input', () => { visibleLimit = 200; applyFilter(); });
+  if (filter) filter.addEventListener('change', () => { visibleLimit = 200; applyFilter(); });
+  if (btn) btn.addEventListener('click', () => { visibleLimit += 200; applyFilter(); });
+  applyFilter();
+})();
+</script>
+
+</section>
+<section><h2>노이즈 로그 — refresh-token 401</h2>
+<p class="sub" style="margin-bottom:12px">토큰 갱신 실패 등 정상 운영 중 발생 가능한 401. 주요 탐지 집계에서 제외됨.</p>
+<p class="empty">해당 항목 없음</p></section>
+</body></html>

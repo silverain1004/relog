@@ -1,0 +1,44 @@
+{
+  "source": "live-monthly",
+  "label": "실제 운영 · 월간 (마스킹)",
+  "period_label": "2026년 10월 (2026-10-01 ~ 2026-10-31)",
+  "period_key": "202610",
+  "ai_source": {
+    "windows": "missing",
+    "linux": "missing"
+  },
+  "windows": {
+    "title": "E-OUT, IN-OUT 시스템 통합 로그 리포트 (Windows)",
+    "email": null,
+    "zip": "Report_WIN_202610.zip",
+    "reports": [
+      {
+        "title": "Windows 목차",
+        "href": "reports/windows/index_202610.html"
+      },
+      {
+        "title": "NGINX",
+        "href": "reports/windows/Report_NGINX_202610.html"
+      },
+      {
+        "title": "TOMCAT_EOUT",
+        "href": "reports/windows/Report_TOMCAT_EOUT_202610.html"
+      },
+      {
+        "title": "TOMCAT_INOUT",
+        "href": "reports/windows/Report_TOMCAT_INOUT_202610.html"
+      }
+    ]
+  },
+  "linux": {
+    "title": "E-BIZ 시스템 통합 로그 리포트 (Linux)",
+    "email": null,
+    "zip": "Report_EBIZ_202610.zip",
+    "reports": [
+      {
+        "title": "Linux 통합 (L4·노드별)",
+        "href": "reports/linux/Report_EBIZ_202610.html"
+      }
+    ]
+  }
+}

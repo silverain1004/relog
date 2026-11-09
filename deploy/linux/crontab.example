@@ -1,0 +1,35 @@
+# Linux cron 예시 — WEB1(10.20.30.11) 서버에만 등록
+# cron = 윈도우의 "작업 스케줄러"와 같은 기능
+#
+# 등록 방법: crontab -e 실행 후 아래 줄들을 복사해 붙여넣고 저장
+#
+# cron은 로케일이 없어서 한글 출력이 깨질 수 있음 → 아래 한 줄 필수
+PYTHONIOENCODING=utf-8
+
+# (AI 요약용) 사내 프록시를 거쳐야 외부로 나갈 수 있는 경우에만 주석 해제
+# HTTPS_PROXY=http://프록시주소:포트
+
+# 매주 월요일 08:00 — 직전 ISO 주 리포트 생성 + 메일 발송
+0 8 * * 1 cd /home/appuser/relog && /home/appuser/relog/venv/bin/python linux_analyzer.py --auto weekly >> /home/appuser/relog/logs/cron.log 2>&1
+
+# (선택) 매월 1일 08:00 — 직전 월 리포트
+# 0 8 1 * * cd /home/appuser/relog && /home/appuser/relog/venv/bin/python linux_analyzer.py --auto monthly >> /home/appuser/relog/logs/cron.log 2>&1
+
+# ── 사전 준비 (한 번만, WEB1은 Python 3.6.8) ──────────────────────
+# 1. SSH 키 변환 (.ppk → OpenSSH):
+#      puttygen ebiz.ppk -O private-openssh -o /home/appuser/app_key.pem
+#      chmod 600 /home/appuser/app_key.pem
+#    (또는 Windows PuTTYgen → Conversions → Export OpenSSH key)
+# 2. 가상환경 + 패키지:
+#      cd /home/appuser/relog
+#      python3 -m venv venv
+#      venv/bin/pip install --upgrade "pip<22"     # 3.6용 마지막 pip(21.3.1)로 올려야 설치가 잘 됨
+#      venv/bin/pip install -r requirements.txt
+# 3. 설정:
+#      cp config.example.json config.json   # SMTP + linux + ai(API 키) 섹션 입력
+#      curl -I https://api.anthropic.com      # AI 요약용 외부 통신 확인 (응답 오면 OK)
+#      mkdir -p /home/appuser/relog/logs
+# 4. 수동 확인 후에 cron 등록:
+#      venv/bin/python linux_analyzer.py --auto weekly --no-email
+#
+# 등록 후 확인: cat /home/appuser/relog/logs/cron.log

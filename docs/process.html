@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Process — Re.log</title>
+<meta name="description" content="수집 · 분류 · AI 요약 · 발송. 사람 없이 돌아가는 네 단계.">
+<meta name="theme-color" content="#F4F3EF">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/relog.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-head">
+  <a class="brand" href="./" aria-label="Re.log 홈">Re<b>.</b>log</a>
+  <button class="menu-btn" type="button" aria-label="메뉴" aria-expanded="false" aria-controls="nav">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+  </button>
+  <nav class="nav" id="nav" aria-label="주 메뉴">
+    <a href="process.html" aria-current="page">PROCESS</a>
+    <a href="report.html">REPORT</a>
+    <a href="impact.html">IMPACT</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="wrap" style="padding-top:120px;padding-bottom:100px">
+    <span class="eyebrow">(02) Process</span>
+    <div class="split reveal" style="align-items:flex-end;gap:40px;margin-top:24px">
+      <h1 class="h-xl">Four steps,<br><span class="serif">zero</span> clicks.</h1>
+      <p class="lede" style="max-width:360px">작업 스케줄러와 cron이 주간·월간으로 돌립니다. 사람이 하는 일은 월요일 아침 메일 한 통을 읽는 것뿐.</p>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-bottom:140px">
+    <div class="steps">
+      <div class="step reveal">
+        <span class="idx">01</span>
+        <div style="flex:1 1 0"><h2>Collect <span>수집</span></h2>
+          <p>Windows는 로컬 로그 폴더를 직접 읽고, Linux는 WEB1에서 SSH로 나머지 3대의 로그를 zgrep으로 모읍니다. 압축된 지난 로그(.gz)도 그대로 읽습니다.</p></div>
+        <div class="aside"><pre class="codeblock">ssh was1 "zgrep -h ERROR \
+  /logs/eout/*.gz"</pre></div>
+      </div>
+      <div class="step reveal">
+        <span class="idx">02</span>
+        <div style="flex:1 1 0"><h2>Classify <span>분류</span></h2>
+          <p>키워드·상태코드를 집계하고, FortiOS·WordPress 같은 알려진 스캔 시그니처와 refresh-token 401은 소음으로 분리합니다.</p></div>
+        <div class="aside tags">
+          <span class="tag">500</span><span class="tag">Exception</span><span class="tag">timed out</span>
+          <span class="tag noise">wp-login</span><span class="tag noise">.env</span><span class="tag noise">.git</span><span class="tag noise">401 refresh</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <span class="idx on">03</span>
+        <div style="flex:1 1 0"><h2>Summarize <span>AI 요약</span></h2>
+          <p>집계 수치와 마스킹한 샘플 최대 15줄만 Claude에 보내, 정상 · 주의 · 위험 판정과 확인할 것 2~4줄을 받습니다.</p></div>
+        <div class="aside" style="display:flex;gap:8px;flex-wrap:wrap">
+          <span class="pill pill-ok">● 정상</span><span class="pill pill-warn">● 주의</span><span class="pill pill-bad">● 위험</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <span class="idx">04</span>
+        <div style="flex:1 1 0"><h2>Deliver <span>발송</span></h2>
+          <p>HTML 메일 본문 맨 위에 판정을 두고, 상세 리포트는 ZIP으로 첨부합니다. 월간 리포트도 같은 방식으로 자동 발송됩니다.</p></div>
+        <div class="aside kv">
+          <div><span>Weekly</span><span>MON 08:00</span></div>
+          <div><span>Monthly</span><span>1st 08:00</span></div>
+          <div><span>Attach</span><span>report.zip</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="wrap" style="padding-top:120px;padding-bottom:120px">
+      <div class="split reveal" style="align-items:flex-end;gap:40px;margin-bottom:64px">
+        <h2 class="h-band">Safe by <span class="serif">design.</span></h2>
+        <p class="lede" style="max-width:360px">AI를 붙이되, 원문 로그는 밖으로 나가지 않게.</p>
+      </div>
+      <div class="grid4 reveal">
+        <div><span class="k">A</span><h3>원문 미전송</h3><p>집계 수치와 ‘미분류’ 샘플 일부만 보냅니다.</p></div>
+        <div><span class="k">B</span><h3>마스킹</h3><p>IP 뒤 두 자리(10.20.x.x)와 이메일을 가린 뒤 전송합니다.</p></div>
+        <div><span class="k">C</span><h3>실패해도 발송</h3><p>키 없음·네트워크 차단·API 오류 때는 AI 박스만 빠지고 리포트는 그대로 나갑니다.</p></div>
+        <div><span class="k">D</span><h3>월 100원 미만</h3><p>Claude Haiku 기준 1회 약 7원.</p></div>
+      </div>
+    </div>
+    <footer class="wrap site-foot">
+      <span>AIVE Challenge 2026 · H2</span><a class="next" href="report.html">Next — Report →</a>
+    </footer>
+  </section>
+</main>
+<script src="assets/relog.js"></script>
+</body>
+</html>

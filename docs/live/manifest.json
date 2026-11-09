@@ -1,0 +1,44 @@
+{
+  "source": "live",
+  "label": "실제 운영 · 주간 (마스킹)",
+  "period_label": "2026년 44주 (2026-10-26 ~ 2026-11-01)",
+  "period_key": "2026W44",
+  "ai_source": {
+    "windows": "missing",
+    "linux": "missing"
+  },
+  "windows": {
+    "title": "E-OUT, IN-OUT 시스템 통합 로그 리포트 (Windows)",
+    "email": null,
+    "zip": "Report_WIN_2026W44.zip",
+    "reports": [
+      {
+        "title": "Windows 목차",
+        "href": "reports/windows/index_2026W44.html"
+      },
+      {
+        "title": "NGINX",
+        "href": "reports/windows/Report_NGINX_2026W44.html"
+      },
+      {
+        "title": "TOMCAT_EOUT",
+        "href": "reports/windows/Report_TOMCAT_EOUT_2026W44.html"
+      },
+      {
+        "title": "TOMCAT_INOUT",
+        "href": "reports/windows/Report_TOMCAT_INOUT_2026W44.html"
+      }
+    ]
+  },
+  "linux": {
+    "title": "E-BIZ 시스템 통합 로그 리포트 (Linux)",
+    "email": null,
+    "zip": "Report_EBIZ_2026W44.zip",
+    "reports": [
+      {
+        "title": "Linux 통합 (L4·노드별)",
+        "href": "reports/linux/Report_EBIZ_2026W44.html"
+      }
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+# WEB1 서버가 Python 3.6.8 — paramiko 2.x 계열이 3.6에서 안정적
+paramiko>=2.7,<3.0

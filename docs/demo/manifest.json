@@ -1,0 +1,44 @@
+{
+  "source": "demo",
+  "label": "데모 (합성 로그)",
+  "period_label": "2026년 44주 (2026-10-26 ~ 2026-11-01)",
+  "period_key": "2026W44",
+  "ai_source": {
+    "windows": "example",
+    "linux": "example"
+  },
+  "windows": {
+    "title": "E-OUT, IN-OUT 시스템 통합 로그 리포트 (Windows)",
+    "email": "email/windows.html",
+    "zip": "Report_WIN_2026W44.zip",
+    "reports": [
+      {
+        "title": "Windows 목차",
+        "href": "reports/index_2026W44.html"
+      },
+      {
+        "title": "NGINX",
+        "href": "reports/Report_NGINX_2026W44.html"
+      },
+      {
+        "title": "TOMCAT_EOUT",
+        "href": "reports/Report_TOMCAT_EOUT_2026W44.html"
+      },
+      {
+        "title": "TOMCAT_INOUT",
+        "href": "reports/Report_TOMCAT_INOUT_2026W44.html"
+      }
+    ]
+  },
+  "linux": {
+    "title": "E-BIZ 시스템 통합 로그 리포트 (Linux)",
+    "email": "email/linux.html",
+    "zip": "Report_EBIZ_2026W44.zip",
+    "reports": [
+      {
+        "title": "Linux 통합 (L4·노드별)",
+        "href": "reports/Report_EBIZ_2026W44.html"
+      }
+    ]
+  }
+}

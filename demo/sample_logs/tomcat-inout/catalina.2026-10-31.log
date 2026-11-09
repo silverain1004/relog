@@ -1,0 +1,12 @@
+31-Oct-2026 00:23:17.081 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+31-Oct-2026 03:36:58.159 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+31-Oct-2026 06:25:03.337 INFO [http-nio-8080-exec-20] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens
+31-Oct-2026 06:39:56.128 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+31-Oct-2026 08:08:23.758 INFO [http-nio-8080-exec-8] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens
+31-Oct-2026 09:45:20.243 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+31-Oct-2026 12:57:12.239 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+31-Oct-2026 15:03:58.293 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+31-Oct-2026 18:37:44.401 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+31-Oct-2026 19:31:07.496 INFO [http-nio-8080-exec-3] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens
+31-Oct-2026 21:29:05.727 INFO [main] org.apache.catalina.core.StandardServer heartbeat ok
+31-Oct-2026 22:55:27.268 INFO [http-nio-8080-exec-8] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens

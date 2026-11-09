@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Report — Re.log</title>
+<meta name="description" content="데모 · 실제 주간 · 실제 월간 리포트를 실제 메일 그대로 확인하세요.">
+<meta name="theme-color" content="#F4F3EF">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/relog.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-head">
+  <a class="brand" href="./" aria-label="Re.log 홈">Re<b>.</b>log</a>
+  <button class="menu-btn" type="button" aria-label="메뉴" aria-expanded="false" aria-controls="nav">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+  </button>
+  <nav class="nav" id="nav" aria-label="주 메뉴">
+    <a href="process.html">PROCESS</a>
+    <a href="report.html" aria-current="page">REPORT</a>
+    <a href="impact.html">IMPACT</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="wrap" id="viewer" style="padding-top:100px;padding-bottom:64px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
+      <span class="eyebrow">(03) Report</span>
+      <div class="seg" id="source-seg" role="group" aria-label="리포트 종류">
+        <button type="button" data-source="demo" aria-pressed="true">데모 (합성 로그)</button>
+        <button type="button" data-source="live" aria-pressed="false">실제 주간</button>
+        <button type="button" data-source="live-monthly" aria-pressed="false">실제 월간</button>
+      </div>
+    </div>
+    <div class="split" style="align-items:flex-end;gap:64px;margin-top:48px">
+      <div style="flex:1 1 auto">
+        <h1 class="h-xl" id="r-title" style="font-size:clamp(72px,12vw,176px);line-height:.88;letter-spacing:-.06em">Week 44</h1>
+        <p class="lede" id="r-note" style="margin-top:28px;max-width:560px" aria-live="polite">합성 로그로 만든 리포트입니다.</p>
+      </div>
+      <dl class="meta">
+        <div><dt>Period</dt><dd id="v-period">2026-10-26 — 11-01</dd></div>
+        <div><dt>Platform</dt><dd id="v-platform">Windows · E-OUT / IN-OUT</dd></div>
+        <div><dt>Source</dt><dd id="v-source">합성 로그</dd></div>
+        <div><dt>Verdict</dt><dd id="v-verdict"><span class="pill pill-dim">확인 중</span></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="stage">
+      <div class="stage-bar">
+        <div class="ktabs" id="kind-tabs" role="tablist" aria-label="플랫폼"></div>
+        <a class="btn btn-ember" id="get-this" href="contact.html" style="padding:12px 22px;font-size:14px">이 메일 받아보기 <span aria-hidden="true">→</span></a>
+      </div>
+      <article class="window" aria-label="리포트 메일 미리보기">
+        <div class="window-bar"><i></i><i></i><i></i><span id="mail-subject">리포트 메일</span></div>
+        <iframe id="mail-frame" title="리포트 메일 본문" loading="lazy"></iframe>
+      </article>
+      <p class="note" id="frame-note"></p>
+    </div>
+  </section>
+
+  <section class="wrap sec-tight">
+    <div class="sec-label" style="margin-bottom:0;border-bottom:0;padding-bottom:20px">
+      <span class="eyebrow" style="color:var(--ink)">Detailed reports</span>
+      <span style="font-size:13px;color:var(--muted-2)">ZIP 첨부 파일과 같은 내용 · 새 탭</span>
+    </div>
+    <div class="files" id="files"></div>
+  </section>
+
+  <section class="wrap" style="padding-bottom:120px">
+    <div class="split reveal">
+      <div style="flex:0 0 420px">
+        <span class="eyebrow">Signal vs noise · 데모</span>
+        <h2 class="kr" style="margin:20px 0 0;font-size:clamp(30px,3vw,40px);line-height:1.3;font-weight:500;letter-spacing:-.04em">평소의 3배,<br>딱 하루가 튀었습니다.</h2>
+        <p class="lede" style="margin-top:20px">스캐너 404 218건은 소음으로 걷어내고, 남은 신호 중 10/29 하루가 225건으로 튀어 오른 걸 짚어냅니다.</p>
+      </div>
+      <figure class="figure">
+        <figcaption><span>NGINX 일별 주요 탐지</span><span>건</span></figcaption>
+        <div class="bars" role="img" aria-label="일별 탐지 건수: 10-26 64, 10-27 62, 10-28 72, 10-29 225, 10-30 45, 10-31 50, 11-01 46">
+          <div><span>64</span><i style="height:24%"></i></div>
+          <div><span>62</span><i style="height:23%"></i></div>
+          <div><span>72</span><i style="height:27%"></i></div>
+          <div class="peak"><span>225</span><i style="height:84%"></i></div>
+          <div><span>45</span><i style="height:17%"></i></div>
+          <div><span>50</span><i style="height:19%"></i></div>
+          <div><span>46</span><i style="height:17.5%"></i></div>
+        </div>
+        <div class="axis" aria-hidden="true"><span>10-26</span><span>10-27</span><span>10-28</span><span style="color:var(--ink);font-weight:500">10-29</span><span>10-30</span><span>10-31</span><span>11-01</span></div>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="wrap site-foot">
+    <a href="process.html">← Process</a><a class="next" href="impact.html">Next — Impact →</a>
+  </footer>
+</main>
+<script src="assets/relog.js"></script>
+</body>
+</html>
