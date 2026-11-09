@@ -226,8 +226,8 @@ img,svg{display:block}
 
 /* responsive */
 /* Read · Report · Rest (contact) */
-.rrr{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;padding-top:40px;padding-bottom:120px;border-top:1px solid var(--on-ink-line)}
-.rrr-words{margin:40px 0 0;font-size:clamp(76px,10.8vw,156px);line-height:.9;font-weight:500;letter-spacing:-.055em}
+.rrr{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;padding-top:120px;padding-bottom:100px}
+.rrr-words{margin:0;font-size:clamp(76px,10.8vw,156px);line-height:.9;font-weight:500;letter-spacing:-.055em}
 .rrr-words span{display:block}
 .rrr-words em,.rrr-4u p{font-family:var(--serif);font-style:italic;font-weight:400}
 .rrr-words em{letter-spacing:-.01em;color:var(--ember);padding-right:.04em}
@@ -302,7 +302,7 @@ img,svg{display:block}
   .form input[type=email]{font-size:22px}
   .term{padding:24px 20px;font-size:12px}
   .site-foot{flex-direction:column}
-  .rrr{flex-direction:column;align-items:flex-start;gap:24px;padding-bottom:80px}
+  .rrr{flex-direction:column;align-items:flex-start;gap:24px;padding-top:72px;padding-bottom:64px}
   .rrr-side{align-items:flex-start}
   .rrr-copy{text-align:left}
 }
