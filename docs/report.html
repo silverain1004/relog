@@ -29,19 +29,20 @@
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
   </button>
   <nav class="nav" id="nav" aria-label="주 메뉴">
+    <a href="./">HOME</a>
+    <a href="impact.html">IMPACT</a>
     <a href="process.html">PROCESS</a>
     <a href="report.html" aria-current="page">REPORT</a>
-    <a href="impact.html">IMPACT</a>
-    <a href="contact.html">CONTACT</a>
+    <button type="button" class="nav-btn" data-about aria-haspopup="dialog">ABOUT</button>
   </nav>
 </header>
 
 <main id="main">
   <section class="wrap" id="viewer" style="padding-top:100px;padding-bottom:64px">
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
-      <span class="eyebrow">(03) Report</span>
+      <span class="eyebrow">Report</span>
       <div class="seg" id="source-seg" role="group" aria-label="리포트 종류">
-        <button type="button" data-source="demo" aria-pressed="true">데모 (합성 로그)</button>
+        <button type="button" data-source="demo" aria-pressed="true">데모</button>
         <button type="button" data-source="live" aria-pressed="false">실제 주간</button>
         <button type="button" data-source="live-monthly" aria-pressed="false">실제 월간</button>
       </div>
@@ -106,7 +107,7 @@
   </section>
 
   <footer class="wrap site-foot">
-    <a href="process.html">← Process</a><a class="next" href="impact.html">Next — Impact →</a>
+    <a href="process.html">← Process</a><a class="next" href="contact.html">Next — Contact →</a>
   </footer>
 </main>
 <script src="assets/relog.js"></script>

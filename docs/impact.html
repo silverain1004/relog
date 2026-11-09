@@ -29,15 +29,16 @@
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
   </button>
   <nav class="nav" id="nav" aria-label="주 메뉴">
+    <a href="./">HOME</a>
+    <a href="impact.html" aria-current="page">IMPACT</a>
     <a href="process.html">PROCESS</a>
     <a href="report.html">REPORT</a>
-    <a href="impact.html" aria-current="page">IMPACT</a>
-    <a href="contact.html">CONTACT</a>
+    <button type="button" class="nav-btn" data-about aria-haspopup="dialog">ABOUT</button>
   </nav>
 </header>
 
 <main id="main">
-  <section class="dark">
+  <section class="dark rrr-stage" data-logstage>
     <div class="wrap rrr reveal">
       <h1 class="rrr-words" aria-label="Read, Report, Rest.">
         <span><em>Re</em>ad</span>
@@ -45,17 +46,13 @@
         <span><em>Re</em>st<b>.</b></span>
       </h1>
       <div class="rrr-side">
-        <div class="rrr-4u">
-          <span class="rrr-for" aria-hidden="true">IN YOUR INBOX</span>
-          <p><b>Re:</b><span>your logs.</span></p>
-        </div>
-        <p class="rrr-copy">로그를 읽고<br>리포트를 쓰고<br><strong>당신은 쉬세요</strong></p>
+        <p class="rrr-copy">로그는 제가 읽고<br>리포트도 제가 쓸게요<br><strong>당신은 쉬세요</strong></p>
       </div>
     </div>
   </section>
 
   <section class="wrap" style="padding-top:100px;padding-bottom:120px">
-    <span class="eyebrow">(04) Impact</span>
+    <span class="eyebrow">Impact</span>
     <div style="margin-top:40px;border-top:1px solid var(--ink)">
       <div class="big-row reveal">
         <span class="lbl">주간 점검</span>
@@ -99,7 +96,7 @@
   </section>
 
   <footer class="wrap site-foot">
-    <a href="report.html">← Report</a><a class="next" href="contact.html">Next — Contact →</a>
+    <span>AIVE Challenge 2026 · H2</span><a class="next" href="process.html">Next — Process →</a>
   </footer>
 </main>
 <script src="assets/relog.js"></script>

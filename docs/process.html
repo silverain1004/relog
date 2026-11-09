@@ -29,24 +29,30 @@
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
   </button>
   <nav class="nav" id="nav" aria-label="주 메뉴">
+    <a href="./">HOME</a>
+    <a href="impact.html">IMPACT</a>
     <a href="process.html" aria-current="page">PROCESS</a>
     <a href="report.html">REPORT</a>
-    <a href="impact.html">IMPACT</a>
-    <a href="contact.html">CONTACT</a>
+    <button type="button" class="nav-btn" data-about aria-haspopup="dialog">ABOUT</button>
   </nav>
 </header>
 
 <main id="main">
-  <section class="wrap" style="padding-top:120px;padding-bottom:100px">
-    <span class="eyebrow">(02) Process</span>
+  <section class="wrap next-run-stage" style="padding-top:120px;padding-bottom:100px" data-nextrun>
+    <div class="next-run-bg" aria-hidden="true"><span>NEXT RUN</span><b data-nextrun-big>0d 00:00:00</b></div>
+    <span class="eyebrow">Process</span>
     <div class="split reveal" style="align-items:flex-end;gap:40px;margin-top:24px">
       <h1 class="h-xl">Four steps,<br><span class="serif">zero</span> clicks.</h1>
-      <p class="lede" style="max-width:360px">작업 스케줄러와 cron이 주간·월간으로 돌립니다. 사람이 하는 일은 월요일 아침 메일 한 통을 읽는 것뿐.</p>
+      <div style="max-width:360px">
+        <p class="lede">매월·매주 스케줄러가 실행됩니다. 사람이 할 일은 월요일 아침 출근해서 메일 한 통을 읽는 것뿐.</p>
+        <p class="next-run-line"><i aria-hidden="true"></i>다음 실행 · <span data-nextrun-label>월요일 08:00 주간 리포트</span></p>
+      </div>
     </div>
   </section>
 
   <section class="wrap" style="padding-bottom:140px">
-    <div class="steps">
+    <div class="steps" data-pipeline>
+      <div class="pipe" aria-hidden="true"><i></i></div>
       <div class="step reveal">
         <span class="idx">01</span>
         <div style="flex:1 1 0"><h2>Collect <span>수집</span></h2>
@@ -57,16 +63,16 @@
       <div class="step reveal">
         <span class="idx">02</span>
         <div style="flex:1 1 0"><h2>Classify <span>분류</span></h2>
-          <p>키워드·상태코드를 집계하고, FortiOS·WordPress 같은 알려진 스캔 시그니처와 refresh-token 401은 소음으로 분리합니다.</p></div>
+          <p>키워드·상태코드를 집계하고, FortiOS·WordPress 같은 알려진 스캔 시그니처와 refresh-token 401은 노이즈로 분리합니다.</p></div>
         <div class="aside tags">
           <span class="tag">500</span><span class="tag">Exception</span><span class="tag">timed out</span>
           <span class="tag noise">wp-login</span><span class="tag noise">.env</span><span class="tag noise">.git</span><span class="tag noise">401 refresh</span>
         </div>
       </div>
       <div class="step reveal">
-        <span class="idx on">03</span>
+        <span class="idx">03</span>
         <div style="flex:1 1 0"><h2>Summarize <span>AI 요약</span></h2>
-          <p>집계 수치와 마스킹한 샘플 최대 15줄만 Claude에 보내, 정상 · 주의 · 위험 판정과 확인할 것 2~4줄을 받습니다.</p></div>
+          <p>집계된 데이터와 마스킹한 샘플을 Claude에게 요청하고, 위험 판정과 확인 및 조치가 필요한 사항을 전달받습니다.</p></div>
         <div class="aside" style="display:flex;gap:8px;flex-wrap:wrap">
           <span class="pill pill-ok">● 정상</span><span class="pill pill-warn">● 주의</span><span class="pill pill-bad"><i>●</i> 위험</span>
         </div>
@@ -98,7 +104,7 @@
       </div>
     </div>
     <footer class="wrap site-foot">
-      <span>AIVE Challenge 2026 · H2</span><a class="next" href="report.html">Next — Report →</a>
+      <a href="impact.html">← Impact</a><a class="next" href="report.html">Next — Report →</a>
     </footer>
   </section>
 </main>
