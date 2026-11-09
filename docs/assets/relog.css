@@ -184,8 +184,11 @@ img,svg{display:block}
 .big-row{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;padding:40px 0;border-bottom:1px solid var(--line)}
 .big-row .lbl{font-family:var(--kr);font-size:18px;font-weight:500;padding-bottom:20px}
 .big{margin:0;font-size:clamp(88px,14vw,200px);line-height:.85;font-weight:500;letter-spacing:-.065em;white-space:nowrap}
-.big s{color:var(--stone);text-decoration-thickness:.03em}
+.big s{font-size:.36em;letter-spacing:-.04em;color:var(--stone);text-decoration-thickness:.06em}
 .big small{font-size:.28em;letter-spacing:-.03em}
+.big s small{display:inline-block;font-size:.6em}
+.big .zero{font-size:.86em;letter-spacing:-.05em}
+.big .to{display:inline-block;margin:0 .22em 0 .18em;font-size:.3em;font-weight:300;letter-spacing:0;color:var(--stone)}
 .ba{display:flex;gap:16px}
 .ba>div{flex:1 1 0;border-radius:24px;padding:48px;min-height:460px;display:flex;flex-direction:column}
 .ba .before{background:var(--sand);color:var(--muted)}
