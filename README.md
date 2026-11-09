@@ -1,5 +1,7 @@
 # Re.log
 
+![Re.log — We read your logs.](docs/assets/showcase.png)
+
 **We read your logs.** 서버 5대 · 로그 7종을 사람이 직접 열어 보던 주간 점검을, 월요일 아침 메일 한 통으로 바꾼 로그 리포트 자동화입니다.
 Windows(Nginx + Tomcat 2종)와 Linux 이중화(WEB 2대 + WAS 2대) 운영 환경에서 매주·매월 실제로 돌고 있습니다.
 
@@ -27,7 +29,7 @@ relog/
 │   ├─ mail_sender.py       SMTP 발송, ZIP 첨부
 │   └─ period_utils.py · cli_common.py · config.example.json · requirements.txt
 ├─ deploy/     스케줄 등록 (windows/ 작업 스케줄러, linux/ crontab) + Linux 배포 가이드
-├─ demo/       합성 로그(sample_logs/)와 데모 리포트 생성기 → docs/demo/
+├─ demo/       합성 로그(sample_logs/)와 데모 리포트 생성기 → docs/demo/, 키비주얼 원본(showcase.html)
 ├─ tools/      mask_live.py (실제 리포트 마스킹 → docs/live*/), verify_reports.py (로컬 검증)
 ├─ mailer/     데모 사이트 "메일로 받아보기" 발송 서버 (Google Apps Script)
 ├─ tests/      pytest (fixtures/logs/에 테스트용 샘플 로그)

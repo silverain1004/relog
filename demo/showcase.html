@@ -1,0 +1,91 @@
+<!doctype html>
+<!--
+  Re.log 키비주얼 원본. 이미지로 다시 만들 때:
+    chrome --headless=new --hide-scrollbars --virtual-time-budget=8000 --window-size=1600,1000 --screenshot=docs/assets/showcase.png demo/showcase.html
+    chrome --headless=new --hide-scrollbars --virtual-time-budget=8000 --window-size=1200,630  --screenshot=docs/assets/og.png "demo/showcase.html?og"
+-->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Re.log — Showcase</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter+Tight:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#141311}
+.c{position:relative;width:1600px;height:1000px;overflow:hidden;background:#141311;color:#E9E6DF;font-family:'Inter Tight','Noto Sans KR',sans-serif;transform-origin:0 0}
+.logs{position:absolute;inset:0;padding:40px;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:2.2;color:rgba(233,230,223,.05);white-space:pre;overflow:hidden}
+.word{position:absolute;left:0;right:0;top:30px;margin:0;text-align:center;font-family:'Instrument Serif',serif;font-size:460px;line-height:.9;letter-spacing:-.03em;color:#2A2824}
+.lbl{position:absolute;font-size:12px;line-height:1.6;letter-spacing:.08em}
+.dim{color:rgba(233,230,223,.6)}
+.laptop{position:absolute;left:50%;top:250px;transform:translateX(-50%);width:900px}
+.lid{background:#0A0A09;border-radius:22px 22px 0 0;padding:16px 16px 20px;border:1px solid #3A3833;box-shadow:0 40px 80px rgba(0,0,0,.6)}
+.screen{position:relative;height:540px;background:#0E0E0C;border-radius:6px;overflow:hidden;color:#F4F3EF}
+.slogs{position:absolute;inset:70px 24px 0;font-family:'JetBrains Mono',monospace;font-size:8px;line-height:2.1;color:rgba(244,243,239,.09);white-space:pre;overflow:hidden}
+.hit{color:#FF5B22}
+.bar{position:relative;display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid rgba(244,243,239,.14)}
+.brand{font-size:17px;font-weight:700;letter-spacing:-.04em}
+.brand b{color:#FF5B22}
+.nav{display:flex;gap:28px;font-size:9px;font-weight:500;letter-spacing:.08em}
+.hero{position:absolute;left:24px;right:24px;bottom:70px}
+.big{margin:0;font-size:92px;line-height:.92;font-weight:500;letter-spacing:-.055em}
+.big i{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:-.035em}
+.row{display:flex;justify-content:space-between;align-items:flex-end}
+.sub{font-family:'Noto Sans KR',sans-serif;font-size:16px;font-weight:300;color:rgba(244,243,239,.45);margin-bottom:12px}
+.foot{position:absolute;left:24px;right:24px;bottom:0;display:flex;justify-content:space-between;border-top:1px solid rgba(244,243,239,.14);padding:16px 0;font-size:9px;font-weight:600;letter-spacing:.08em}
+.base{margin:0 -60px;height:22px;background:#2B2A27;border-radius:0 0 18px 18px;border-top:1px solid #45433E}
+.notch{margin:0 auto;width:160px;height:6px;background:#1E1D1A;border-radius:0 0 8px 8px}
+.pill{position:absolute;bottom:48px;right:56px;border:1px solid rgba(233,230,223,.4);border-radius:999px;padding:10px 20px;font-size:12px;letter-spacing:.08em}
+
+/* 링크 미리보기용 1200×630 */
+.og .c{width:1600px;height:840px;transform:scale(.75)}
+.og .word{top:10px;font-size:400px}
+.og .laptop{top:170px;transform:translateX(-50%) scale(.86);transform-origin:50% 0}
+.og .mid{display:none}
+</style>
+</head>
+<body>
+<div class="c">
+  <div class="logs" aria-hidden="true">192.0.2.66 - - [29/Oct/2026:13:58:02 +0900] "GET /.env HTTP/1.1" 404 512      198.51.100.23 - - [29/Oct/2026:13:58:45 +0900] "GET /wp-login.php HTTP/1.1" 404
+203.0.113.77 - - [29/Oct/2026:13:59:20 +0900] "GET /backup.bak HTTP/1.1" 404 5520  198.51.100.23 - - [29/Oct/2026:14:00:31 +0900] "POST /api/auth/refresh HTTP/1.1" 401
+192.0.2.66 - - [29/Oct/2026:14:01:41 +0900] "GET /.git/config HTTP/1.1" 404 1536 2026-10-29 14:02:13 WARN HikariPool-1 - Connection is not available
+198.51.100.180 - - [29/Oct/2026:14:02:14 +0900] "POST /api/orders/submit HTTP/1.1" 500 203.0.113.45 - - [29/Oct/2026:14:02:19 +0900] "GET /phpmyadmin/ HTTP/1.1" 404
+192.0.2.66 - - [29/Oct/2026:14:03:02 +0900] "GET /cgi-bin/luci HTTP/1.1" 404 2361 198.51.100.180 - - [29/Oct/2026:14:03:44 +0900] "POST /api/orders/submit HTTP/1.1" 500
+203.0.113.77 - - [29/Oct/2026:14:04:10 +0900] "GET /admin HTTP/1.1" 403 199        198.51.100.23 - - [29/Oct/2026:14:05:31 +0900] "POST /api/auth/refresh HTTP/1.1" 401
+192.0.2.66 - - [29/Oct/2026:14:06:18 +0900] "GET /etc/passwd HTTP/1.1" 404 512    203.0.113.45 - - [29/Oct/2026:14:07:02 +0900] "GET /xmlrpc.php HTTP/1.1" 404 512
+198.51.100.23 - - [29/Oct/2026:14:08:45 +0900] "GET /wp-login.php HTTP/1.1" 404  192.0.2.66 - - [29/Oct/2026:14:09:20 +0900] "GET /.env HTTP/1.1" 404 512</div>
+
+  <p class="word" aria-hidden="true">Re.log</p>
+
+  <div class="lbl" style="top:48px;left:56px">CONCEPT FOR AN<br>AUTOMATED LOG REPORT</div>
+  <div class="lbl" style="top:48px;left:50%;transform:translateX(-50%)">NOVEMBER 2026</div>
+  <div class="lbl" style="top:48px;right:56px;text-align:right">AIVE CHALLENGE<br>2026 · H2</div>
+  <div class="lbl dim mid" style="top:470px;left:56px">WHEN LOGS<br>PILE UP</div>
+  <div class="lbl dim mid" style="top:470px;right:56px;text-align:right">ONE LINE<br>TELLS YOU WHY</div>
+  <div class="lbl" style="bottom:48px;left:56px;font-family:'Noto Sans KR',sans-serif;font-size:13px;line-height:1.7;letter-spacing:0;color:rgba(233,230,223,.7)">매주 월요일 아침,<br>서버 5대 · 로그 7종을 메일 한 통으로</div>
+  <div class="lbl dim" style="bottom:48px;left:50%;transform:translateX(-50%)">NGINX · TOMCAT · L4 · CLAUDE</div>
+  <div class="pill">55 MIN → 3 MIN</div>
+
+  <div class="laptop">
+    <div class="lid">
+      <div class="screen">
+        <div class="slogs" aria-hidden="true">192.0.2.66 - - [29/Oct/2026:13:58:02 +0900] "GET /.env HTTP/1.1" 404 512 "-" "zgrab/0.x"
+198.51.100.23 - - [29/Oct/2026:13:58:45 +0900] "GET /wp-login.php HTTP/1.1" 404 2361
+203.0.113.77 - - [29/Oct/2026:13:59:20 +0900] "GET /backup.bak HTTP/1.1" 404 5520
+<span class="hit">2026-10-29 14:02:13 WARN  HikariPool-1 - Connection is not available, request timed out after 30000ms.</span>
+198.51.100.180 - - [29/Oct/2026:14:02:14 +0900] "POST /api/orders/submit HTTP/1.1" 500 231
+203.0.113.45 - - [29/Oct/2026:14:02:19 +0900] "GET /phpmyadmin/ HTTP/1.1" 404 512
+192.0.2.66 - - [29/Oct/2026:14:03:02 +0900] "GET /cgi-bin/luci HTTP/1.1" 404 2361</div>
+        <div class="bar"><span class="brand">Re<b>.</b>log</span><span class="nav"><span>PROCESS</span><span>REPORT</span><span>IMPACT</span><span>CONTACT</span></span></div>
+        <div class="hero">
+          <p class="big">We Read</p>
+          <div class="row"><span class="sub">로그는 열지 마세요.</span><span class="big">Your <i>Logs.</i></span></div>
+        </div>
+        <div class="foot"><span>GET THE REPORT</span><span style="color:rgba(244,243,239,.4);font-weight:400">[SCROLL DOWN]</span></div>
+      </div>
+    </div>
+    <div class="base"></div>
+    <div class="notch"></div>
+  </div>
+</div>
+<script>if (location.search.indexOf('og') >= 0) document.documentElement.className = 'og';</script>
+</body>
+</html>
