@@ -328,7 +328,7 @@ img,svg{display:block}
 .about-log{margin:0;padding:0;list-style:none;font-family:var(--kr);font-size:15px}
 .about-log li{display:flex;gap:20px;padding:12px 0;border-bottom:1px solid var(--on-ink-line)}
 .about-log li:last-child{border-bottom:0}
-.about-log time{flex:none;width:64px;font-family:var(--sans);color:var(--ember)}
+.about-log time{flex:none;width:64px;font-family:var(--sans);color:var(--ember);font-variant-numeric:tabular-nums}
 .about-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none;font-size:13px}
 .about-tags li{border:1px solid rgba(244,243,239,.25);border-radius:999px;padding:6px 14px}
 .about-sched,.about-sec{margin-top:44px;padding-top:32px;border-top:1px solid var(--on-ink-line)}
@@ -340,7 +340,7 @@ img,svg{display:block}
 .sec-thread>li::before{content:"";position:absolute;left:0;top:6px;width:11px;height:11px;border-radius:50%;border:1px solid var(--on-ink-faint);background:var(--ink)}
 .sec-thread>li.is-me::before{border-color:var(--ember)}
 .sec-thread>li.is-end::before{border-color:var(--ember);background:var(--ember);box-shadow:0 0 0 5px rgba(255,45,107,.18)}
-.sec-thread time{flex:none;width:44px;font-family:var(--sans);font-size:14px;color:var(--ember);line-height:1.6}
+.sec-thread time{flex:none;width:44px;font-family:var(--sans);font-size:14px;color:var(--ember);line-height:1.6;font-variant-numeric:tabular-nums}
 .sec-thread b{display:block;font-size:15px;font-weight:600;color:var(--paper);line-height:1.6}
 .sec-thread b span{margin-left:8px;font-size:12px;font-weight:400;color:var(--on-ink-faint)}
 .sec-thread p{margin:4px 0 0;font-size:14px;line-height:1.7;color:var(--on-ink-muted)}
