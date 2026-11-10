@@ -38,6 +38,48 @@
     });
   }
 
+  // ---- 헤더: 아래로 스크롤하면 숨고, 위로 올리면 상단에 고정된 채 다시 나타남
+  var head = $('.site-head');
+  if (head) {
+    var spacer = document.createElement('div');
+    spacer.className = 'head-spacer';
+    spacer.setAttribute('aria-hidden', 'true');
+    head.parentNode.insertBefore(spacer, head);
+    var lastY = window.scrollY, headTop = 0, headH = 0;
+    var measure = function () {
+      if (head.classList.contains('is-float')) { headTop = spacer.getBoundingClientRect().top + window.scrollY; }
+      else { var r = head.getBoundingClientRect(); headTop = r.top + window.scrollY; headH = r.height; }
+    };
+    var setFloat = function (on) {
+      if (on === head.classList.contains('is-float')) return;
+      if (on) {
+        spacer.style.height = headH + 'px';
+        head.classList.add('is-float', 'is-hidden');
+        void head.offsetWidth;            // 숨은 상태로 먼저 자리 잡고 나서 애니메이션 켜기
+        head.classList.add('is-anim');
+      } else {
+        head.classList.remove('is-float', 'is-hidden', 'is-anim');
+        spacer.style.height = '';
+      }
+    };
+    var headTick = function () {
+      var y = Math.max(0, window.scrollY), dy = y - lastY;
+      if (y <= headTop) setFloat(false);
+      else if (y > headTop + headH) setFloat(true);
+      if (head.classList.contains('is-float') && Math.abs(dy) > 4) {
+        var menuOpen = nav && nav.classList.contains('open');
+        head.classList.toggle('is-hidden', dy > 0 && !menuOpen);
+      }
+      if (Math.abs(dy) > 4 || y <= headTop) lastY = y;
+    };
+    var headQueued = false;
+    window.addEventListener('scroll', function () {
+      if (!headQueued) { headQueued = true; requestAnimationFrame(function () { headQueued = false; headTick(); }); }
+    }, { passive: true });
+    window.addEventListener('resize', function () { measure(); if (head.classList.contains('is-float')) spacer.style.height = head.offsetHeight + 'px'; });
+    measure(); headTick();
+  }
+
   // ---- 메뉴 인터랙션: 핑크 바가 마우스를 따라가고, 벗어나면 현재 페이지로 돌아감
   if (nav) {
     var ink = document.createElement('span');
@@ -93,7 +135,7 @@
   };
   function scheduleHTML() {
     var pad = function (n) { return (n < 10 ? '0' : '') + n; };
-    var mmdd = function (d) { return pad(d.getMonth() + 1) + '-' + pad(d.getDate()); };
+    var mmdd = function (d) { return pad(d.getMonth() + 1) + '/' + pad(d.getDate()); };
     var isoWeek = function (d) {
       var t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
       t.setUTCDate(t.getUTCDate() + 4 - (t.getUTCDay() || 7));
@@ -132,7 +174,7 @@
       });
       if (done < items.length) lis += '<li class="is-more" aria-label="다음 회차 계속 진행 예정">⋮</li>';
       if (isStart) {                                            // 첫 회차를 맨 아래에서 4칸 위로 (같은 높이의 빈 칸 4개)
-        var ghost = '<li class="is-ghost" aria-hidden="true"><span class="sched-cell"><span class="sched-txt"><time>00-00</time>-</span></span></li>';
+        var ghost = '<li class="is-ghost" aria-hidden="true"><span class="sched-cell"><span class="sched-txt"><time>00/00</time>-</span></span></li>';
         lis += ghost + ghost + ghost + ghost;
       }
       cols += '<div class="sched-month' + (isStart ? ' is-start' : '') + '"><h4>' + (first.getMonth() + 1) + '월</h4><ol>' + lis + '</ol></div>';
@@ -163,25 +205,24 @@
       '<p class="about-intro">' +
         '평소 보안에 관심이 많아 시큐어코딩이나 최신 동향 등을 꾸준히 찾아보곤 했습니다. ' +
         '그러다 2025년 5월 정보보호팀이 주관한 <strong class="about-hl">“모의해킹 및 인프라 취약점 조치계획 수립 및 이행”</strong>에서 로그 분석 항목을 접하게 됐습니다. ' +
-        '하지만 회사에는 정기적인 로그 분석에 관한 규칙이 따로 없었습니다. ' +
-        '그 필요성을 느껴 직접 작성한 ' +
+        '하지만 회사에는 정기적인 로그 분석에 관한 규칙이 따로 없었고, 그 필요성을 느껴 직접 작성한 ' +
         '<a href="https://docs.google.com/presentation/d/1UCtE4vVZwYF_fjeg2eyjnhybnukHRt9X/edit?usp=sharing&amp;ouid=108365588716953195308&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">“내부 시스템 및 웹 서비스 보안을 위한 대응 전략 제안서” ↗</a>로 ' +
-        '센터 내 전파교육을 진행했고, 그 당시 실제 담당했던 시스템의 보안 위협 사례를 보여주며 정기 로그 분석의 필요성을 공유했습니다.' +
+        '센터 내 전파교육을 진행하며, 그 당시 실제 담당했던 시스템의 보안 위협 사례와 함께 정기 로그 분석의 필요성을 공유했습니다.' +
       '</p>' +
       '<p class="about-intro">' +
-        '이후 직접 정기적으로 로그를 들여다보기 시작했습니다. 쓸 만한 로그 분석 도구는 대부분 유료였기 때문에 ' +
-        '매번 서버에 접속해 로그 파일을 대상으로 스크립트를 수동으로 돌리는 방식으로 진행해왔습니다. ' +
-        '매주 이렇게 로그 파일을 직접 열어봐야 하나? 싶던 찰나, 깨달았습니다. ' +
+        '이후 직접 담당 시스템들의 로그를 들여다보기 시작했습니다. 쓸 만한 로그 분석 도구는 대부분 유료였기 때문에 ' +
+        '매번 서버에 직접 접속해 로그 파일을 대상으로 스크립트를 수동으로 돌리는 방식이었죠. ' +
+        '매주 이렇게 로그 파일을 직접 열어봐야 하나? 싶던 찰나,<br>문득 깨달았습니다.' +
       '</p>' +
       '<p class="about-intro about-punch">' +
-        '네, 그렇습니다. 저는 “<em>없으면 만들면 되지</em>” 마인드로 살아온 개발자라는 사실을요. ' +
+        '네, 저는 “<em>없으면 만들면 되지</em>” 마인드로 살아온 개발자라는 사실을요. ' +
       '</p>' +
       '<p class="about-intro">' +
-        '그렇게 시작한 자동화는 담당 시스템이 바뀌면서 Windows에서 Linux까지 분석 범위를 넓혔습니다. ' +
-        '기존 업무를 이어받은 동료들에게도 메일이 갈 수 있도록 챙기고, 새로운 서버 환경에 맞춰 분석 기능도 확장했습니다.' +
+        '그렇게 자동화 개발을 시작하게 됐고, 담당 시스템이 추가되면서 Windows에서 Linux까지 분석 범위를 넓혔습니다. ' +
+        '이후 기존 업무를 이어받은 동료들에게도 해당 서비스를 안내하고 메일을 받을 수 있도록 챙기고 조금씩 고도화해나갔습니다.' +
       '</p>' +
       '<p class="about-intro">' +
-        '처음엔 반복 작업이 귀찮아서 만든 도구였지만, 어느덧 몇 개월째 매주 리포트를 보내는 작은 서비스가 되었습니다. ' +
+        '처음엔 반복 작업이 귀찮아서 만든 기능이, 어느덧 몇 개월째 매주 리포트를 보내는 작은 서비스가 되었습니다. ' +
         '기획부터 개발, AI 요약, 리포트 발송, 웹 서비스 운영까지 직접 맡으며, ' +
         '규칙 없던 빈 자리를 이제는 매주 리포트로 채워 나가고 있습니다.' +
       '</p>' +
@@ -235,7 +276,19 @@
     about.setAttribute('aria-labelledby', 'about-title');
     about.innerHTML = ABOUT_HTML;
     document.body.appendChild(about);
-    var closeAbout = function () { if (about.close) about.close(); else about.removeAttribute('open'); };
+    var lockScroll = function (on) {  // About이 열려 있는 동안 뒤 페이지 스크롤 막기 (스크롤바 폭만큼 보정해 화면 흔들림 방지)
+      var root = document.documentElement;
+      if (on) {
+        var sb = window.innerWidth - root.clientWidth;
+        root.classList.add('scroll-lock');
+        if (sb > 0) document.body.style.paddingRight = sb + 'px';
+      } else {
+        root.classList.remove('scroll-lock');
+        document.body.style.paddingRight = '';
+      }
+    };
+    var closeAbout = function () { if (about.close) about.close(); else { about.removeAttribute('open'); lockScroll(false); } };
+    about.addEventListener('close', function () { lockScroll(false); });
     $('.about-close', about).addEventListener('click', closeAbout);
     about.addEventListener('click', function (e) { if (e.target === about) closeAbout(); });  // 바깥 클릭
     var aboutPanel = $('.about-panel', about), aboutBar = $('.about-bar', about), aboutName = $('.about-name', about);
@@ -246,6 +299,7 @@
     aboutBtns.forEach(function (b) {
       b.addEventListener('click', function () {
         if (nav) { nav.classList.remove('open'); if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false'); }
+        lockScroll(true);
         if (about.showModal) about.showModal(); else about.setAttribute('open', '');
         aboutPanel.scrollTop = 0; syncBar();
       });
@@ -290,30 +344,37 @@
   function initViewer() {
     var SOURCES = ['demo', 'live', 'live-monthly'];
     var KIND = { windows: 'Windows', linux: 'Linux' };
-    var PLATFORM = { windows: 'Windows · E-OUT / IN-OUT', linux: 'Linux · WEB1 · WEB2 · WAS1 · WAS2' };
+    var PLATFORM = { windows: 'Windows · WEB · WAS1 · WAS2', linux: 'Linux · WEB1 · WEB2 · WAS1 · WAS2' };
     var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var NOTE = {
-      demo: '합성 로그로 만든 리포트입니다. 시나리오는 10/29(목) 14시, DB 커넥션 풀 고갈로 주문 API 500 오류가 몰린 한 주. 스캐너 노이즈 속에서 이걸 찾아내는지 보세요.',
-      'live-monthly': '실제 운영 서버에서 나온 리포트입니다. 건수·추이·분류는 그대로 두고 IP·도메인·계정 같은 식별 정보만 마스킹했습니다. 공개본이라 상세 로그 표는 일부만 보여 드립니다.'
+      demo: '시나리오는 10/29(목) 14시, Windows 서버에서 DB 커넥션 풀 고갈로 주문 API의 500 오류가 집중적으로 발생한 상황. 각종 스캐너 노이즈가 뒤섞인 로그 속에서, 과연 이 이상 징후를 찾아낼 수 있을까요?',
+      'live-monthly': '실제 운영 리포트를 공개용으로 마스킹한 사본입니다. 실제 메일에는 원본 그대로 담겨 내부 담당자에게만 발송되며, 여기서는 건수·추이·분류는 그대로 두고 IP·도메인·계정만 치환했습니다. 상세 로그 표는 일부만 보여 드립니다.'
     };
     NOTE.live = NOTE['live-monthly'];
     var state = { source: 'demo', kind: 'windows', m: {} };
-    var segBtns = $$('#source-seg button');
+    var segBtns = $$('#source-seg button'), aiSw = $('#ai-sw');
+    // AI 요약 켬 = 데모(주간만) · 끔 = 실제 운영 리포트(주간 · 월간) — Try it 폼과 같은 구조
+    var PICK = { 'on weekly': 'demo', 'off weekly': 'live', 'off monthly': 'live-monthly' };
+    var aiOf = function (src) { return src === 'demo'; };
+    var periodOf = function (src) { return src === 'live-monthly' ? 'monthly' : 'weekly'; };
+    var has = function (src) { return !!state.m[src]; };
     var lastSource = null, lastFrameUrl = '';
     var moveSegThumb = slideThumb($('#source-seg'), 'button[aria-pressed=true]');
     var moveKindThumb = slideThumb($('#kind-tabs'), 'button[aria-selected=true]');
 
+    // 주간 'Week 44' · 월간 'October' 모두 한 줄로 (연도는 Period에)
     function title(m) {
       var k = m.period_key || '';
       var w = /^\d{4}W(\d{1,2})$/.exec(k);
       if (w) return 'Week ' + Number(w[1]);
-      var mo = /^(\d{4})(\d{2})$/.exec(k);
-      if (mo) return MONTHS[Number(mo[2]) - 1] + '<span class="serif"> ' + mo[1] + '</span>';
+      var mo = /^\d{4}(\d{2})$/.exec(k);
+      if (mo) return MONTHS[Number(mo[1]) - 1];
       return k;
     }
     function period(m) {
       var p = /\((\d{4}-\d{2}-\d{2}) ~ (\d{4}-\d{2}-\d{2})\)/.exec(m.period_label || '');
-      return p ? p[1] + ' — ' + p[2].slice(5) : (m.period_label || '');
+      var sl = function (d) { return d.replace(/-/g, '/'); };  // 2026/10/26 - 11/01
+      return p ? sl(p[1]) + ' - ' + sl(p[2].slice(5)) : (m.period_label || '');
     }
     function kinds(src) {
       var m = state.m[src]; if (!m) return [];
@@ -335,7 +396,14 @@
       var m = state.m[state.source]; if (!m) return;
       var ks = kinds(state.source);
       if (ks.indexOf(state.kind) < 0) state.kind = ks[0];
-      segBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.source === state.source)); });
+      var aiOn = aiOf(state.source);
+      aiSw.checked = aiOn;
+      aiSw.disabled = !has('live') && !has('live-monthly');
+      segBtns.forEach(function (b) {
+        var src = PICK[(aiOn ? 'on ' : 'off ') + b.dataset.period];
+        b.disabled = !src || !has(src);
+        b.setAttribute('aria-pressed', String(b.dataset.period === periodOf(state.source)));
+      });
       moveSegThumb();
       if (lastSource && lastSource !== state.source) {  // 소스를 바꿀 때만 제목·설명·메타를 새로 들어오게
         ['#r-title', '#r-note', '.meta'].forEach(function (sel, i) {
@@ -354,7 +422,7 @@
       $('#r-note').textContent = NOTE[state.source];
       $('#v-period').textContent = period(pm);
       $('#v-platform').textContent = PLATFORM[state.kind];
-      $('#v-source').textContent = state.source === 'demo' ? '합성 로그' : '운영 서버 · 마스킹';
+      $('#v-source').textContent = state.source === 'demo' ? '데모 · 합성 로그' : '운영 서버 · 마스킹';
 
       var tabs = $('#kind-tabs'); $$('button', tabs).forEach(function (b) { tabs.removeChild(b); });
       ks.forEach(function (k) {
@@ -371,12 +439,13 @@
       var url = state.source + '/' + path;
       $('#mail-frame').src = url;
       $('#mail-subject').textContent = (sec.email ? '' : '[리포트] ') + (sec.title || '') + ' — ' + (pm.period_label || '');
-      $('#frame-note').textContent = sec.email
+      $('#frame-note').textContent = (sec.email
         ? '실제로 발송되는 HTML 메일 본문입니다. 상세 리포트는 ZIP으로 첨부됩니다.'
-        : '이 기간은 메일 원본 대신 대표 리포트를 보여 드립니다.';
+        : '이 기간은 메일 원본 대신 대표 리포트를 보여 드립니다.') + ' ' +
+        (state.source === 'demo' ? 'IP는 문서용 예시 대역(RFC 5737)입니다.' : 'IP는 10.20.x.x · 198.18.x.x로 치환했습니다.');
       lastFrameUrl = url;
       verdict(url);
-      $('#get-this').href = 'contact.html?src=' + state.source;
+      $('#get-this').href = 'contact.html?src=' + state.source + '&kind=' + state.kind;  // 보던 조합 그대로 미리 선택
 
       // 상세 리포트: 위 탭(Windows/Linux)에 맞춰 목록을 보여 주고, 줄마다 설명 + 메일 본문의 핵심 수치
       var files = $('#files'); files.textContent = '';
@@ -388,14 +457,15 @@
         a.innerHTML = '<span class="no">' + (i < 9 ? '0' : '') + (i + 1) + '</span>' +
           '<span class="f-main"><span class="t"></span><span class="d"></span></span>' +
           '<span class="f-stats" data-key="' + key + '"></span><span class="go" aria-hidden="true">↗</span>';
-        $('.t', a).textContent = r.title;
+        $('.t', a).textContent = FILE_TITLE[key] || r.title;
         $('.d', a).textContent = FILE_DESC[key] || '';
         files.appendChild(a);
       });
-      $('#files-note').textContent = KIND[state.kind] + ' ' + reps.length + '개 · 새 탭';
+      $('#files-note').textContent = KIND[state.kind] + ' ' + reps.length + '개';
     }
 
     // 상세 리포트 줄 설명 / 키 / 메일 본문에서 수치 뽑기
+    var FILE_TITLE = { TOMCAT_EOUT: 'TOMCAT (E-OUT)', TOMCAT_INOUT: 'TOMCAT (IN-OUT)' };
     var FILE_DESC = {
       index: '플랫폼 전체 요약과 리포트 목차',
       NGINX: '상태코드·경로 키워드를 일별·IP별·URL별로 집계',
@@ -419,7 +489,12 @@
         var mm = new RegExp('-\\s*' + k + ':\\s*주요\\s*([\\d,]+)건\\s*/\\s*노이즈\\s*([\\d,]+)건').exec(t);
         if (!mm) return;
         hasWin = true; sumMain += num(mm[1]); sumNoise += num(mm[2]);
-        st[k] = chip(mm[1], '주요') + chip(mm[2], '노이즈', 'is-noise');
+        if (num(mm[1]) + num(mm[2]) === 0) {  // 둘 다 0이면 숫자 대신 '며칠 분석 · 이상 없음'
+          var dd = new RegExp(k + '\\s*주요 탐지[^]*?분석 일수\\s*(\\d+)').exec(t);
+          st[k] = (dd ? chip(dd[1] + '일', '분석') : '') + '<span class="f-stat is-ok"><i></i>이상 없음</span>';
+        } else {
+          st[k] = chip(mm[1], '주요') + chip(mm[2], '노이즈', 'is-noise');
+        }
       });
       if (hasWin) st.index = chip(fmt(sumMain), '주요') + chip(fmt(sumNoise), '노이즈', 'is-noise');
       var l4 = /L4:[^\n]*?편차\s*([\d.]+%)/.exec(t), re = /-\s*(?:WEB|WAS)\d:\s*트래픽\s*[\d,]+\s*\/\s*노이즈\s*([\d,]+)건/g, mm2, ln = 0, any = false;
@@ -428,9 +503,15 @@
       $$('#files .f-stats').forEach(function (el) { el.innerHTML = st[el.dataset.key] || ''; });
     }
 
+    var choose = function (ai, per) {  // 없는 조합이면 같은 AI 설정 안에서 있는 쪽으로
+      var src = PICK[ai + ' ' + per];
+      if (!src || !has(src)) src = ai === 'on' ? 'demo' : (has('live') ? 'live' : 'live-monthly');
+      if (has(src)) { state.source = src; render(); }
+    };
     segBtns.forEach(function (b) {
-      b.addEventListener('click', function () { if (!b.disabled) { state.source = b.dataset.source; render(); } });
+      b.addEventListener('click', function () { if (!b.disabled) choose(aiOf(state.source) ? 'on' : 'off', b.dataset.period); });
     });
+    aiSw.addEventListener('change', function () { choose(aiSw.checked ? 'on' : 'off', periodOf(state.source)); });
 
     var q = /[?&]src=([\w-]+)/.exec(location.search);
     if (q && SOURCES.indexOf(q[1]) >= 0) state.source = q[1];
@@ -439,11 +520,7 @@
       return fetch(src + '/manifest.json', { cache: 'no-cache' })
         .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
         .then(function (m) { state.m[src] = m; })
-        .catch(function () {
-          var b = $('#source-seg button[data-source="' + src + '"]');
-          if (b) { b.disabled = true; b.textContent += ' · 준비 중'; }
-          if (state.source === src) state.source = 'demo';
-        });
+        .catch(function () { if (state.source === src) state.source = 'demo'; });
     })).then(render);
   }
 
@@ -458,22 +535,46 @@
     var msg = $('#mail-msg'), send = $('#mail-send'), mode = 'inline';
     function say(text, cls) { msg.textContent = text; msg.className = 'msg' + (cls ? ' ' + cls : ''); }
 
+    // AI 사용 = 데모(합성 로그 + AI 요약, 주간만) · AI 미사용 = 실제 운영 리포트(주간 · 월간)
+    var radio = function (name, v) { return form.querySelector('input[name=' + name + '][value="' + v + '"]'); };
+    var SOURCE = { 'on weekly': 'demo', 'off weekly': 'live', 'off monthly': 'live-monthly' };
+    var missing = {};  // 아직 공개되지 않은 출처
+    var aiSw = $('#mail-ai', form);
+    var sourceOf = function () {
+      return SOURCE[(aiSw.checked ? 'on' : 'off') + ' ' + new FormData(form).get('period')];
+    };
     var q = /[?&]src=([\w-]+)/.exec(location.search);
-    var pre = q && form.querySelector('input[name=source][value="' + q[1] + '"]');
-    if (pre) pre.checked = true;
+    if (q) Object.keys(SOURCE).forEach(function (k) {
+      if (SOURCE[k] === q[1]) { aiSw.checked = k.split(' ')[0] === 'on'; radio('period', k.split(' ')[1]).checked = true; }
+    });
+    var qk = /[?&]kind=(windows|linux)\b/.exec(location.search);
+    if (qk) radio('kind', qk[1]).checked = true;
     // 라디오 그룹(리포트 · 플랫폼)에도 미끄러지는 알약
     var optThumbs = $$('.opts', form).map(function (box) {
-      var up = slideThumb(box, 'label:has(input:checked)');
-      box.addEventListener('change', function () { up(); });
-      return up;
+      return slideThumb(box, 'label:has(input:checked)');
     });
+    var periodNote = $('#period-note');
+    var syncOpts = function () {
+      aiSw.disabled = !!(missing.live && missing['live-monthly']);  // 실제 리포트가 없으면 AI 사용으로 고정
+      if (aiSw.disabled) aiSw.checked = true;
+      var aiOn = aiSw.checked;
+      var w = radio('period', 'weekly'), mo = radio('period', 'monthly');
+      w.disabled = !aiOn && !!missing.live;
+      mo.disabled = aiOn || !!missing['live-monthly'];
+      if (mo.disabled && mo.checked) w.checked = true;
+      if (w.disabled && w.checked) mo.checked = true;
+      periodNote.textContent = aiOn
+        ? '데모 로그로 만든 주간 리포트에 AI 요약이 함께 담겨요.'
+        : '실제 운영 리포트를 공개용으로 마스킹한 사본이에요.';
+      optThumbs.forEach(function (up) { up(); });
+    };
+    form.addEventListener('change', syncOpts);
+    syncOpts();
 
     // 공개되지 않은 출처는 고를 수 없게
     ['live', 'live-monthly'].forEach(function (src) {
       fetch(src + '/manifest.json', { method: 'HEAD', cache: 'no-cache' }).then(function (r) {
-        if (r.ok) return;
-        var radio = form.querySelector('input[name=source][value="' + src + '"]');
-        if (radio) { radio.disabled = true; if (radio.checked) form.querySelector('input[name=source][value=demo]').checked = true; optThumbs.forEach(function (up) { up(); }); }
+        if (!r.ok) { missing[src] = true; syncOpts(); }
       }).catch(function () {});
     });
 
@@ -483,13 +584,30 @@
       .then(function (res) { mode = res && res.ok ? 'inline' : 'tab'; })
       .catch(function () { mode = 'tab'; });
 
+    // 이메일 칸에는 아이디만: '@'부터 뒤는 지움 (전체 주소를 붙여 넣어도 아이디만 남음)
+    // 입력 칸 폭을 글자에 맞춰 늘려서 @vntgcorp.com이 바로 뒤에 붙어 따라오게
+    var mailTo = $('#mail-to', form), mailField = mailTo.parentNode, sizer = $('.mail-sizer', mailField);
+    var fitMail = function () {
+      sizer.textContent = mailTo.value || mailTo.placeholder;
+      mailTo.style.width = Math.ceil(sizer.getBoundingClientRect().width) + 2 + 'px';
+    };
+    mailTo.addEventListener('input', function () {
+      var at = mailTo.value.indexOf('@');
+      if (at >= 0) mailTo.value = mailTo.value.slice(0, at);
+      fitMail();
+    });
+    mailField.addEventListener('click', function (e) { if (e.target !== mailTo) mailTo.focus(); });
+    window.addEventListener('resize', fitMail);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitMail);
+    fitMail();
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var fd = new FormData(form);
-      var to = String(fd.get('email') || '').trim().toLowerCase();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) return say('이메일 주소를 확인해 주세요.', 'err');
-      if (to.split('@')[1] !== ALLOWED_DOMAIN) return say('사내 메일(@' + ALLOWED_DOMAIN + ')로만 받을 수 있어요.', 'err');
-      var payload = { email: to, source: fd.get('source'), kind: fd.get('kind'), website: fd.get('website') || '' };
+      var id = String(fd.get('relog_to') || '').trim().toLowerCase();
+      if (!/^[a-z0-9._%+-]+$/.test(id)) return say('이메일 아이디를 확인해 주세요.', 'err');
+      var to = id + '@' + ALLOWED_DOMAIN;
+      var payload = { email: to, source: sourceOf() || 'demo', kind: fd.get('kind'), website: fd.get('website') || '' };
 
       if (mode === 'tab') {
         var f = document.createElement('form');

@@ -41,21 +41,26 @@
   <section class="wrap" id="viewer" style="padding-top:100px;padding-bottom:64px">
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
       <span class="eyebrow">Report</span>
-      <div class="seg" id="source-seg" role="group" aria-label="리포트 종류">
-        <button type="button" data-source="demo" aria-pressed="true">데모</button>
-        <button type="button" data-source="live" aria-pressed="false">실제 주간</button>
-        <button type="button" data-source="live-monthly" aria-pressed="false">실제 월간</button>
+      <div class="src-ctrl">
+        <div class="switch-row switch-light">
+          <span class="lbl" id="ai-lbl">AI 요약</span>
+          <label class="switch"><input type="checkbox" id="ai-sw" role="switch" aria-labelledby="ai-lbl" checked><span class="sw" aria-hidden="true"></span></label>
+        </div>
+        <div class="seg" id="source-seg" role="group" aria-label="리포트 주기">
+          <button type="button" data-period="weekly" aria-pressed="true">주간 리포트</button>
+          <button type="button" data-period="monthly" aria-pressed="false">월간 리포트</button>
+        </div>
       </div>
     </div>
     <div class="split" style="align-items:flex-end;gap:64px;margin-top:48px">
       <div style="flex:1 1 auto">
         <h1 class="h-xl" id="r-title" style="font-size:clamp(72px,12vw,176px);line-height:.88;letter-spacing:-.06em">Week 44</h1>
-        <p class="lede" id="r-note" style="margin-top:28px;max-width:560px" aria-live="polite">합성 로그로 만든 리포트입니다.</p>
+        <p class="lede" id="r-note" style="margin-top:28px;max-width:560px" aria-live="polite"></p>
       </div>
       <dl class="meta">
-        <div><dt>Period</dt><dd id="v-period">2026-10-26 — 11-01</dd></div>
-        <div><dt>Platform</dt><dd id="v-platform">Windows · E-OUT / IN-OUT</dd></div>
-        <div><dt>Source</dt><dd id="v-source">합성 로그</dd></div>
+        <div><dt>Period</dt><dd id="v-period">2026/10/26 - 11/01</dd></div>
+        <div><dt>Platform</dt><dd id="v-platform">Windows · WEB · WAS1 · WAS2</dd></div>
+        <div><dt>Source</dt><dd id="v-source">데모 · 합성 로그</dd></div>
         <div><dt>Verdict</dt><dd id="v-verdict"><span class="pill pill-dim">확인 중</span></dd></div>
       </dl>
     </div>
@@ -75,39 +80,17 @@
     </div>
   </section>
 
-  <section class="wrap sec-tight">
+  <section class="wrap sec-tight" style="padding-bottom:120px">
     <div class="sec-label" style="margin-bottom:0;border-bottom:0;padding-bottom:20px">
       <span class="eyebrow" style="color:var(--ink)">Detailed reports</span>
-      <span id="files-note" style="font-size:13px;color:var(--muted-2)">ZIP 첨부와 같은 내용 · 새 탭</span>
+      <span id="files-note" style="font-size:13px;color:var(--muted-2)"></span>
     </div>
+    <p class="files-lead">메일에 ZIP으로 함께 첨부되는 상세 리포트를 미리 볼 수 있습니다.</p>
     <div class="files" id="files"></div>
   </section>
 
-  <section class="wrap" style="padding-bottom:120px">
-    <div class="split reveal">
-      <div style="flex:0 0 420px">
-        <span class="eyebrow">Signal vs noise · 데모</span>
-        <h2 class="kr" style="margin:20px 0 0;font-size:clamp(30px,3vw,40px);line-height:1.3;font-weight:500;letter-spacing:-.04em">평소의 3배,<br>딱 하루가 튀었습니다.</h2>
-        <p class="lede" style="margin-top:20px">스캐너 404 218건은 노이즈로 걷어내고, 남은 신호 중 10/29 하루가 225건으로 튀어 오른 걸 짚어냅니다.</p>
-      </div>
-      <figure class="figure">
-        <figcaption><span>NGINX 일별 주요 탐지</span><span>건</span></figcaption>
-        <div class="bars" role="img" aria-label="일별 탐지 건수: 10-26 64, 10-27 62, 10-28 72, 10-29 225, 10-30 45, 10-31 50, 11-01 46">
-          <div><span>64</span><i style="height:24%"></i></div>
-          <div><span>62</span><i style="height:23%"></i></div>
-          <div><span>72</span><i style="height:27%"></i></div>
-          <div class="peak"><span>225</span><i style="height:84%"></i></div>
-          <div><span>45</span><i style="height:17%"></i></div>
-          <div><span>50</span><i style="height:19%"></i></div>
-          <div><span>46</span><i style="height:17.5%"></i></div>
-        </div>
-        <div class="axis" aria-hidden="true"><span>10-26</span><span>10-27</span><span>10-28</span><span style="color:var(--ember-ink);font-weight:500">10-29</span><span>10-30</span><span>10-31</span><span>11-01</span></div>
-      </figure>
-    </div>
-  </section>
-
   <footer class="wrap site-foot">
-    <a href="process.html">← Process</a><span class="copy">© 2026 Lily.C. All rights reserved.</span><a class="next" href="contact.html">Next — Contact →</a>
+    <span>AIVE Challenge 2026</span><span class="copy">© 2026 Lily.C. All rights reserved.</span>
   </footer>
 </main>
 <script src="assets/relog.js"></script>

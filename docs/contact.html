@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Contact — Re.log</title>
+<title>Try it — Re.log</title>
 <meta name="description" content="실제 운영 메일과 같은 리포트를 사내 메일로 받아보세요.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Re.log">
-<meta property="og:title" content="Contact — Re.log">
+<meta property="og:title" content="Try it — Re.log">
 <meta property="og:description" content="실제 운영 메일과 같은 리포트를 사내 메일로 받아보세요.">
 <meta property="og:url" content="https://silverain1004.github.io/relog/contact.html">
 <meta property="og:image" content="https://silverain1004.github.io/relog/assets/og.png">
@@ -40,24 +40,28 @@
 <main id="main">
   <section class="wrap split" style="padding-top:120px;padding-bottom:120px;gap:96px">
     <div style="flex:1 1 0" class="reveal">
-      <span class="eyebrow">Contact</span>
+      <span class="eyebrow">Try it</span>
       <h1 class="h-xl" style="margin-top:32px;font-size:clamp(64px,9.4vw,136px);letter-spacing:-.06em">Get the<br><span class="serif">report<b class="dot">.</b></span></h1>
-      <p class="lede" style="margin-top:32px;max-width:420px">실제 운영 메일과 똑같은 HTML 본문과 상세 리포트 ZIP을 받아보세요. 보통 1분 안에 도착합니다.</p>
+      <p class="lede" style="margin-top:32px;max-width:420px">실제 메일과 똑같은 샘플을 받아보세요.<br>첨부파일에 상세 리포트가 포함되며 1분 내에 도착합니다.</p>
     </div>
 
     <form class="form reveal" id="mail-form" novalidate aria-label="리포트 메일 받기">
       <div>
-        <label class="lbl" for="mail-to">받을 이메일 (사내 주소만)</label>
-        <input id="mail-to" name="email" type="email" placeholder="name@vntgcorp.com" autocomplete="email" required maxlength="100">
+        <label class="lbl" for="mail-to">이메일</label>
+        <div class="mail-field"><input id="mail-to" name="relog_to" type="text" inputmode="email" placeholder="name" aria-describedby="mail-domain" autocomplete="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore data-form-type="other" required maxlength="64"><span class="mail-domain" id="mail-domain">@vntgcorp.com</span><span class="mail-sizer" aria-hidden="true"></span></div>
       </div>
       <div class="hp" aria-hidden="true"><label>웹사이트<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <div class="switch-row">
+        <span class="lbl" id="ai-lbl">AI 요약</span>
+        <label class="switch"><input type="checkbox" id="mail-ai" role="switch" aria-labelledby="ai-lbl" checked><span class="sw" aria-hidden="true"></span></label>
+      </div>
       <fieldset>
         <legend>리포트</legend>
         <div class="opts">
-          <label><input type="radio" name="source" value="demo" checked> 데모</label>
-          <label><input type="radio" name="source" value="live"> 실제 주간</label>
-          <label><input type="radio" name="source" value="live-monthly"> 실제 월간</label>
+          <label><input type="radio" name="period" value="weekly" checked> 주간 리포트</label>
+          <label><input type="radio" name="period" value="monthly"> 월간 리포트</label>
         </div>
+        <p class="opt-note" id="period-note"></p>
       </fieldset>
       <fieldset>
         <legend>플랫폼</legend>
@@ -74,7 +78,7 @@
   <section class="wrap" style="padding-bottom:120px">
     <div class="sec-label" style="margin-bottom:24px">
       <span class="eyebrow" style="color:var(--paper)">Run it yourself</span>
-      <a href="https://github.com/silverain1004/relog" style="font-size:13px;color:var(--on-ink-faint)">github.com/silverain1004/relog ↗</a>
+      <a href="https://github.com/silverain1004/relog" target="_blank" rel="noopener" style="font-size:13px;color:var(--on-ink-faint)">github.com/silverain1004/relog ↗</a>
     </div>
     <pre class="term"><span class="p">$</span> git clone https://github.com/silverain1004/relog.git &amp;&amp; cd relog
 <span class="p">$</span> python demo/generate_demo.py               <span class="c"># 데모 리포트 생성</span>
@@ -85,9 +89,7 @@
 
   <footer class="wrap site-foot">
     <span>AIVE Challenge 2026</span>
-    <span class="kr">데모 IP는 RFC 5737 문서용 대역, 실제 IP는 10.20.x.x · 198.18.x.x로 치환</span>
     <span class="copy">© 2026 Lily.C. All rights reserved.</span>
-    <a class="next" href="./">Back to top ↑</a>
   </footer>
 </main>
 <script src="assets/relog.js"></script>

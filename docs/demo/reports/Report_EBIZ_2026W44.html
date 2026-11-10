@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>E-BIZ 리포트 — 2026년 44주 (2026-10-26 ~ 2026-11-01)</title>
-<style>
-:root { --bg:#0f1419; --card:#1a2332; --border:#2d3a4f; --text:#e7ecf3; --muted:#8b9cb3;
-        --accent:#3b82f6; --warn:#f59e0b; --danger:#ef4444; --ok:#22c55e; }
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet"><style>
+:root { --bg:#0E0E0C; --card:#1A1A18; --border:#2E2D2A; --text:#F4F3EF; --muted:#9C9A93;
+        --accent:#FF2D6B; --warn:#D4B483; --danger:#FF4D82; --ok:#3CB371; }
 * { box-sizing:border-box; margin:0; padding:0; }
 body { font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.5; padding:24px; }
+/* 요약·차트는 읽기 편한 폭으로, 상세 로그 표가 있는 섹션만 전체 폭 */
+.header,.grid,section { max-width:1080px; margin-left:auto; margin-right:auto; }
+section:has(.log-wrap) { max-width:none; }
+/* 세로 막대 (일별·시간대별) */
+.vbars { display:flex; align-items:stretch; gap:6px; height:220px; overflow-x:auto; padding-top:4px; }
+.vbar { flex:1 1 0; min-width:28px; display:flex; flex-direction:column; align-items:center; gap:4px; }
+.vbars.n24 .vbar { min-width:22px; }
+.vbar-col { flex:1; width:100%; display:flex; align-items:flex-end; background:transparent; border-radius:4px 4px 0 0; }
+.vbar-fill { width:100%; min-height:2px; background:var(--accent); border-radius:4px 4px 0 0; }
+.vbar-fill.daily { background:#F7D0DC; }
+.vbar-val { font-size:0.7rem; color:var(--text); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.vbars.n24 .vbar-val { font-size:0.62rem; }
+.vbar-lbl { font-size:0.72rem; color:var(--muted); white-space:nowrap; }
+.vbars.n28,.vbars.n29,.vbars.n30,.vbars.n31 { gap:3px; }
+.vbars.n28 .vbar,.vbars.n29 .vbar,.vbars.n30 .vbar,.vbars.n31 .vbar { min-width:0; }
+.vbars.n28 .vbar-val,.vbars.n29 .vbar-val,.vbars.n30 .vbar-val,.vbars.n31 .vbar-val,.vbars.n28 .vbar-lbl,.vbars.n29 .vbar-lbl,.vbars.n30 .vbar-lbl,.vbars.n31 .vbar-lbl { font-size:0.56rem; letter-spacing:-.02em; }
 a { color:var(--accent); text-decoration:none; }
 a:hover { text-decoration:underline; }
 .header { margin-bottom:24px; }
@@ -24,7 +40,7 @@ section h2 { font-size:1.1rem; margin-bottom:16px; padding-bottom:8px; border-bo
 .bar-label { color:var(--muted); text-align:right; }
 .bar-track { background:var(--bg); border-radius:4px; height:18px; overflow:hidden; }
 .bar-fill { background:var(--accent); height:100%; border-radius:4px; min-width:2px; }
-.bar-fill.daily { background:#6366f1; }
+.bar-fill.daily { background:#F7D0DC; }
 .bar-value { text-align:right; font-variant-numeric:tabular-nums; }
 .empty { color:var(--muted); font-style:italic; }
 .top-table { width:100%; border-collapse:collapse; font-size:0.85rem; }
@@ -32,15 +48,15 @@ section h2 { font-size:1.1rem; margin-bottom:16px; padding-bottom:8px; border-bo
 .top-table th { color:var(--muted); font-weight:600; }
 .top-table .num { text-align:right; font-variant-numeric:tabular-nums; }
 .badge { display:inline-block; padding:2px 10px; border-radius:12px; font-size:0.75rem; font-weight:600; }
-.badge.ok { background:rgba(34,197,94,.2); color:var(--ok); }
-.badge.warn { background:rgba(245,158,11,.2); color:var(--warn); }
+.badge.ok { background:rgba(60,179,113,.18); color:var(--ok); }
+.badge.warn { background:rgba(212,180,131,.2); color:var(--warn); }
 .log-controls { display:flex; gap:12px; margin-bottom:12px; flex-wrap:wrap; }
 .log-controls input,.log-controls select { background:var(--bg); border:1px solid var(--border); color:var(--text); padding:8px 12px; border-radius:6px; font-size:0.85rem; }
 .log-controls input { flex:1; min-width:200px; }
 .log-table { width:100%; border-collapse:collapse; font-size:0.78rem; }
 .log-table th,.log-table td { padding:6px 8px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
 .log-table th { color:var(--muted); position:sticky; top:0; background:var(--card); }
-.log-table tr:hover { background:rgba(59,130,246,.08); }
+.log-table tr:hover { background:rgba(255,45,107,.07); }
 .log-table .raw { max-width:600px; word-break:break-all; color:var(--muted); }
 .log-wrap { max-height:500px; overflow:auto; }
 details { margin-top:12px; }
@@ -51,6 +67,55 @@ details summary { cursor:pointer; color:var(--muted); padding:8px 0; }
 .index-list li { padding:12px 0; border-bottom:1px solid var(--border); }
 .l4-bars { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
 .l4-bar-item .name { margin-bottom:6px; font-weight:600; }
+/* Re.log 웹과 같은 톤: 폰트(Inter Tight · Noto Sans KR · JetBrains Mono), 둥근 카드, 알약 칩 */
+body { font-family:'Inter Tight','Noto Sans KR',system-ui,sans-serif; letter-spacing:-.01em; padding:40px 24px 64px; }
+.header { margin-bottom:28px; }
+.header::before { content:"Re.log"; display:block; margin-bottom:18px; font-size:1.1rem; font-weight:700; letter-spacing:-.04em; color:var(--text); }
+.header h1 { font-size:2rem; font-weight:600; letter-spacing:-.04em; margin-bottom:6px; }
+.header .sub,.sub { font-family:'Noto Sans KR','Inter Tight',sans-serif; }
+.header a { font-size:.85rem; }
+.card { border-radius:18px; padding:20px 22px; }
+.card .label { font-family:'Noto Sans KR','Inter Tight',sans-serif; font-size:.8rem; }
+.card .value { font-size:2.2rem; font-weight:500; letter-spacing:-.05em; line-height:1.15; font-variant-numeric:tabular-nums; }
+section { border-radius:20px; padding:24px 26px; }
+section h2 { font-family:'Noto Sans KR','Inter Tight',sans-serif; font-size:1rem; font-weight:600; letter-spacing:-.01em; }
+.badge { border-radius:999px; padding:3px 10px; }
+.btn-more { border-radius:999px; padding:10px 20px; font-weight:600; }
+.log-controls input,.log-controls select { border-radius:999px; padding:9px 16px; }
+.log-table,.top-table td:first-child,.log-table .raw { font-family:'JetBrains Mono',ui-monospace,monospace; }
+.log-table { font-size:0.74rem; }
+.bar-track { border-radius:999px; }
+.bar-fill { border-radius:999px; }
+.vbar-fill { border-radius:6px 6px 0 0; }
+.vbar-col { border-radius:6px 6px 0 0; transition:background-color .2s; }
+.vbar:hover .vbar-col { background:var(--bg); }
+.vbar:hover .vbar-val { color:var(--accent); }
+/* 세로 막대 정렬·필터 */
+section:has(.vchart) { position:relative; }
+.vtools { position:absolute; top:18px; right:22px; display:flex; gap:6px; }
+.vtool { position:relative; }
+.vtool-btn { display:flex; align-items:center; justify-content:center; width:32px; height:32px; border:1px solid var(--border); border-radius:999px; background:transparent; color:var(--muted); cursor:pointer; transition:color .2s,border-color .2s; }
+.vtool-btn:hover,.vtool.open .vtool-btn { color:var(--text); border-color:var(--muted); }
+.vtool-btn.active { color:var(--accent); border-color:var(--accent); }
+.vmenu { position:absolute; right:0; top:calc(100% + 6px); z-index:5; min-width:120px; padding:6px; border:1px solid var(--border); border-radius:14px; background:var(--bg); box-shadow:0 12px 28px rgba(0,0,0,.4); display:none; }
+.vtool.open .vmenu { display:block; }
+.vmenu button { display:block; width:100%; padding:8px 12px; border:0; border-radius:8px; background:transparent; color:var(--muted); font:inherit; font-size:.82rem; text-align:left; cursor:pointer; }
+.vmenu button:hover { background:var(--card); color:var(--text); }
+.vmenu button.on { color:var(--accent); font-weight:600; }
+.vmenu button.on::after { content:" ✓"; }
+.vbar[hidden] { display:none; }
+/* 스크롤바: 사이트와 같은 얇은 반투명 막대 (페이지 · 로그 표 · 막대 그래프 공통) */
+html,.log-wrap,.vbars,.top-table { scrollbar-width:thin; scrollbar-color:rgba(244,243,239,.22) transparent; }
+::-webkit-scrollbar { width:8px; height:8px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:rgba(244,243,239,.22); border-radius:999px; border:2px solid transparent; background-clip:padding-box; }
+::-webkit-scrollbar-thumb:hover { background-color:var(--accent); }
+::-webkit-scrollbar-corner { background:transparent; }
+.log-wrap { border-radius:12px; }
+/* 표 머리글 줄바꿈 방지 · 섹션 안내문 톤 */
+.log-table th,.log-table td:nth-child(-n+5) { white-space:nowrap; }
+section .sub { color:var(--muted); font-size:.85rem; }
+.top-table th:last-child { text-align:right; }
 </style></head><body>
 <div class="header">
   <h1>E-BIZ 통합 로그 분석</h1>
@@ -65,20 +130,90 @@ details summary { cursor:pointer; color:var(--muted); padding:8px 0; }
 </div>
 <p style="margin-top:16px">편차율: <strong>1.9%</strong> <span class="badge ok">정상</span></p>
 </section>
-<section><h2>일별 WEB 트래픽 추이</h2><div class="bar-row"><span class="bar-label">10-26</span><div class="bar-track"><div class="bar-fill daily" style="width:92%"></div></div><span class="bar-value">77,302</span></div>
-<div class="bar-row"><span class="bar-label">10-27</span><div class="bar-track"><div class="bar-fill daily" style="width:95%"></div></div><span class="bar-value">79,655</span></div>
-<div class="bar-row"><span class="bar-label">10-28</span><div class="bar-track"><div class="bar-fill daily" style="width:92%"></div></div><span class="bar-value">77,117</span></div>
-<div class="bar-row"><span class="bar-label">10-29</span><div class="bar-track"><div class="bar-fill daily" style="width:93%"></div></div><span class="bar-value">78,438</span></div>
-<div class="bar-row"><span class="bar-label">10-30</span><div class="bar-track"><div class="bar-fill daily" style="width:100%"></div></div><span class="bar-value">83,972</span></div>
-<div class="bar-row"><span class="bar-label">10-31</span><div class="bar-track"><div class="bar-fill daily" style="width:33%"></div></div><span class="bar-value">28,091</span></div>
-<div class="bar-row"><span class="bar-label">11-01</span><div class="bar-track"><div class="bar-fill daily" style="width:34%"></div></div><span class="bar-value">28,146</span></div></section>
-<section><h2>일별 노이즈 추이 (전 노드 합산)</h2><div class="bar-row"><span class="bar-label">10-26</span><div class="bar-track"><div class="bar-fill daily" style="width:92%"></div></div><span class="bar-value">218</span></div>
-<div class="bar-row"><span class="bar-label">10-27</span><div class="bar-track"><div class="bar-fill daily" style="width:72%"></div></div><span class="bar-value">170</span></div>
-<div class="bar-row"><span class="bar-label">10-28</span><div class="bar-track"><div class="bar-fill daily" style="width:100%"></div></div><span class="bar-value">237</span></div>
-<div class="bar-row"><span class="bar-label">10-29</span><div class="bar-track"><div class="bar-fill daily" style="width:85%"></div></div><span class="bar-value">202</span></div>
-<div class="bar-row"><span class="bar-label">10-30</span><div class="bar-track"><div class="bar-fill daily" style="width:73%"></div></div><span class="bar-value">174</span></div>
-<div class="bar-row"><span class="bar-label">10-31</span><div class="bar-track"><div class="bar-fill daily" style="width:73%"></div></div><span class="bar-value">174</span></div>
-<div class="bar-row"><span class="bar-label">11-01</span><div class="bar-track"><div class="bar-fill daily" style="width:70%"></div></div><span class="bar-value">167</span></div></section>
+<section><h2>일별 WEB 트래픽 추이</h2><div class="vchart"><div class="vtools"><div class="vtool"><button type="button" class="vtool-btn" data-menu="sort" title="정렬" aria-label="정렬" aria-expanded="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4v16M3 16l4 4 4-4M17 20V4M13 8l4-4 4 4"/></svg></button><div class="vmenu" data-for="sort" role="menu"><button type="button" data-sort="time" class="on">시간순</button><button type="button" data-sort="desc">많은 순</button><button type="button" data-sort="asc">적은 순</button></div></div><div class="vtool"><button type="button" class="vtool-btn" data-menu="filter" title="필터" aria-label="필터" aria-expanded="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg></button><div class="vmenu" data-for="filter" role="menu"><button type="button" data-filter="all" class="on">전체</button><button type="button" data-filter="nonzero">0건 제외</button><button type="button" data-filter="avg">평균 이상</button></div></div></div><div class="vbars n7"><div class="vbar" data-i="0" data-v="77302"><span class="vbar-val">77,302</span><div class="vbar-col"><div class="vbar-fill daily" style="height:92%"></div></div><span class="vbar-lbl">10-26</span></div><div class="vbar" data-i="1" data-v="79655"><span class="vbar-val">79,655</span><div class="vbar-col"><div class="vbar-fill daily" style="height:95%"></div></div><span class="vbar-lbl">10-27</span></div><div class="vbar" data-i="2" data-v="77117"><span class="vbar-val">77,117</span><div class="vbar-col"><div class="vbar-fill daily" style="height:92%"></div></div><span class="vbar-lbl">10-28</span></div><div class="vbar" data-i="3" data-v="78438"><span class="vbar-val">78,438</span><div class="vbar-col"><div class="vbar-fill daily" style="height:93%"></div></div><span class="vbar-lbl">10-29</span></div><div class="vbar" data-i="4" data-v="83972"><span class="vbar-val">83,972</span><div class="vbar-col"><div class="vbar-fill daily" style="height:100%"></div></div><span class="vbar-lbl">10-30</span></div><div class="vbar" data-i="5" data-v="28091"><span class="vbar-val">28,091</span><div class="vbar-col"><div class="vbar-fill daily" style="height:33%"></div></div><span class="vbar-lbl">10-31</span></div><div class="vbar" data-i="6" data-v="28146"><span class="vbar-val">28,146</span><div class="vbar-col"><div class="vbar-fill daily" style="height:34%"></div></div><span class="vbar-lbl">11-01</span></div></div></div><script>
+(function () {
+  if (window.__relogVchart) return; window.__relogVchart = true;
+  function apply(chart) {
+    var box = chart.querySelector('.vbars'), bars = Array.prototype.slice.call(box.querySelectorAll('.vbar'));
+    var sort = chart.dataset.sort || 'time', filter = chart.dataset.filter || 'all';
+    var vals = bars.map(function (b) { return +b.dataset.v; });
+    var avg = vals.reduce(function (a, b) { return a + b; }, 0) / (vals.length || 1);
+    bars.sort(function (a, b) {
+      if (sort === 'desc') return b.dataset.v - a.dataset.v || a.dataset.i - b.dataset.i;
+      if (sort === 'asc') return a.dataset.v - b.dataset.v || a.dataset.i - b.dataset.i;
+      return a.dataset.i - b.dataset.i;
+    }).forEach(function (b) {
+      var v = +b.dataset.v;
+      b.hidden = (filter === 'nonzero' && v === 0) || (filter === 'avg' && v < avg);
+      box.appendChild(b);
+    });
+    var on = sort !== 'time' || filter !== 'all';
+    chart.classList.toggle('is-filtered', on);
+  }
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.vtool-btn'), item = e.target.closest('.vmenu button');
+    document.querySelectorAll('.vtool.open').forEach(function (t) {
+      if (!btn || t !== btn.parentNode) { t.classList.remove('open'); t.querySelector('.vtool-btn').setAttribute('aria-expanded', 'false'); }
+    });
+    if (btn) {
+      var open = btn.parentNode.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    } else if (item) {
+      var chart = item.closest('.vchart'), menu = item.parentNode;
+      menu.querySelectorAll('button').forEach(function (b) { b.classList.toggle('on', b === item); });
+      if (item.dataset.sort) chart.dataset.sort = item.dataset.sort;
+      if (item.dataset.filter) chart.dataset.filter = item.dataset.filter;
+      menu.parentNode.querySelector('.vtool-btn').classList.toggle('active', !item.classList.contains('on') || item !== menu.querySelector('button'));
+      apply(chart);
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') document.querySelectorAll('.vtool.open').forEach(function (t) { t.classList.remove('open'); });
+  });
+})();
+</script></section>
+<section><h2>일별 노이즈 추이 (전 노드 합산)</h2><div class="vchart"><div class="vtools"><div class="vtool"><button type="button" class="vtool-btn" data-menu="sort" title="정렬" aria-label="정렬" aria-expanded="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4v16M3 16l4 4 4-4M17 20V4M13 8l4-4 4 4"/></svg></button><div class="vmenu" data-for="sort" role="menu"><button type="button" data-sort="time" class="on">시간순</button><button type="button" data-sort="desc">많은 순</button><button type="button" data-sort="asc">적은 순</button></div></div><div class="vtool"><button type="button" class="vtool-btn" data-menu="filter" title="필터" aria-label="필터" aria-expanded="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg></button><div class="vmenu" data-for="filter" role="menu"><button type="button" data-filter="all" class="on">전체</button><button type="button" data-filter="nonzero">0건 제외</button><button type="button" data-filter="avg">평균 이상</button></div></div></div><div class="vbars n7"><div class="vbar" data-i="0" data-v="218"><span class="vbar-val">218</span><div class="vbar-col"><div class="vbar-fill daily" style="height:92%"></div></div><span class="vbar-lbl">10-26</span></div><div class="vbar" data-i="1" data-v="170"><span class="vbar-val">170</span><div class="vbar-col"><div class="vbar-fill daily" style="height:72%"></div></div><span class="vbar-lbl">10-27</span></div><div class="vbar" data-i="2" data-v="237"><span class="vbar-val">237</span><div class="vbar-col"><div class="vbar-fill daily" style="height:100%"></div></div><span class="vbar-lbl">10-28</span></div><div class="vbar" data-i="3" data-v="202"><span class="vbar-val">202</span><div class="vbar-col"><div class="vbar-fill daily" style="height:85%"></div></div><span class="vbar-lbl">10-29</span></div><div class="vbar" data-i="4" data-v="174"><span class="vbar-val">174</span><div class="vbar-col"><div class="vbar-fill daily" style="height:73%"></div></div><span class="vbar-lbl">10-30</span></div><div class="vbar" data-i="5" data-v="174"><span class="vbar-val">174</span><div class="vbar-col"><div class="vbar-fill daily" style="height:73%"></div></div><span class="vbar-lbl">10-31</span></div><div class="vbar" data-i="6" data-v="167"><span class="vbar-val">167</span><div class="vbar-col"><div class="vbar-fill daily" style="height:70%"></div></div><span class="vbar-lbl">11-01</span></div></div></div><script>
+(function () {
+  if (window.__relogVchart) return; window.__relogVchart = true;
+  function apply(chart) {
+    var box = chart.querySelector('.vbars'), bars = Array.prototype.slice.call(box.querySelectorAll('.vbar'));
+    var sort = chart.dataset.sort || 'time', filter = chart.dataset.filter || 'all';
+    var vals = bars.map(function (b) { return +b.dataset.v; });
+    var avg = vals.reduce(function (a, b) { return a + b; }, 0) / (vals.length || 1);
+    bars.sort(function (a, b) {
+      if (sort === 'desc') return b.dataset.v - a.dataset.v || a.dataset.i - b.dataset.i;
+      if (sort === 'asc') return a.dataset.v - b.dataset.v || a.dataset.i - b.dataset.i;
+      return a.dataset.i - b.dataset.i;
+    }).forEach(function (b) {
+      var v = +b.dataset.v;
+      b.hidden = (filter === 'nonzero' && v === 0) || (filter === 'avg' && v < avg);
+      box.appendChild(b);
+    });
+    var on = sort !== 'time' || filter !== 'all';
+    chart.classList.toggle('is-filtered', on);
+  }
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.vtool-btn'), item = e.target.closest('.vmenu button');
+    document.querySelectorAll('.vtool.open').forEach(function (t) {
+      if (!btn || t !== btn.parentNode) { t.classList.remove('open'); t.querySelector('.vtool-btn').setAttribute('aria-expanded', 'false'); }
+    });
+    if (btn) {
+      var open = btn.parentNode.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    } else if (item) {
+      var chart = item.closest('.vchart'), menu = item.parentNode;
+      menu.querySelectorAll('button').forEach(function (b) { b.classList.toggle('on', b === item); });
+      if (item.dataset.sort) chart.dataset.sort = item.dataset.sort;
+      if (item.dataset.filter) chart.dataset.filter = item.dataset.filter;
+      menu.parentNode.querySelector('.vtool-btn').classList.toggle('active', !item.classList.contains('on') || item !== menu.querySelector('button'));
+      apply(chart);
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') document.querySelectorAll('.vtool.open').forEach(function (t) { t.classList.remove('open'); });
+  });
+})();
+</script></section>
 <section><h2>노이즈 유형 분류 (스캔 시그니처 기반, 전 노드 합산)</h2>
 <p class="sub" style="margin-bottom:12px">알려진 취약점 스캐너 패턴과 매칭한 결과. "기타(미분류)"가 늘어나면 실제 애플리케이션 에러일 수 있어 우선 확인 권장.</p>
 <div class="bar-row"><span class="bar-label">일반 정찰성 스캔</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-value">513</span></div>

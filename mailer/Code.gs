@@ -15,8 +15,8 @@
  */
 var PAGES_BASE = 'https://silverain1004.github.io/relog/';
 var ALLOWED_DOMAINS = ['vntgcorp.com'];
-var LIMIT_PER_ADDRESS = 3;   // 6시간당 주소별
-var LIMIT_TOTAL = 100;       // 6시간당 전체
+var LIMIT_PER_ADDRESS = 10;  // 6시간당 주소별 (조합 6가지를 다 받아 봐도 여유 있게)
+var LIMIT_TOTAL = 300;       // 6시간당 전체 (하루 최대 약 1,200통 — Workspace 발송 한도 1,500통 안쪽)
 var WINDOW_SEC = 21600;      // CacheService 최대 보관 시간(6시간)
 var LIVE_NOTE = '실제 운영 리포트이며, IP·도메인·계정 등 식별 정보는 마스킹되어 있습니다.';
 var SOURCES = {
@@ -113,7 +113,7 @@ function sendReport_(to, source, kind) {
 
   MailApp.sendEmail({
     to: to,
-    subject: '[로그리포트 ' + (source === 'demo' ? 'Demo' : 'Real') + '] ' + report.title +
+    subject: '[로그리포트] ' + report.title +
       (periodLabel ? ' — ' + periodLabel : ''),
     htmlBody: html,
     body: '로그 리포트입니다. HTML 메일을 지원하는 메일 앱에서 확인해 주세요. ' + PAGES_BASE,
@@ -191,7 +191,7 @@ function testSendToMe() {
   sendReport_(Session.getActiveUser().getEmail(), 'demo', 'windows');
 }
 
-// 편집기에서 실행: 내 주소의 발송 횟수(6시간 3통)와 전체 카운트를 초기화 — 테스트용
+// 편집기에서 실행: 내 주소의 발송 횟수(6시간 10통)와 전체 카운트를 초기화 — 테스트용
 function resetMyLimit() {
   var email = Session.getActiveUser().getEmail().toLowerCase();
   var key = 'a:' + Utilities.base64EncodeWebSafe(Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, email));
