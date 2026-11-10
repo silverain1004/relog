@@ -96,7 +96,7 @@
         <div>
           <span class="pill pill-warn"><i>●</i> 주의</span>
           <p class="kr" style="margin:20px 0 0;font-size:clamp(20px,2vw,28px);line-height:1.45;font-weight:500;letter-spacing:-.03em">10/29(목) 14시대 주문 API 500 오류가 몰렸고, 같은 시각 DB 커넥션 풀 고갈 로그가 있습니다.</p>
-          <p class="kr" style="margin:18px 0 0;font-size:13px;color:var(--on-ink-faint)">데모 리포트의 AI 요약 첫 줄 · 전체 보기 →</p>
+          <p class="kr" style="margin:18px 0 0;font-size:13px;color:var(--on-ink-faint)">장애 시나리오 속 AI 요약 · 전체 보기 →</p>
         </div>
       </a>
       <div class="tile-col">
@@ -134,18 +134,18 @@
     </div>
     <div class="rows reveal">
       <details>
-        <summary><span class="no">01</span><span class="name">Nginx</span><span class="desc">상태코드·키워드 집계, 스캔 시그니처 노이즈 처리</span><span class="plus" aria-hidden="true">+</span></summary>
+        <summary><span class="no">01</span><span class="name">Web Server<span class="name-tag">Nginx</span></span><span class="desc">상태코드·키워드 집계, 스캔 시그니처 노이즈 처리</span><span class="plus" aria-hidden="true">+</span></summary>
         <div class="body"><p><code class="ic">404</code> <code class="ic">500</code> <code class="ic">401</code> 같은 상태코드와 <code class="ic">.env</code> <code class="ic">wp-login</code> <code class="ic">.git</code> 같은 경로 키워드를 일별·IP별·URL별로 집계합니다. 알려진 스캐너 요청은 따로 떼어 ‘노이즈’로 보여 줍니다.</p><code>NGINX  주요 564  /  노이즈 218
 10-29  ████████████  225</code></div>
       </details>
       <details>
-        <summary><span class="no">02</span><span class="name">Tomcat</span><span class="desc">Exception · 커넥션 고갈 · 인증 실패 탐지</span><span class="plus" aria-hidden="true">+</span></summary>
+        <summary><span class="no">02</span><span class="name">App Server<span class="name-tag">Tomcat</span></span><span class="desc">Exception · 커넥션 고갈 · 인증 실패 탐지</span><span class="plus" aria-hidden="true">+</span></summary>
         <div class="body"><p><code class="ic">catalina</code> 로그에서 <code class="ic">Exception</code> <code class="ic">timed out</code> <code class="ic">Connection is not available</code> 같은 장애 신호를 시간대별로 묶어 같은 시각 Nginx <code class="ic">500</code>과 함께 읽을 수 있게 하고, 인증·외부 연동 실패도 분류합니다. 토큰 재발급 과정의 정상적인 <code class="ic">401</code>은 노이즈로 걸러냅니다.</p><code>WARN HikariPool-1 - Connection is
 not available ... 30000ms   × 60
 refresh-token 401  → noise</code></div>
       </details>
       <details>
-        <summary><span class="no">03</span><span class="name">Load Balance</span><span class="desc">WEB1 / WEB2 트래픽 편차 자동 계산</span><span class="plus" aria-hidden="true">+</span></summary>
+        <summary><span class="no">03</span><span class="name">Load Balancer<span class="name-tag">L4</span></span><span class="desc">WEB1 / WEB2 트래픽 편차 자동 계산</span><span class="plus" aria-hidden="true">+</span></summary>
         <div class="body"><p>이중화된 WEB 두 대의 요청 수를 비교해 편차율을 계산합니다. 임계치 15%를 넘으면 리포트 맨 위에서 알립니다.</p><code>WEB1 230,719  vs  WEB2 222,002
 편차 1.9%  [정상]</code></div>
       </details>
@@ -155,7 +155,7 @@ refresh-token 401  → noise</code></div>
   <section class="dark" id="get">
     <div class="wrap split reveal" style="padding-top:120px;padding-bottom:120px;align-items:flex-end;gap:40px">
       <h2 class="h-band">See it<br>in your <span class="serif">inbox.</span></h2>
-      <a class="btn btn-paper" href="contact.html">데모 리포트 메일 받기 <span aria-hidden="true">→</span></a>
+      <a class="btn btn-paper" href="contact.html">샘플 메일 받아보기 <span aria-hidden="true">→</span></a>
     </div>
     <footer class="wrap site-foot">
       <span>AIVE Challenge 2026</span>

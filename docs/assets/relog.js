@@ -29,6 +29,12 @@
     return update;
   }
 
+  // ---- 드래그(텍스트 선택·이미지 끌기)와 우클릭 막기 — 입력 칸은 예외
+  var editable = function (el) { return el && el.closest && el.closest('input, textarea, select, [contenteditable]'); };
+  ['contextmenu', 'dragstart', 'selectstart'].forEach(function (type) {
+    document.addEventListener(type, function (e) { if (!editable(e.target)) e.preventDefault(); });
+  });
+
   // ---- mobile menu
   var menuBtn = $('.menu-btn'), nav = $('.nav');
   if (menuBtn && nav) {
@@ -97,7 +103,10 @@
     };
     navItems.forEach(function (el) {
       el.addEventListener('mouseenter', function () { moveInk(el); });
-      el.addEventListener('focus', function () { moveInk(el); });
+      el.addEventListener('focus', function () {  // 키보드 이동일 때만 (팝업 닫힐 때 ABOUT으로 돌아오는 포커스는 무시)
+        var kb = true; try { kb = el.matches(':focus-visible'); } catch (e) {}
+        if (kb) moveInk(el);
+      });
     });
     nav.addEventListener('mouseleave', function () { moveInk(navHome); });
     nav.addEventListener('focusout', function (e) { if (!nav.contains(e.relatedTarget)) moveInk(navHome); });
@@ -288,7 +297,10 @@
       }
     };
     var closeAbout = function () { if (about.close) about.close(); else { about.removeAttribute('open'); lockScroll(false); } };
-    about.addEventListener('close', function () { lockScroll(false); });
+    about.addEventListener('close', function () {
+      lockScroll(false);
+      if (typeof moveInk === 'function') moveInk(navHome);  // About은 팝업이라 막대는 지금 페이지 메뉴로 복귀
+    });
     $('.about-close', about).addEventListener('click', closeAbout);
     about.addEventListener('click', function (e) { if (e.target === about) closeAbout(); });  // 바깥 클릭
     var aboutPanel = $('.about-panel', about), aboutBar = $('.about-bar', about), aboutName = $('.about-name', about);
