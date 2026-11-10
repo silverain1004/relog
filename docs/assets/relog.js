@@ -4,6 +4,31 @@
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
 
+  // ---- 버튼그룹 공통: 선택 표시(알약)가 고른 항목으로 미끄러져 이동. update()를 선택이 바뀔 때마다 호출
+  function slideThumb(box, activeSel) {
+    if (!box) return function () {};
+    var t = document.createElement('span');
+    t.className = 'slide-thumb'; t.setAttribute('aria-hidden', 'true');
+    box.insertBefore(t, box.firstChild); box.classList.add('has-thumb');
+    var placed = false;
+    function update(instant) {
+      var on = box.querySelector(activeSel);
+      if (!on || !on.offsetWidth) { t.style.opacity = '0'; placed = false; return; }
+      var jump = instant || !placed;
+      if (jump) t.style.transition = 'none';
+      t.style.opacity = '';
+      t.style.width = on.offsetWidth + 'px';
+      t.style.height = on.offsetHeight + 'px';
+      t.style.transform = 'translate(' + on.offsetLeft + 'px,' + on.offsetTop + 'px)';
+      if (jump) { void t.offsetWidth; t.style.transition = ''; }
+      placed = true;
+    }
+    window.addEventListener('resize', function () { update(true); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { update(true); });
+    update(true);
+    return update;
+  }
+
   // ---- mobile menu
   var menuBtn = $('.menu-btn'), nav = $('.nav');
   if (menuBtn && nav) {
@@ -124,16 +149,20 @@
   // ---- ABOUT (개발자 정보 팝업)
   var ABOUT_HTML =
     '<div class="about-panel">' +
-      '<button type="button" class="about-close" aria-label="닫기">' +
-        '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>' +
-      '</button>' +
-      '<a class="about-source" href="https://github.com/silverain1004/relog" target="_blank" rel="noopener">GitHub Source ↗</a>' +
+      // 상단 바: 스크롤하면 로고가 나타나고 배경이 깔린 채 위에 고정 (is-stuck)
+      '<div class="about-bar">' +
+        '<span class="about-bar-logo" aria-hidden="true">Re<b>.</b>log</span>' +
+        '<a class="about-source" href="https://github.com/silverain1004/relog" target="_blank" rel="noopener">GitHub ↗</a>' +
+        '<button type="button" class="about-close" aria-label="닫기">' +
+          '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>' +
+        '</button>' +
+      '</div>' +
       '<span class="eyebrow">About the maker</span>' +
       '<h2 class="about-name" id="about-title" tabindex="-1" autofocus>Re<b>.</b>log</h2>' +
       '<p class="about-role">VNTG · ERP2팀 · <em>최은비 Ari</em></p>' +
       '<p class="about-intro">' +
-        '평소 보안에 관심이 많아 시큐어코딩이나 최신 보안 취약점 동향 등을 꾸준히 찾아보곤 했습니다. ' +
-        '그러다 2025년 5월 정보보호팀이 주관한 “모의해킹 및 인프라 취약점 조치계획 수립 및 이행”에서 로그 분석 항목을 접하게 됐습니다. ' +
+        '평소 보안에 관심이 많아 시큐어코딩이나 최신 동향 등을 꾸준히 찾아보곤 했습니다. ' +
+        '그러다 2025년 5월 정보보호팀이 주관한 <strong class="about-hl">“모의해킹 및 인프라 취약점 조치계획 수립 및 이행”</strong>에서 로그 분석 항목을 접하게 됐습니다. ' +
         '하지만 회사에는 정기적인 로그 분석에 관한 규칙이 따로 없었습니다. ' +
         '그 필요성을 느껴 직접 작성한 ' +
         '<a href="https://docs.google.com/presentation/d/1UCtE4vVZwYF_fjeg2eyjnhybnukHRt9X/edit?usp=sharing&amp;ouid=108365588716953195308&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">“내부 시스템 및 웹 서비스 보안을 위한 대응 전략 제안서” ↗</a>로 ' +
@@ -170,7 +199,7 @@
           '<li><time>2026.11</time>AIVE Challenge 2026 하반기 출품</li>' +
         '</ol></div>' +
         '<div><h3>Built with</h3><ul class="about-tags">' +
-          '<li>Python 3.6</li><li>Claude API</li><li>Nginx · Tomcat</li><li>Task Scheduler · cron</li><li>GitHub Pages</li><li>Apps Script</li><li>Claude Code</li>' +
+          '<li>Python 3.6</li><li>Paramiko</li><li>PyInstaller</li><li>pytest</li><li>Claude API</li><li>Claude Code</li><li>Nginx</li><li>Tomcat</li><li>Task Scheduler</li><li>cron</li><li>SMTP</li><li>Apps Script</li><li>GitHub Pages</li>' +
         '</ul></div>' +
       '</div>' +
       scheduleHTML() +
@@ -205,14 +234,33 @@
     var closeAbout = function () { if (about.close) about.close(); else about.removeAttribute('open'); };
     $('.about-close', about).addEventListener('click', closeAbout);
     about.addEventListener('click', function (e) { if (e.target === about) closeAbout(); });  // 바깥 클릭
+    var aboutPanel = $('.about-panel', about), aboutBar = $('.about-bar', about), aboutName = $('.about-name', about);
+    var syncBar = function () {  // 큰 Re.log 제목이 상단 바 뒤로 지나가면 바에 작은 로고 표시
+      aboutBar.classList.toggle('is-stuck', aboutPanel.scrollTop > aboutName.offsetTop + aboutName.offsetHeight - aboutBar.offsetHeight);
+    };
+    aboutPanel.addEventListener('scroll', syncBar, { passive: true });
     aboutBtns.forEach(function (b) {
       b.addEventListener('click', function () {
         if (nav) { nav.classList.remove('open'); if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false'); }
         if (about.showModal) about.showModal(); else about.setAttribute('open', '');
+        aboutPanel.scrollTop = 0; syncBar();
       });
     });
     if (location.hash === '#about') aboutBtns[0].click();  // ...html#about 링크로 바로 열기
   }
+
+  // ---- 도움말 툴팁: 마우스오버·포커스는 CSS, 터치 기기는 ? 버튼 클릭으로 열고 닫기
+  $$('[data-tip]').forEach(function (box) {
+    var btn = $('.info-btn', box);
+    if (!btn) return;
+    var setOpen = function (open) {
+      box.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', String(open));
+    };
+    btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!box.classList.contains('open')); });
+    document.addEventListener('click', function (e) { if (!box.contains(e.target)) setOpen(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  });
 
   // ---- reveal on scroll (+ chart bars grow)
   var reveals = $$('.reveal');
@@ -247,6 +295,9 @@
     NOTE.live = NOTE['live-monthly'];
     var state = { source: 'demo', kind: 'windows', m: {} };
     var segBtns = $$('#source-seg button');
+    var lastSource = null, lastFrameUrl = '';
+    var moveSegThumb = slideThumb($('#source-seg'), 'button[aria-pressed=true]');
+    var moveKindThumb = slideThumb($('#kind-tabs'), 'button[aria-selected=true]');
 
     function title(m) {
       var k = m.period_key || '';
@@ -272,6 +323,7 @@
         var cls = { '정상': 'pill-ok', '주의': 'pill-warn', '위험': 'pill-bad' };
         dd.innerHTML = v ? '<span class="pill ' + cls[v[1]] + '"><i>●</i> ' + v[1] + '</span>'
           : '<span class="pill pill-dim">AI 요약 없음</span>';
+        if (url === lastFrameUrl) fillStats(t);
       }).catch(function () { dd.textContent = '—'; });
     }
 
@@ -280,6 +332,16 @@
       var ks = kinds(state.source);
       if (ks.indexOf(state.kind) < 0) state.kind = ks[0];
       segBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.source === state.source)); });
+      moveSegThumb();
+      if (lastSource && lastSource !== state.source) {  // 소스를 바꿀 때만 제목·설명·메타를 새로 들어오게
+        ['#r-title', '#r-note', '.meta'].forEach(function (sel, i) {
+          var el = $(sel, $('#viewer')); if (!el) return;
+          el.classList.remove('swap-in'); void el.offsetWidth;
+          el.style.animationDelay = (i * 60) + 'ms';
+          el.classList.add('swap-in');
+        });
+      }
+      lastSource = state.source;
 
       // 탭(Windows/Linux)마다 원본 주차가 다를 수 있음 → 탭에 기간이 있으면 그 값을 우선
       var cur = m[state.kind] || {};
@@ -290,7 +352,7 @@
       $('#v-platform').textContent = PLATFORM[state.kind];
       $('#v-source').textContent = state.source === 'demo' ? '합성 로그' : '운영 서버 · 마스킹';
 
-      var tabs = $('#kind-tabs'); tabs.textContent = '';
+      var tabs = $('#kind-tabs'); $$('button', tabs).forEach(function (b) { tabs.removeChild(b); });
       ks.forEach(function (k) {
         var b = document.createElement('button');
         b.type = 'button'; b.setAttribute('role', 'tab'); b.textContent = KIND[k];
@@ -298,6 +360,7 @@
         b.addEventListener('click', function () { state.kind = k; render(); });
         tabs.appendChild(b);
       });
+      moveKindThumb();
 
       var sec = m[state.kind] || {};
       var path = sec.email || (sec.reports && sec.reports[0] && sec.reports[0].href);
@@ -307,20 +370,58 @@
       $('#frame-note').textContent = sec.email
         ? '실제로 발송되는 HTML 메일 본문입니다. 상세 리포트는 ZIP으로 첨부됩니다.'
         : '이 기간은 메일 원본 대신 대표 리포트를 보여 드립니다.';
+      lastFrameUrl = url;
       verdict(url);
       $('#get-this').href = 'contact.html?src=' + state.source;
 
-      var files = $('#files'); files.textContent = ''; var n = 0;
-      ['windows', 'linux'].forEach(function (k) {
-        ((m[k] && m[k].reports) || []).forEach(function (r) {
-          var a = document.createElement('a');
-          a.href = state.source + '/' + r.href; a.target = '_blank'; a.rel = 'noopener';
-          n += 1;
-          a.innerHTML = '<span class="no">' + (n < 10 ? '0' : '') + n + '</span><span class="t"></span><span class="k">' + KIND[k] + '</span><span aria-hidden="true">↗</span>';
-          a.querySelector('.t').textContent = r.title;
-          files.appendChild(a);
-        });
+      // 상세 리포트: 위 탭(Windows/Linux)에 맞춰 목록을 보여 주고, 줄마다 설명 + 메일 본문의 핵심 수치
+      var files = $('#files'); files.textContent = '';
+      var reps = (sec.reports || []);
+      reps.forEach(function (r, i) {
+        var key = fileKey(r.href);
+        var a = document.createElement('a');
+        a.href = state.source + '/' + r.href; a.target = '_blank'; a.rel = 'noopener';
+        a.innerHTML = '<span class="no">' + (i < 9 ? '0' : '') + (i + 1) + '</span>' +
+          '<span class="f-main"><span class="t"></span><span class="d"></span></span>' +
+          '<span class="f-stats" data-key="' + key + '"></span><span class="go" aria-hidden="true">↗</span>';
+        $('.t', a).textContent = r.title;
+        $('.d', a).textContent = FILE_DESC[key] || '';
+        files.appendChild(a);
       });
+      $('#files-note').textContent = KIND[state.kind] + ' ' + reps.length + '개 · 새 탭';
+    }
+
+    // 상세 리포트 줄 설명 / 키 / 메일 본문에서 수치 뽑기
+    var FILE_DESC = {
+      index: '플랫폼 전체 요약과 리포트 목차',
+      NGINX: '상태코드·경로 키워드를 일별·IP별·URL별로 집계',
+      TOMCAT_EOUT: 'Exception·커넥션 고갈을 시간대별로 묶음',
+      TOMCAT_INOUT: '인증·외부 연동 실패를 분류하고 정상 401은 노이즈로',
+      EBIZ: 'L4 편차와 WEB·WAS 노드별 트래픽·노이즈'
+    };
+    function fileKey(href) {
+      var b = href.split('/').pop();
+      if (/^index_/.test(b)) return 'index';
+      var mm = /^Report_(.+?)_\d{4}W?\d+\.html$/.exec(b);
+      return mm ? mm[1] : b;
+    }
+    function num(s) { return Number(String(s).replace(/,/g, '')) || 0; }
+    function fmt(n) { return n.toLocaleString('en-US'); }
+    function chip(v, label, cls) { return '<span class="f-stat' + (cls ? ' ' + cls : '') + '"><b>' + v + '</b>' + label + '</span>'; }
+    function fillStats(html) {
+      var t = html.replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ');
+      var st = {}, sumMain = 0, sumNoise = 0, hasWin = false;
+      ['NGINX', 'TOMCAT_EOUT', 'TOMCAT_INOUT'].forEach(function (k) {
+        var mm = new RegExp('-\\s*' + k + ':\\s*주요\\s*([\\d,]+)건\\s*/\\s*노이즈\\s*([\\d,]+)건').exec(t);
+        if (!mm) return;
+        hasWin = true; sumMain += num(mm[1]); sumNoise += num(mm[2]);
+        st[k] = chip(mm[1], '주요') + chip(mm[2], '노이즈', 'is-noise');
+      });
+      if (hasWin) st.index = chip(fmt(sumMain), '주요') + chip(fmt(sumNoise), '노이즈', 'is-noise');
+      var l4 = /L4:[^\n]*?편차\s*([\d.]+%)/.exec(t), re = /-\s*(?:WEB|WAS)\d:\s*트래픽\s*[\d,]+\s*\/\s*노이즈\s*([\d,]+)건/g, mm2, ln = 0, any = false;
+      while ((mm2 = re.exec(t))) { any = true; ln += num(mm2[1]); }
+      if (l4 || any) st.EBIZ = (l4 ? chip(l4[1], 'L4 편차') : '') + (any ? chip(fmt(ln), '노이즈', 'is-noise') : '');
+      $$('#files .f-stats').forEach(function (el) { el.innerHTML = st[el.dataset.key] || ''; });
     }
 
     segBtns.forEach(function (b) {
@@ -356,13 +457,19 @@
     var q = /[?&]src=([\w-]+)/.exec(location.search);
     var pre = q && form.querySelector('input[name=source][value="' + q[1] + '"]');
     if (pre) pre.checked = true;
+    // 라디오 그룹(리포트 · 플랫폼)에도 미끄러지는 알약
+    var optThumbs = $$('.opts', form).map(function (box) {
+      var up = slideThumb(box, 'label:has(input:checked)');
+      box.addEventListener('change', function () { up(); });
+      return up;
+    });
 
     // 공개되지 않은 출처는 고를 수 없게
     ['live', 'live-monthly'].forEach(function (src) {
       fetch(src + '/manifest.json', { method: 'HEAD', cache: 'no-cache' }).then(function (r) {
         if (r.ok) return;
         var radio = form.querySelector('input[name=source][value="' + src + '"]');
-        if (radio) { radio.disabled = true; if (radio.checked) form.querySelector('input[name=source][value=demo]').checked = true; }
+        if (radio) { radio.disabled = true; if (radio.checked) form.querySelector('input[name=source][value=demo]').checked = true; optThumbs.forEach(function (up) { up(); }); }
       }).catch(function () {});
     });
 

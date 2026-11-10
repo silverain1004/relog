@@ -75,27 +75,18 @@
   <div class="hero-body">
     <h1 class="display">We Read</h1>
     <div class="hero-row">
-      <p class="hero-sub">로그는 열지 마세요.</p>
       <p class="display">Your <span class="serif">Logs<b class="dot">.</b></span></p>
-      <a class="icon-link" href="contact.html" aria-label="메일로 받아보기">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-      </a>
     </div>
-  </div>
-
-  <div class="hero-foot">
-    <a class="cta" href="#get">GET THE REPORT</a>
-    <p>매주 월요일 아침, 서버 5대 · 로그 7종을 읽고 한 줄로 판정해 메일로 보냅니다.</p>
   </div>
 </section>
 
 <main id="main">
   <section class="wrap sec">
     <div class="split reveal" style="align-items:flex-start">
-      <h2 class="h-l" style="flex:1 1 640px">사람은 판단만 하고,<br>읽는 건 맡기세요.</h2>
+      <h2 class="h-l" style="flex:1 1 640px">복잡하던 로그 분석,<br>이제 읽기만 하세요.</h2>
       <div style="flex:0 1 400px;display:flex;flex-direction:column;gap:24px;padding-top:12px">
-        <p class="lede">원격 접속하고, 폴더 열고, grep 치고, 스캐너 404 수백 건 사이에서 진짜 장애를 찾던 55분. 이제 스크립트가 수집·분류하고, Claude가 “이번 주 괜찮은가”를 첫 줄에 씁니다.</p>
-        <div class="chips"><span class="chip">Windows 1 · Linux 4</span><span class="chip">Nginx · Tomcat</span><span class="chip">Claude API</span></div>
+        <p class="lede">수많은 로그 속에서 정말 중요한 걸 놓치고 있진 않았나요? 이제 수집과 분류, 위험 수준 판단까지 맡겨 보세요.</p>
+        <div class="chips"><span class="chip">Windows</span><span class="chip">Linux</span><span class="chip">Nginx</span><span class="chip">Tomcat</span></div>
       </div>
     </div>
 
@@ -103,7 +94,7 @@
       <a class="tile tile-ink" href="report.html">
         <span class="eyebrow" style="color:var(--on-ink-faint)">MONDAY 08:00 — WEEK 44</span>
         <div>
-          <span class="pill pill-warn">● 주의</span>
+          <span class="pill pill-warn"><i>●</i> 주의</span>
           <p class="kr" style="margin:20px 0 0;font-size:clamp(20px,2vw,28px);line-height:1.45;font-weight:500;letter-spacing:-.03em">10/29(목) 14시대 주문 API 500 오류가 몰렸고, 같은 시각 DB 커넥션 풀 고갈 로그가 있습니다.</p>
           <p class="kr" style="margin:18px 0 0;font-size:13px;color:var(--on-ink-faint)">데모 리포트의 AI 요약 첫 줄 · 전체 보기 →</p>
         </div>
@@ -111,7 +102,7 @@
       <div class="tile-col">
         <div class="tile tile-ember">
           <span class="kr" style="font-size:14px;font-weight:500">주간 점검 시간</span>
-          <p class="stat">55→3<small>min</small></p>
+          <p class="stat">55<small>min</small>→3<small>min</small></p>
         </div>
         <div class="tile tile-white">
           <span class="kr" style="font-size:14px;font-weight:500;color:var(--muted)">스캔 노이즈 자동 분리</span>
@@ -124,26 +115,37 @@
   <section class="wrap" style="padding-bottom:140px">
     <div class="sec-label reveal">
       <span class="eyebrow" style="color:var(--ink)">What we read</span>
-      <span style="font-size:13px;color:var(--muted-2)">7 logs / 5 servers</span>
+      <div class="sec-meta" data-tip>
+        <button type="button" class="info-btn" aria-label="로그·서버 집계 기준" aria-expanded="false" aria-controls="logs-tip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></button>
+        7 logs / 5 servers
+        <div class="tip" id="logs-tip" role="tooltip">
+          <p class="tip-h">서버 5대</p>
+          <ul>
+            <li><b>Windows</b> 1대</li>
+            <li><b>Linux</b> 4대 <span>WEB1 · WEB2 · WAS1 · WAS2</span></li>
+          </ul>
+          <p class="tip-h">로그 7종</p>
+          <ul>
+            <li><b>Windows</b> 3종 <span>Nginx · Tomcat E-OUT · Tomcat IN-OUT</span></li>
+            <li><b>Linux</b> 4종 <span>access · error · catalina · 앱 로그</span></li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="rows reveal">
       <details>
         <summary><span class="no">01</span><span class="name">Nginx</span><span class="desc">상태코드·키워드 집계, 스캔 시그니처 노이즈 처리</span><span class="plus" aria-hidden="true">+</span></summary>
-        <div class="body"><p>404·500·401 같은 상태코드와 .env·wp-login·.git 같은 경로 키워드를 일별·IP별·URL별로 집계합니다. 알려진 스캐너 요청은 따로 떼어 ‘노이즈’로 보여 줍니다.</p><code>NGINX  주요 564  /  노이즈 218
+        <div class="body"><p><code class="ic">404</code> <code class="ic">500</code> <code class="ic">401</code> 같은 상태코드와 <code class="ic">.env</code> <code class="ic">wp-login</code> <code class="ic">.git</code> 같은 경로 키워드를 일별·IP별·URL별로 집계합니다. 알려진 스캐너 요청은 따로 떼어 ‘노이즈’로 보여 줍니다.</p><code>NGINX  주요 564  /  노이즈 218
 10-29  ████████████  225</code></div>
       </details>
       <details>
-        <summary><span class="no">02</span><span class="name">Tomcat E-OUT</span><span class="desc">Exception · HikariPool 커넥션 고갈 탐지</span><span class="plus" aria-hidden="true">+</span></summary>
-        <div class="body"><p>catalina 로그에서 Exception, timed out, Connection is not available 같은 신호를 시간대별로 묶어, 같은 시각 Nginx 500과 함께 읽을 수 있게 합니다.</p><code>WARN HikariPool-1 - Connection is
-not available ... 30000ms   × 60</code></div>
-      </details>
-      <details>
-        <summary><span class="no">03</span><span class="name">Tomcat IN-OUT</span><span class="desc">unauthorized · fail 키워드 분류</span><span class="plus" aria-hidden="true">+</span></summary>
-        <div class="body"><p>인증 실패, 외부 연동 실패 키워드를 분류하고, 토큰 재발급 과정에서 생기는 정상적인 401은 노이즈로 걸러냅니다.</p><code>TOMCAT_INOUT  주요 19
+        <summary><span class="no">02</span><span class="name">Tomcat</span><span class="desc">Exception · 커넥션 고갈 · 인증 실패 탐지</span><span class="plus" aria-hidden="true">+</span></summary>
+        <div class="body"><p><code class="ic">catalina</code> 로그에서 <code class="ic">Exception</code> <code class="ic">timed out</code> <code class="ic">Connection is not available</code> 같은 장애 신호를 시간대별로 묶어 같은 시각 Nginx <code class="ic">500</code>과 함께 읽을 수 있게 하고, 인증·외부 연동 실패도 분류합니다. 토큰 재발급 과정의 정상적인 <code class="ic">401</code>은 노이즈로 걸러냅니다.</p><code>WARN HikariPool-1 - Connection is
+not available ... 30000ms   × 60
 refresh-token 401  → noise</code></div>
       </details>
       <details>
-        <summary><span class="no">04</span><span class="name">L4 Balance</span><span class="desc">WEB1 / WEB2 트래픽 편차 자동 계산</span><span class="plus" aria-hidden="true">+</span></summary>
+        <summary><span class="no">03</span><span class="name">Load Balance</span><span class="desc">WEB1 / WEB2 트래픽 편차 자동 계산</span><span class="plus" aria-hidden="true">+</span></summary>
         <div class="body"><p>이중화된 WEB 두 대의 요청 수를 비교해 편차율을 계산합니다. 임계치 15%를 넘으면 리포트 맨 위에서 알립니다.</p><code>WEB1 230,719  vs  WEB2 222,002
 편차 1.9%  [정상]</code></div>
       </details>
@@ -156,9 +158,8 @@ refresh-token 401  → noise</code></div>
       <a class="btn btn-paper" href="contact.html">데모 리포트 메일 받기 <span aria-hidden="true">→</span></a>
     </div>
     <footer class="wrap site-foot">
-      <span>AIVE Challenge 2026 · H2</span>
-      <span class="kr">데모 IP는 RFC 5737 문서용 대역, 실제 IP는 10.20.x.x · 198.18.x.x로 치환</span>
-      <span>© 2026 Re.log</span>
+      <span>AIVE Challenge 2026</span>
+      <span class="copy">© 2026 Lily.C. All rights reserved.</span>
     </footer>
   </section>
 </main>
