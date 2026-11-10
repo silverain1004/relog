@@ -13,6 +13,37 @@
     });
   }
 
+  // ---- 메뉴 인터랙션: 핑크 바가 마우스를 따라가고, 벗어나면 현재 페이지로 돌아감
+  if (nav) {
+    var ink = document.createElement('span');
+    ink.className = 'nav-ink';
+    ink.setAttribute('aria-hidden', 'true');
+    nav.appendChild(ink);
+    nav.classList.add('has-ink');
+    var navItems = $$('a, .nav-btn', nav);
+    var navHome = $('a[aria-current=page]', nav);
+    var moveInk = function (el) {
+      if (!el) { ink.classList.remove('on'); return; }
+      ink.style.width = el.offsetWidth + 'px';
+      ink.style.transform = 'translateX(' + el.offsetLeft + 'px)';
+      ink.classList.add('on');
+    };
+    navItems.forEach(function (el) {
+      el.addEventListener('mouseenter', function () { moveInk(el); });
+      el.addEventListener('focus', function () { moveInk(el); });
+    });
+    nav.addEventListener('mouseleave', function () { moveInk(navHome); });
+    nav.addEventListener('focusout', function (e) { if (!nav.contains(e.relatedTarget)) moveInk(navHome); });
+    var placeInk = function () {
+      ink.style.transition = 'none';
+      moveInk(navHome);
+      void ink.offsetWidth;
+      ink.style.transition = '';
+    };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeInk); else placeInk();
+    window.addEventListener('resize', placeInk);
+  }
+
   // ---- ABOUT: 수행 일정 (매월 1일 월간 · 매주 월요일 주간, 오늘 날짜 기준으로 완료/예정 자동 계산)
   // 회차별 Confluence 분석 보고서 공개 링크 (키: 'w주차' = 주간, 'm월' = 월간 / 분석 대상 기간 기준)
   var CONF = 'https://vntg.atlassian.net/wiki/external/';
@@ -85,6 +116,7 @@
         '<h3>Still running</h3>' +
         '<p class="sched-lead">매월 1일, 매주 월요일. 정기적으로 주간·월간 로그 분석 리포트가 자동으로 생성됩니다.</p>' +
         '<p class="sched-legend"><span aria-hidden="true">↗</span>클릭 시 분석 보고서를 볼 수 있습니다</p>' +
+        '<p class="sched-note">Confluence 분석 보고서 자동 작성(2026.08) 이전 회차는 메일 리포트만 발송되어, 연결된 보고서가 없습니다.</p>' +
         '<div class="sched-grid">' + cols + '</div>' +
       '</section>';
   }
@@ -134,13 +166,33 @@
           '<li><time>2026.06</time>Windows 분석기 완성 · 메일 자동 발송</li>' +
           '<li><time>2026.07</time>Linux 분석기 완성 · 통합 리포트 운영</li>' +
           '<li><time>2026.08</time>Confluence 분석 보고서 자동 작성</li>' +
+          '<li><time>2026.10</time>정보보호팀 보안 검토 요청 · 침해 없음 확인</li>' +
           '<li><time>2026.11</time>AIVE Challenge 2026 하반기 출품</li>' +
         '</ol></div>' +
         '<div><h3>Built with</h3><ul class="about-tags">' +
-          '<li>Python 3.6</li><li>Claude API</li><li>Nginx · Tomcat</li><li>cron · 작업 스케줄러</li><li>GitHub Pages</li><li>Apps Script</li><li>Claude Code</li>' +
+          '<li>Python 3.6</li><li>Claude API</li><li>Nginx · Tomcat</li><li>Task Scheduler · cron</li><li>GitHub Pages</li><li>Apps Script</li><li>Claude Code</li>' +
         '</ul></div>' +
       '</div>' +
       scheduleHTML() +
+      // 보안 검토 요청 (2026.10, 메일 4통 요약 — 담당자 이름·고객사 도메인·첨부 링크는 넣지 않음)
+      '<section class="about-sec" aria-label="보안 검토 요청">' +
+        '<h3>Beyond the report</h3>' +
+        '<p class="sched-lead">분석에서 끝내지 않았습니다. 리포트만으로 판단하기 어려운 징후는 ' +
+          '<em>정보보호팀에 직접 보안 검토를 요청</em>해, 실제 침해 여부를 끝까지 확인했습니다.</p>' +
+        '<ol class="sec-thread">' +
+          '<li class="is-me"><time>10.01</time><div><b>보안 검토 요청 <span>ERP2팀 → 정보보호팀</span></b>' +
+            '<p>9월 정기 분석에서 이상 징후 3건을 정리해 IoC와 함께 전달했습니다.</p>' +
+            '<ul><li>1분에 최대 448건, 337종 경로를 훑은 대량 스캔 (9/1~9/2)</li>' +
+            '<li><code>/.claude/</code> · <code>/.cursor/mcp.json</code> 등 AI 도구 설정 파일 탐색 (9/28)</li>' +
+            '<li>VPN 관리자 경로를 노린 상시 탐색 (주 50~70건)</li></ul></div></li>' +
+          '<li><time>10.12</time><div><b>1차 회신 <span>정보보호팀</span></b>' +
+            '<p>무작위 자동화 스캔으로 1차 판단. error.log는 실패 요청 위주라, 성공 요청 확인을 위해 access.log와 실제 출발지 IP를 추가로 요청받았습니다.</p></div></li>' +
+          '<li class="is-me"><time>10.14</time><div><b>2차 자료 전달 <span>ERP2팀 → 정보보호팀</span></b>' +
+            '<p>운영 서버 반출 권한을 협의해 access·error 로그 원본, VPN 스캔 129건 추출본, 실제 출발지 IP를 전달했습니다. 서버 간 로그 보존 기간 차이도 함께 공유했습니다.</p></div></li>' +
+          '<li class="is-end"><time>10.15</time><div><b>최종 회신 · 종결 <span>정보보호팀</span></b>' +
+            '<p>전 건 404, 접근에 성공한 요청 없음. <em>침해 없음으로 확인되어 종결</em>됐고, 프론트엔드 소스맵(.js.map) 외부 노출 점검이라는 추가 권고까지 받았습니다.</p></div></li>' +
+        '</ol>' +
+      '</section>' +
     '</div>';
 
   var aboutBtns = $$('[data-about]');
@@ -189,10 +241,10 @@
     var PLATFORM = { windows: 'Windows · E-OUT / IN-OUT', linux: 'Linux · WEB1 · WEB2 · WAS1 · WAS2' };
     var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var NOTE = {
-      demo: '합성 로그로 만든 리포트입니다. 시나리오는 10/29(목) 14시, DB 커넥션 풀 고갈로 주문 API 500 오류가 몰린 한 주. 스캐너 소음 속에서 이걸 찾아내는지 보세요.',
-      live: '실제 운영 서버에서 나온 리포트입니다. 건수·추이·분류는 그대로 두고 IP·도메인·계정 같은 식별 정보만 마스킹했습니다. 공개본이라 상세 로그 표는 일부만 보여 드립니다.'
+      demo: '합성 로그로 만든 리포트입니다. 시나리오는 10/29(목) 14시, DB 커넥션 풀 고갈로 주문 API 500 오류가 몰린 한 주. 스캐너 노이즈 속에서 이걸 찾아내는지 보세요.',
+      'live-monthly': '실제 운영 서버에서 나온 리포트입니다. 건수·추이·분류는 그대로 두고 IP·도메인·계정 같은 식별 정보만 마스킹했습니다. 공개본이라 상세 로그 표는 일부만 보여 드립니다.'
     };
-    NOTE['live-monthly'] = NOTE.live;
+    NOTE.live = NOTE['live-monthly'];
     var state = { source: 'demo', kind: 'windows', m: {} };
     var segBtns = $$('#source-seg button');
 
@@ -229,9 +281,12 @@
       if (ks.indexOf(state.kind) < 0) state.kind = ks[0];
       segBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.source === state.source)); });
 
-      $('#r-title').innerHTML = title(m);
+      // 탭(Windows/Linux)마다 원본 주차가 다를 수 있음 → 탭에 기간이 있으면 그 값을 우선
+      var cur = m[state.kind] || {};
+      var pm = { period_key: cur.period_key || m.period_key, period_label: cur.period_label || m.period_label };
+      $('#r-title').innerHTML = title(pm);
       $('#r-note').textContent = NOTE[state.source];
-      $('#v-period').textContent = period(m);
+      $('#v-period').textContent = period(pm);
       $('#v-platform').textContent = PLATFORM[state.kind];
       $('#v-source').textContent = state.source === 'demo' ? '합성 로그' : '운영 서버 · 마스킹';
 
@@ -248,7 +303,7 @@
       var path = sec.email || (sec.reports && sec.reports[0] && sec.reports[0].href);
       var url = state.source + '/' + path;
       $('#mail-frame').src = url;
-      $('#mail-subject').textContent = (sec.email ? '' : '[리포트] ') + (sec.title || '') + ' — ' + (m.period_label || '');
+      $('#mail-subject').textContent = (sec.email ? '' : '[리포트] ') + (sec.title || '') + ' — ' + (pm.period_label || '');
       $('#frame-note').textContent = sec.email
         ? '실제로 발송되는 HTML 메일 본문입니다. 상세 리포트는 ZIP으로 첨부됩니다.'
         : '이 기간은 메일 원본 대신 대표 리포트를 보여 드립니다.';
@@ -292,7 +347,7 @@
   if (form) initMail();
 
   function initMail() {
-    // Google Apps Script 웹 앱 (apps-script/README.md)
+    // Google Apps Script 웹 앱 'Relog' (mailer/README.md)
     var MAIL_ENDPOINT = 'https://script.google.com/a/macros/vntgcorp.com/s/AKfycbwRoXw2rW_LGw6AywT-fGd53JEk1L9oWL-6GERTML2LgHxwAKcEMtpgAyD1Prryr3UQ/exec';
     var ALLOWED_DOMAIN = 'vntgcorp.com';
     var msg = $('#mail-msg'), send = $('#mail-send'), mode = 'inline';
@@ -380,12 +435,23 @@
       raf = requestAnimationFrame(drift);
     };
     var startDrift = function () { if (!still && !raf) raf = requestAnimationFrame(drift); };
+    // 마우스가 멈추면 빛이 천천히 꺼짐 — 움직일 때만 읽고, 멈추면 쉰다
+    var restTimer = 0;
+    var wake = function () {
+      lit.classList.remove('is-resting');
+      clearTimeout(restTimer);
+      restTimer = setTimeout(function () { lit.classList.add('is-resting'); }, 120);
+    };
     stage.addEventListener('pointermove', function (e) {
       if (e.pointerType !== 'mouse') return;
       hovering = true;
       var r = stage.getBoundingClientRect(); setSpot(e.clientX - r.left, e.clientY - r.top);
+      wake();
     });
-    stage.addEventListener('pointerleave', function () { hovering = false; t0 = performance.now(); startDrift(); });
+    stage.addEventListener('pointerleave', function () {
+      hovering = false; clearTimeout(restTimer); lit.classList.remove('is-resting');
+      t0 = performance.now(); startDrift();
+    });
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) startDrift(); }).observe(stage);
     }

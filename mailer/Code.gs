@@ -95,12 +95,16 @@ function sendReport_(to, source, kind) {
     throw err;
   }
 
-  var html = fetch_(base + bodyPath).getContentText('UTF-8');  // 메일 원본이 없으면 대표 리포트를 본문으로
+  var periodLabel = report.period_label || manifest.period_label;  // Windows·Linux 주차가 다를 수 있어 탭 값 우선
   var banner = '<div style="background:#fff7e6;border-bottom:1px solid #f0d9a8;padding:10px 16px;' +
     'font-size:13px;color:#7a5200;font-family:Segoe UI,Arial,sans-serif">' +
     'AIVE 출품작 「Re.log」에서 보낸 메일입니다. ' + SOURCES[source] + ' ' +
     '<a href="' + PAGES_BASE + '" style="color:#7a5200">데모 페이지</a></div>';
-  html = html.replace(/(<body[^>]*>)/i, '$1' + banner);
+  // 메일 원본이 있으면 그대로, 없으면(상세 리포트만 공개된 기간) 메일에서 깨지지 않는 표지를 본문으로.
+  // 상세 리포트 HTML은 브라우저용 CSS라 Gmail에 그대로 넣으면 레이아웃이 깨진다.
+  var html = report.email
+    ? fetch_(base + report.email).getContentText('UTF-8').replace(/(<body[^>]*>)/i, '$1' + banner)
+    : cover_(report, base, source, periodLabel, banner);
 
   var files = (report.reports || []).map(function (r) {
     return fetch_(base + r.href).getBlob().setName(r.href.split('/').pop());
@@ -109,13 +113,39 @@ function sendReport_(to, source, kind) {
 
   MailApp.sendEmail({
     to: to,
-    subject: '[로그리포트 ' + (source === 'demo' ? '데모' : '실제') + '] ' + report.title +
-      (manifest.period_label ? ' — ' + manifest.period_label : ''),
+    subject: '[로그리포트 ' + (source === 'demo' ? 'Demo' : 'Real') + '] ' + report.title +
+      (periodLabel ? ' — ' + periodLabel : ''),
     htmlBody: html,
     body: '로그 리포트입니다. HTML 메일을 지원하는 메일 앱에서 확인해 주세요. ' + PAGES_BASE,
     attachments: attachments,
     name: 'Re.log'
   });
+}
+
+// 메일 원본이 없는 리포트용 표지: 인라인 스타일·표 레이아웃만 써서 Gmail·Outlook에서도 그대로 보이게
+function cover_(report, base, source, periodLabel, banner) {
+  var esc = function (s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
+  var font = "font-family:'Malgun Gothic','Apple SD Gothic Neo',Segoe UI,Arial,sans-serif;";
+  var rows = (report.reports || []).map(function (r) {
+    return '<tr><td style="padding:12px 0;border-bottom:1px solid #e5e7eb;' + font + 'font-size:14px;color:#111827">' + esc(r.title) + '</td>' +
+      '<td align="right" style="padding:12px 0;border-bottom:1px solid #e5e7eb;' + font + 'font-size:13px">' +
+      '<a href="' + base + r.href + '" style="color:#D81B50;text-decoration:none">브라우저에서 보기 →</a></td></tr>';
+  }).join('');
+  return '<!doctype html><html><head><meta charset="utf-8"></head><body style="margin:0;background:#f4f3ef">' + banner +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f3ef"><tr><td align="center" style="padding:28px 16px">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;border-radius:12px">' +
+    '<tr><td style="padding:28px 28px 8px;' + font + '">' +
+      '<div style="font-size:12px;letter-spacing:.08em;color:#6b7280">RE.LOG · ' + (source === 'demo' ? 'DEMO' : 'REAL') + '</div>' +
+      '<div style="margin-top:8px;font-size:20px;font-weight:700;color:#111827">' + esc(report.title) + '</div>' +
+      '<div style="margin-top:6px;font-size:14px;color:#4b5563">' + esc(periodLabel) + '</div>' +
+    '</td></tr>' +
+    '<tr><td style="padding:16px 28px 4px;' + font + 'font-size:14px;line-height:1.7;color:#374151">' +
+      '이 기간은 실제로 받은 메일 본문 대신 상세 리포트를 보내 드립니다. 아래 목록을 브라우저에서 열거나, 첨부한 ZIP(' + esc(report.zip || 'reports.zip') + ')을 내려받아 확인해 주세요.' +
+    '</td></tr>' +
+    '<tr><td style="padding:8px 28px 12px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0">' + rows + '</table></td></tr>' +
+    '<tr><td style="padding:12px 28px 28px;' + font + 'font-size:13px">' +
+      '<a href="' + PAGES_BASE + 'report.html?src=' + source + '" style="color:#D81B50;text-decoration:none">Re.log 리포트 뷰어에서 보기 →</a>' +
+    '</td></tr></table></td></tr></table></body></html>';
 }
 
 function fetch_(url) {
@@ -159,4 +189,12 @@ function reply_(ok, message) {
 /** 배포 전 편집기에서 한 번 실행: 권한 승인 + 본인에게 테스트 발송 */
 function testSendToMe() {
   sendReport_(Session.getActiveUser().getEmail(), 'demo', 'windows');
+}
+
+// 편집기에서 실행: 내 주소의 발송 횟수(6시간 3통)와 전체 카운트를 초기화 — 테스트용
+function resetMyLimit() {
+  var email = Session.getActiveUser().getEmail().toLowerCase();
+  var key = 'a:' + Utilities.base64EncodeWebSafe(Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, email));
+  CacheService.getScriptCache().removeAll([key, 'total']);
+  console.log('초기화 완료: ' + email);
 }

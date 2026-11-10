@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E-OUT, IN-OUT 시스템 통합 로그 리포트 — 2026년 10월 (2026-10-01 ~ 2026-10-31)</title></head>
+<body style="margin:0;padding:0;background:#f3f4f6;font-family:'Segoe UI',Arial,sans-serif;color:#1f2937">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3f4f6">
+<tr><td align="center" style="padding:24px 12px">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%">
+<tr><td style="padding-bottom:16px">
+<div style="font-size:20px;font-weight:700;color:#1f2937">E-OUT, IN-OUT 시스템 통합 로그 리포트</div>
+</td></tr>
+<tr><td style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;padding:16px;font-size:13px;color:#6b7280;line-height:1.7">
+플랫폼: Windows<br>분석 기간: 2026년 10월 (2026-10-01 ~ 2026-10-31)<br>생성 시각: 2026-11-01 08:02:38<br><br>- NGINX: 주요 48,883건 / 노이즈 3,793건<br>- TOMCAT_EOUT: 주요 0건 / 노이즈 0건<br>- TOMCAT_INOUT: 주요 0건 / 노이즈 0건
+</td></tr>
+<tr><td style="height:16px;font-size:0;line-height:0">&nbsp;</td></tr>
+<tr><td><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#f3f4f6;border-left:4px solid #2563eb;border-radius:4px;margin-bottom:16px">
+<tr><td style="padding:14px 16px">
+<div style="font-size:13px;font-weight:600;color:#1f2937;margin-bottom:6px">조치 가이드</div>
+<div style="padding:3px 0;color:#1f2937;font-size:13px;line-height:1.6">- NGINX: 주요 탐지 48,883건 — 첨부 ZIP 또는 로그 미리보기에서 내용 확인 필요</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:0px"><tr><td style="font-size:16px;font-weight:700;color:#1f2937;padding-bottom:8px">NGINX</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">주요 탐지</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">48,883</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">&nbsp;</div>
+</td></tr></table></td><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">노이즈</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">3,793</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">refresh-token 401</div>
+</td></tr></table></td><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">분석 일수</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">31</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">&nbsp;</div>
+</td></tr></table></td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">키워드 / 상태코드 분류</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">404</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="100%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="0%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">22,268</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">/login</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="90%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="10%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">20,052</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">.env</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="43%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="57%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">9,680</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">401</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="5%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="95%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,163</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">.git</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="5%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="95%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,028</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">/admin</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="3%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="97%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">738</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">wp-</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="3%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="97%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">563</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">phpmyadmin</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">480</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">.bak</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">429</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">500</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">230</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">ERROR</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">114</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">cmd</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">111</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">403</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">90</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">passwd</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">40</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">shell</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">35</td>
+</tr></table>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">일별 추이</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-01</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="49%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="51%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,397</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-02</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="68%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="32%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,937</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-03</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="54%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="46%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,524</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-04</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="12%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="88%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">329</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-05</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="12%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="88%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">329</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-06</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="56%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="44%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,589</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-07</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="89%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="11%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">2,530</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-08</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="100%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="0%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">2,835</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-09</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="12%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="88%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">344</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-10</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="40%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="60%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,145</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-11</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="27%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="73%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">772</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-12</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="40%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="60%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,131</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-13</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="86%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="14%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">2,428</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-14</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="65%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="35%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,839</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-15</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="62%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="38%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,758</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-16</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="84%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="16%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">2,368</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-17</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="8%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="92%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">229</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-18</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="20%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="80%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">573</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-19</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="93%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="7%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">2,642</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-20</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="96%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="4%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">2,710</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-21</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="71%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="29%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">2,023</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-22</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="83%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="17%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">2,358</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-23</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="55%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="45%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,571</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-24</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="39%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="61%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,097</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-25</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="79%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="21%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">2,242</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-26</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="43%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="57%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,231</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-27</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="72%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="28%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">2,030</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-28</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="61%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="39%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,720</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-29</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="52%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="48%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,466</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-30</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="67%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="33%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,908</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-31</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="29%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="71%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">828</td>
+</tr></table>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">Top IP</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+<tr><th style="text-align:left;padding:5px 8px;font-size:11px;color:#6b7280;border-bottom:1px solid #e5e7eb">IP</th>
+<th style="text-align:right;padding:5px 8px;font-size:11px;color:#6b7280;border-bottom:1px solid #e5e7eb">건수</th></tr>
+<tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.2</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">9,588</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.3</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">3,309</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.4</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">2,523</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.5</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">1,250</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.6</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">1,101</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.7</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">1,092</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.8</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">849</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.9</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">724</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.10</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">714</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.11</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">678</td></tr></table>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">Top URL</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+<tr><th style="text-align:left;padding:5px 8px;font-size:11px;color:#6b7280;border-bottom:1px solid #e5e7eb">URL</th>
+<th style="text-align:right;padding:5px 8px;font-size:11px;color:#6b7280;border-bottom:1px solid #e5e7eb">건수</th></tr>
+<tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/auth/login HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">2,850</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/server/api/users/profile HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">1,711</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/_next/image?url=***&amp;w=256&amp;q=75 HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">1,190</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/api/proxy/login HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">1,136</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/_next/image?url=***&amp;w=96&amp;q=75 HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">1,082</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/server/api/main/menu/PM00000003 HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">897</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/api/proxy/users/refresh-token HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">841</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/server/api/main/password/policy HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">825</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/server/api/main/projects HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">825</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/_next/image?url=***&amp;w=384&amp;q=75 HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">724</td></tr></table>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">상세 로그 미리보기 (주요 탐지)</div>
+<div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">198.18.0.2 - - [01/Oct/2026:00:10:09 +0900] &quot;GET /auth/login HTTP/2.0&quot; 200 1402 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.18.0.12 Safari/537.36&quot; &quot;-&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">198.18.0.2 - - [01/Oct/2026:00:10:10 +0900] &quot;GET /auth/login HTTP/2.0&quot; 200 1402 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.18.0.12 Safari/537.36&quot; &quot;-&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">198.18.0.2 - - [01/Oct/2026:00:10:11 +0900] &quot;GET /_next/image?url=***&amp;w=96&amp;q=75 HTTP/2.0&quot; 304 0 &quot;https://inout.customer-1.example/auth/login&quot; &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.18.0.12 Safari/537.36&quot; &quot;-&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">198.18.0.2 - - [01/Oct/2026:00:10:11 +0900] &quot;GET /_next/image?url=***&amp;w=256&amp;q=75 HTTP/2.0&quot; 304 0 &quot;https://inout.customer-1.example/auth/login&quot; &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.18.0.12 Safari/537.36&quot; &quot;-&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">198.18.0.2 - - [01/Oct/2026:00:10:17 +0900] &quot;POST /api/proxy/login HTTP/2.0&quot; 200 292 &quot;https://inout.customer-1.example/auth/login&quot; &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.18.0.12 Safari/537.36&quot; &quot;-&quot;</div><div style="font-size:11px;color:#6b7280;padding-top:6px">외 48,878건 — 첨부 ZIP에서 전체 확인</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px"><tr><td style="font-size:16px;font-weight:700;color:#1f2937;padding-bottom:8px">TOMCAT_EOUT</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">주요 탐지</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">0</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">&nbsp;</div>
+</td></tr></table></td><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">노이즈</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">0</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">refresh-token 401</div>
+</td></tr></table></td><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">분석 일수</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">31</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">&nbsp;</div>
+</td></tr></table></td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">키워드 / 상태코드 분류</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">일별 추이</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">Top IP</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">Top URL</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">상세 로그 미리보기 (주요 탐지)</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">해당 항목 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px"><tr><td style="font-size:16px;font-weight:700;color:#1f2937;padding-bottom:8px">TOMCAT_INOUT</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">주요 탐지</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">0</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">&nbsp;</div>
+</td></tr></table></td><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">노이즈</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">0</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">refresh-token 401</div>
+</td></tr></table></td><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">분석 일수</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">31</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">&nbsp;</div>
+</td></tr></table></td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">키워드 / 상태코드 분류</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">일별 추이</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">Top IP</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">Top URL</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">상세 로그 미리보기 (주요 탐지)</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">해당 항목 없음</div>
+</td></tr></table></td></tr>
+<tr><td style="padding-top:8px;font-size:12px;color:#6b7280">
+상세 로그 및 인터랙티브 대시보드는 첨부된 ZIP 파일을 열어 확인하실 수 있습니다.
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body></html>

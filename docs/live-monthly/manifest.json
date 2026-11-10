@@ -4,12 +4,14 @@
   "period_label": "2026년 10월 (2026-10-01 ~ 2026-10-31)",
   "period_key": "202610",
   "ai_source": {
-    "windows": "missing",
-    "linux": "missing"
+    "windows": "none",
+    "linux": "none"
   },
   "windows": {
     "title": "E-OUT, IN-OUT 시스템 통합 로그 리포트 (Windows)",
-    "email": null,
+    "period_label": "2026년 10월 (2026-10-01 ~ 2026-10-31)",
+    "period_key": "202610",
+    "email": "email/windows.html",
     "zip": "Report_WIN_202610.zip",
     "reports": [
       {
@@ -32,7 +34,9 @@
   },
   "linux": {
     "title": "E-BIZ 시스템 통합 로그 리포트 (Linux)",
-    "email": null,
+    "period_label": "2026년 10월 (2026-10-01 ~ 2026-10-31)",
+    "period_key": "202610",
+    "email": "email/linux.html",
     "zip": "Report_EBIZ_202610.zip",
     "reports": [
       {

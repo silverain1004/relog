@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Impact — Re.log</title>
-<meta name="description" content="주간 점검 55분에서 3분으로. 연간 약 70시간 절감.">
+<meta name="description" content="주간 점검 45분에서 3분으로, 리포트 작성은 자동. 연간 약 68시간 절감.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Re.log">
 <meta property="og:title" content="Impact — Re.log">
-<meta property="og:description" content="주간 점검 55분에서 3분으로. 연간 약 70시간 절감.">
+<meta property="og:description" content="주간 점검 45분에서 3분으로, 리포트 작성은 자동. 연간 약 68시간 절감.">
 <meta property="og:url" content="https://silverain1004.github.io/relog/impact.html">
 <meta property="og:image" content="https://silverain1004.github.io/relog/assets/og.png">
 <meta property="og:image:width" content="1200">
@@ -56,18 +56,18 @@
     <div style="margin-top:40px;border-top:1px solid var(--ink)">
       <div class="big-row reveal">
         <span class="lbl">주간 점검</span>
-        <p class="big" aria-label="55분에서 3분으로"><s>55<small>min</small></s><span class="to" aria-hidden="true">→</span>3<small>min</small></p>
+        <p class="big" aria-label="45분에서 3분으로"><s>45<small>min</small></s><span class="to" aria-hidden="true">→</span>3<small>min</small></p>
       </div>
       <div class="big-row reveal">
-        <span class="lbl">월간 리포트 작성</span>
-        <p class="big" aria-label="2시간에서 0분으로"><s>2h</s><span class="to" aria-hidden="true">→</span><span class="zero">ZERO</span></p>
+        <span class="lbl">리포트 작성(월)</span>
+        <p class="big" aria-label="한 달 2시간 40분에서 0분으로"><s>2h 40m</s><span class="to" aria-hidden="true">→</span><span class="zero">ZERO</span></p>
       </div>
       <div class="big-row reveal">
-        <div style="padding-bottom:20px"><span class="lbl" style="padding:0">연간 절감</span><p style="margin:8px 0 0;font-size:13px;color:var(--muted-2)">52 min × 52 wk + 2 h × 12 mo</p></div>
-        <p class="big ember">≈70<small>h/yr</small></p>
+        <div style="padding-bottom:20px"><span class="lbl" style="padding:0">연간 절감</span><p style="margin:8px 0 0;font-size:13px;color:var(--muted-2)">42 min × 52 wk + 2 h 40 m × 12 mo</p></div>
+        <p class="big ember">≈68<small>h/yr</small></p>
       </div>
     </div>
-    <p class="kr" style="margin:24px 0 0;max-width:760px;font-size:13px;line-height:1.8;color:var(--muted-2)">Before 시간은 단계별 추정치입니다. Windows 원격 접속·로그 3종 확인 15분 + Linux 4대 SSH·grep 20분 + 스캔 소음 걸러내고 장애 판단 10분 + L4 편차 계산·공유 메일 작성 10분.</p>
+    <p class="kr" style="margin:24px 0 0;font-size:13px;line-height:1.8;color:var(--muted-2)">주간 점검: Windows 원격 접속·로그 3종 확인(15분) + Linux 4대 SSH·grep(20분) + 로그 분석·장애 판단(10분)<br>리포트 작성(월): 주간 리포트·L4 편차 계산(10분 × 4회) + 월간 리포트(2시간)</p>
   </section>
 
   <section class="wrap" style="padding-bottom:140px">
@@ -87,7 +87,7 @@
         <h3>월요일 아침,<br>메일 한 통.</h3>
         <ol>
           <li><span>01</span>직전 주 로그 자동 수집·집계</li>
-          <li><span>02</span>FortiOS·WordPress 스캔은 자동 소음 처리</li>
+          <li><span>02</span>FortiOS·WordPress 스캔은 자동 노이즈 처리</li>
           <li><span>03</span>맨 위에 Claude 판정 — 정상 / 주의 / 위험</li>
           <li><span>04</span>주의·위험일 때만 상세 리포트 열기</li>
         </ol>

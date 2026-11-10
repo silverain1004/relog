@@ -222,7 +222,7 @@ FALLBACK_AI = {
         "종합: 주의 — 10/29(목) 14시대 주문 API 500 오류가 몰렸고, 같은 시각 DB 커넥션 풀 고갈 로그가 있습니다.",
         "TOMCAT_EOUT: 10/29 14~15시 HikariPool 'Connection is not available' 60건 — 커넥션 풀 크기·슬로우 쿼리 점검 권장",
         "NGINX: POST /api/orders/submit 500 180건과 upstream timed out 40건이 같은 시간대에 발생, 위 DB 이슈의 영향으로 보임",
-        "wp-login·.env·.git 등 스캔성 404와 refresh-token 401은 인터넷 배경 소음으로 조치 불필요",
+        "wp-login·.env·.git 등 스캔성 404와 refresh-token 401은 인터넷 배경 노이즈로 조치 불필요",
     ],
     "linux": [
         "종합: 정상 — L4 편차는 임계치(15%) 이내이며, 노이즈 대부분은 알려진 스캔 시그니처입니다.",

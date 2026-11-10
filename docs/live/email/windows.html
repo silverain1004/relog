@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E-OUT, IN-OUT 시스템 통합 로그 리포트 — 2026년 44주 (2026-10-26 ~ 2026-11-01)</title></head>
+<body style="margin:0;padding:0;background:#f3f4f6;font-family:'Segoe UI',Arial,sans-serif;color:#1f2937">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3f4f6">
+<tr><td align="center" style="padding:24px 12px">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%">
+<tr><td style="padding-bottom:16px">
+<div style="font-size:20px;font-weight:700;color:#1f2937">E-OUT, IN-OUT 시스템 통합 로그 리포트</div>
+</td></tr>
+<tr><td style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;padding:16px;font-size:13px;color:#6b7280;line-height:1.7">
+플랫폼: Windows<br>분석 기간: 2026년 44주 (2026-10-26 ~ 2026-11-01)<br>생성 시각: 2026-11-02 08:02:28<br><br>- NGINX: 주요 10,499건 / 노이즈 881건<br>- TOMCAT_EOUT: 주요 0건 / 노이즈 0건<br>- TOMCAT_INOUT: 주요 0건 / 노이즈 0건
+</td></tr>
+<tr><td style="height:16px;font-size:0;line-height:0">&nbsp;</td></tr>
+<tr><td><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#f3f4f6;border-left:4px solid #2563eb;border-radius:4px;margin-bottom:16px">
+<tr><td style="padding:14px 16px">
+<div style="font-size:13px;font-weight:600;color:#1f2937;margin-bottom:6px">조치 가이드</div>
+<div style="padding:3px 0;color:#1f2937;font-size:13px;line-height:1.6">- NGINX: 주요 탐지 10,499건 — 첨부 ZIP 또는 로그 미리보기에서 내용 확인 필요</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:0px"><tr><td style="font-size:16px;font-weight:700;color:#1f2937;padding-bottom:8px">NGINX</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">주요 탐지</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">10,499</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">&nbsp;</div>
+</td></tr></table></td><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">노이즈</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">881</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">refresh-token 401</div>
+</td></tr></table></td><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">분석 일수</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">7</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">&nbsp;</div>
+</td></tr></table></td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">키워드 / 상태코드 분류</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">/login</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="100%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="0%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">4,804</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">404</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="98%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="2%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">4,701</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">.env</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="26%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="74%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,261</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">401</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="6%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="94%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">277</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">/admin</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="3%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="97%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">163</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">phpmyadmin</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="3%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="97%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">154</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">wp-</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">117</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">.git</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">85</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">.bak</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">66</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">403</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">51</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">ERROR</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">25</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">cmd</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">16</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">passwd</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">15</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">shell</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">12</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">500</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="2%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="98%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">12</td>
+</tr></table>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">일별 추이</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-26</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="61%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="39%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,231</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-27</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="100%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="0%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">2,030</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-28</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="85%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="15%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,720</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-29</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="72%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="28%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,466</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-30</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="94%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="6%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,908</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">10-31</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="41%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="59%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">828</td>
+</tr><tr>
+<td width="90" style="font-size:12px;color:#6b7280;text-align:right;padding:3px 8px 3px 0">11-01</td>
+<td style="padding:3px 0">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td width="65%" style="background:#2563eb;border-radius:3px;font-size:0;line-height:12px">&nbsp;</td>
+<td width="35%" style="font-size:0;line-height:12px">&nbsp;</td>
+</tr></table></td>
+<td width="55" style="font-size:12px;color:#1f2937;text-align:right;padding:3px 0 3px 8px">1,316</td>
+</tr></table>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">Top IP</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+<tr><th style="text-align:left;padding:5px 8px;font-size:11px;color:#6b7280;border-bottom:1px solid #e5e7eb">IP</th>
+<th style="text-align:right;padding:5px 8px;font-size:11px;color:#6b7280;border-bottom:1px solid #e5e7eb">건수</th></tr>
+<tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.2</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">2,138</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.3</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">650</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.4</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">487</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.5</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">464</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.6</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">464</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.7</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">365</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.8</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">323</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.9</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">316</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.10</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">232</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">198.18.0.11</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">176</td></tr></table>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">Top URL</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+<tr><th style="text-align:left;padding:5px 8px;font-size:11px;color:#6b7280;border-bottom:1px solid #e5e7eb">URL</th>
+<th style="text-align:right;padding:5px 8px;font-size:11px;color:#6b7280;border-bottom:1px solid #e5e7eb">건수</th></tr>
+<tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/auth/login HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">654</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/server/api/users/profile HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">425</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/_next/image?url=***&amp;w=256&amp;q=75 HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">327</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/api/proxy/login HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">246</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/_next/image?url=***&amp;w=96&amp;q=75 HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">234</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/api/proxy/users/refresh-token HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">200</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/server/api/main/projects HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">193</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/server/api/main/password/policy HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">193</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/server/api/main/menu/PM00000003 HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">193</td></tr><tr><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937">/_next/data/NVy25o2knEXdHYnJ6s_Uy/ko.json HTTP/2.0</td><td style="padding:5px 8px;border-bottom:1px solid #e5e7eb;font-size:12px;color:#1f2937;text-align:right">188</td></tr></table>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">상세 로그 미리보기 (주요 탐지)</div>
+<div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">198.18.0.12 - - [26/Oct/2026:00:07:52 +0900] &quot;POST /boaform/admin/formLogin HTTP/1.1&quot; 301 162 &quot;http://198.18.0.13:80/admin/login.asp&quot; &quot;Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:77.0) Gecko/{id} Firefox/77.0&quot; &quot;-&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">198.18.0.2 - - [26/Oct/2026:00:15:40 +0900] &quot;GET /auth/login HTTP/2.0&quot; 200 1405 &quot;https://inout.customer-2.example/main&quot; &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.18.0.18 Safari/537.36&quot; &quot;-&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">198.18.0.2 - - [26/Oct/2026:00:15:40 +0900] &quot;GET /_next/image?url=***&amp;w=96&amp;q=75 HTTP/2.0&quot; 304 0 &quot;https://inout.customer-2.example/auth/login&quot; &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.18.0.18 Safari/537.36&quot; &quot;-&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">198.18.0.2 - - [26/Oct/2026:00:15:41 +0900] &quot;GET /_next/image?url=***&amp;w=256&amp;q=75 HTTP/2.0&quot; 304 0 &quot;https://inout.customer-2.example/auth/login&quot; &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/198.18.0.18 Safari/537.36&quot; &quot;-&quot;</div><div style="font-size:11px;color:#6b7280;padding:4px 0;border-bottom:1px solid #e5e7eb;word-break:break-all">198.18.0.184 - - [26/Oct/2026:01:29:50 +0900] &quot;GET /.env HTTP/1.1&quot; 301 162 &quot;-&quot; &quot;Mozilla/5.0; customer-5.example/1.0(customer-6.example/about);&quot; &quot;-&quot;</div><div style="font-size:11px;color:#6b7280;padding-top:6px">외 10,494건 — 첨부 ZIP에서 전체 확인</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px"><tr><td style="font-size:16px;font-weight:700;color:#1f2937;padding-bottom:8px">TOMCAT_EOUT</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">주요 탐지</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">0</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">&nbsp;</div>
+</td></tr></table></td><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">노이즈</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">0</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">refresh-token 401</div>
+</td></tr></table></td><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">분석 일수</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">7</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">&nbsp;</div>
+</td></tr></table></td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">키워드 / 상태코드 분류</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">일별 추이</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">Top IP</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">Top URL</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">상세 로그 미리보기 (주요 탐지)</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">해당 항목 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px"><tr><td style="font-size:16px;font-weight:700;color:#1f2937;padding-bottom:8px">TOMCAT_INOUT</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">주요 탐지</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">0</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">&nbsp;</div>
+</td></tr></table></td><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">노이즈</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">0</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">refresh-token 401</div>
+</td></tr></table></td><td width="33%" style="padding:6px" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px">
+<tr><td style="padding:14px 16px" valign="top">
+<div style="font-size:12px;color:#6b7280">분석 일수</div>
+<div style="font-size:22px;font-weight:700;color:#1f2937;margin-top:2px">7</div>
+<div style="font-size:12px;color:#6b7280;margin-top:4px">&nbsp;</div>
+</td></tr></table></td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">키워드 / 상태코드 분류</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">일별 추이</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">Top IP</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">Top URL</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">데이터 없음</div>
+</td></tr></table><table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:16px">
+<tr><td style="padding:16px">
+<div style="font-size:14px;font-weight:600;color:#1f2937;padding-bottom:10px;border-bottom:1px solid #e5e7eb;margin-bottom:12px">상세 로그 미리보기 (주요 탐지)</div>
+<div style="color:#6b7280;font-style:italic;font-size:13px">해당 항목 없음</div>
+</td></tr></table></td></tr>
+<tr><td style="padding-top:8px;font-size:12px;color:#6b7280">
+상세 로그 및 인터랙티브 대시보드는 첨부된 ZIP 파일을 열어 확인하실 수 있습니다.
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body></html>

@@ -76,7 +76,7 @@
     <h1 class="display">We Read</h1>
     <div class="hero-row">
       <p class="hero-sub">로그는 열지 마세요.</p>
-      <p class="display">Your <span class="serif">Logs.</span></p>
+      <p class="display">Your <span class="serif">Logs<b class="dot">.</b></span></p>
       <a class="icon-link" href="contact.html" aria-label="메일로 받아보기">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
       </a>
@@ -84,9 +84,8 @@
   </div>
 
   <div class="hero-foot">
-    <a class="cta" href="contact.html">GET THE REPORT</a>
+    <a class="cta" href="#get">GET THE REPORT</a>
     <p>매주 월요일 아침, 서버 5대 · 로그 7종을 읽고 한 줄로 판정해 메일로 보냅니다.</p>
-    <a class="scroll" href="#main">[SCROLL DOWN]</a>
   </div>
 </section>
 
@@ -115,7 +114,7 @@
           <p class="stat">55→3<small>min</small></p>
         </div>
         <div class="tile tile-white">
-          <span class="kr" style="font-size:14px;font-weight:500;color:var(--muted)">스캔 소음 자동 분리</span>
+          <span class="kr" style="font-size:14px;font-weight:500;color:var(--muted)">스캔 노이즈 자동 분리</span>
           <p class="stat" style="font-size:56px">218 <small class="kr" style="font-size:18px;font-weight:400;letter-spacing:0;color:var(--muted)">건 / 주</small></p>
         </div>
       </div>
@@ -129,7 +128,7 @@
     </div>
     <div class="rows reveal">
       <details>
-        <summary><span class="no">01</span><span class="name">Nginx</span><span class="desc">상태코드·키워드 집계, 스캔 시그니처 소음 처리</span><span class="plus" aria-hidden="true">+</span></summary>
+        <summary><span class="no">01</span><span class="name">Nginx</span><span class="desc">상태코드·키워드 집계, 스캔 시그니처 노이즈 처리</span><span class="plus" aria-hidden="true">+</span></summary>
         <div class="body"><p>404·500·401 같은 상태코드와 .env·wp-login·.git 같은 경로 키워드를 일별·IP별·URL별로 집계합니다. 알려진 스캐너 요청은 따로 떼어 ‘노이즈’로 보여 줍니다.</p><code>NGINX  주요 564  /  노이즈 218
 10-29  ████████████  225</code></div>
       </details>
@@ -140,7 +139,7 @@ not available ... 30000ms   × 60</code></div>
       </details>
       <details>
         <summary><span class="no">03</span><span class="name">Tomcat IN-OUT</span><span class="desc">unauthorized · fail 키워드 분류</span><span class="plus" aria-hidden="true">+</span></summary>
-        <div class="body"><p>인증 실패, 외부 연동 실패 키워드를 분류하고, 토큰 재발급 과정에서 생기는 정상적인 401은 소음으로 걸러냅니다.</p><code>TOMCAT_INOUT  주요 19
+        <div class="body"><p>인증 실패, 외부 연동 실패 키워드를 분류하고, 토큰 재발급 과정에서 생기는 정상적인 401은 노이즈로 걸러냅니다.</p><code>TOMCAT_INOUT  주요 19
 refresh-token 401  → noise</code></div>
       </details>
       <details>
@@ -151,7 +150,7 @@ refresh-token 401  → noise</code></div>
     </div>
   </section>
 
-  <section class="dark">
+  <section class="dark" id="get">
     <div class="wrap split reveal" style="padding-top:120px;padding-bottom:120px;align-items:flex-end;gap:40px">
       <h2 class="h-band">See it<br>in your <span class="serif">inbox.</span></h2>
       <a class="btn btn-paper" href="contact.html">데모 리포트 메일 받기 <span aria-hidden="true">→</span></a>

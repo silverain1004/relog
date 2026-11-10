@@ -303,12 +303,22 @@ def build_manifest(outputs, texts):
         t = texts.get("email/%s.html" % kind, "")
         return "claude" if "AI 요약 (Claude)" in t else ("none" if t else "missing")
 
+    def label_of(rels):
+        for rel in rels:
+            m = re.search(r"\d{4}년 \d+(?:주|월) \([^)]*\)", texts.get(rel, ""))
+            if m:
+                return m.group(0)
+        return label
+
     def section(kind, reports, title_text, zipprefix):
         email_rel = "email/%s.html" % kind
         if not reports and email_rel not in outputs:
             return None
+        # Windows·Linux 원본 주차가 다를 수 있어 탭마다 기간을 따로 둔다 (뷰어는 이 값을 우선 사용)
         return {
             "title": title_text,
+            "period_label": label_of(reports + [email_rel]),
+            "period_key": period_key(reports),
             "email": email_rel if email_rel in outputs else None,
             "zip": "%s_%s.zip" % (zipprefix, period_key(reports)),
             "reports": [{"title": title(h), "href": h} for h in reports],

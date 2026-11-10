@@ -5,7 +5,7 @@ GitHub Pages는 정적 사이트라 메일을 보낼 수 없어서, 회사 구�
 
 ## 배포 (5분)
 
-1. https://script.google.com 에서 **새 프로젝트**를 만들고 이름을 `log-report-mailer`로 정합니다.
+1. https://script.google.com 에서 **새 프로젝트**를 만들고 이름을 `Relog`로 정합니다.
 2. `Code.gs` 내용을 이 폴더의 [Code.gs](Code.gs)로 바꾸고 저장합니다.
 3. 함수 목록에서 `testSendToMe`를 골라 **실행**합니다. 권한 승인 창이 뜨면 허용합니다.
    본인 메일로 데모 리포트가 오면 정상입니다.
