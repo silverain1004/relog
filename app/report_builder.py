@@ -199,7 +199,8 @@ details summary { cursor:pointer; color:var(--muted); padding:8px 0; }
 /* Re.log 웹과 같은 톤: 폰트(Inter Tight · Noto Sans KR · JetBrains Mono), 둥근 카드, 알약 칩 */
 body { font-family:'Inter Tight','Noto Sans KR',system-ui,sans-serif; letter-spacing:-.01em; padding:40px 24px 64px; }
 .header { margin-bottom:28px; }
-.header::before { content:"Re.log"; display:block; margin-bottom:18px; font-size:1.1rem; font-weight:700; letter-spacing:-.04em; color:var(--text); }
+.header .brand { display:block; margin-bottom:18px; font-size:1.1rem; font-weight:700; letter-spacing:-.04em; color:var(--text); }
+.header .brand b { color:var(--accent); font-weight:inherit; }
 .header h1 { font-size:2rem; font-weight:600; letter-spacing:-.04em; margin-bottom:6px; }
 .header .sub,.sub { font-family:'Noto Sans KR','Inter Tight',sans-serif; }
 .header a { font-size:.85rem; }
@@ -345,6 +346,7 @@ def build_win_report(output_path: str, sys_name: str, period_label: str, data: d
 <title>{_esc(sys_name)} 리포트 — {_esc(period_label)}</title>
 {FONT_LINK}<style>{_base_styles()}</style></head><body>
 <div class="header">
+  <div class="brand">Re<b>.</b>log</div>
   <p><a href="index_{data['period_key']}.html">← 목차</a></p>
   <h1>{_esc(sys_name)} 로그 분석</h1>
   <p class="sub">{_esc(period_label)}</p>
@@ -423,6 +425,7 @@ def build_linux_report(output_path: str, period_label: str, data: dict) -> str:
 <title>E-BIZ 리포트 — {_esc(period_label)}</title>
 {FONT_LINK}<style>{_base_styles()}</style></head><body>
 <div class="header">
+  <div class="brand">Re<b>.</b>log</div>
   <h1>E-BIZ 통합 로그 분석</h1>
   <p class="sub">{_esc(period_label)}</p>
 </div>
@@ -737,6 +740,7 @@ def build_index(output_path: str, period_label: str, period_key: str, links: lis
 <title>로그 분석 목차 — {_esc(period_label)}</title>
 {FONT_LINK}<style>{_base_styles()}</style></head><body>
 <div class="header">
+  <div class="brand">Re<b>.</b>log</div>
   <h1>로그 분석 대시보드</h1>
   <p class="sub">{_esc(period_label)}</p>
 </div>

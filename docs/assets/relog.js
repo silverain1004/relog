@@ -240,7 +240,7 @@
           '<li><time>2025.05</time>세아베스틸 대상 모의해킹 및 인프라 취약점 조치계획 수립 및 이행</li>' +
           '<li><time>2025.06</time>보안 위협 사례 및 로그 분석 중요성 전파교육</li>' +
           '<li><time>2025.07</time>매월·매주 정기 로그 분석 시작</li>' +
-          '<li><time>2026.02</time>로그 분석 자동화 필요성 구상</li>' +
+          '<li><time>2026.02</time>로그 분석 자동화 기획 · 설계</li>' +
           '<li><time>2026.05</time>Windows · Linux 로그 분석 자동화 개발 착수</li>' +
           '<li><time>2026.06</time>Windows 분석기 완성 · 메일 자동 발송</li>' +
           '<li><time>2026.07</time>Linux 분석기 완성 · 통합 리포트 운영</li>' +
@@ -328,7 +328,12 @@
       btn.setAttribute('aria-expanded', String(open));
     };
     btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!box.classList.contains('open')); });
-    document.addEventListener('click', function (e) { if (!box.contains(e.target)) setOpen(false); });
+    // 배경 아무 곳이나 누르면 닫기 — iOS는 빈 배경 탭에 click을 안 쏘므로 pointerdown 사용
+    document.addEventListener('pointerdown', function (e) {
+      if (box.contains(e.target)) return;
+      setOpen(false);
+      if (box.contains(document.activeElement)) document.activeElement.blur();
+    });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
   });
 
@@ -360,7 +365,7 @@
     var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var NOTE = {
       demo: '시나리오는 10/29(목) 14시, Windows 서버에서 DB 커넥션 풀 고갈로 주문 API의 500 오류가 집중적으로 발생한 상황. 각종 스캐너 노이즈가 뒤섞인 로그 속에서, 과연 이 이상 징후를 찾아낼 수 있을까요?',
-      'live-monthly': '실제 운영 리포트를 공개용으로 마스킹한 사본입니다. 실제 메일에는 원본 그대로 담겨 내부 담당자에게만 발송되며, 여기서는 건수·추이·분류는 그대로 두고 IP·도메인·계정만 치환했습니다. 상세 로그 표는 일부만 보여 드립니다.'
+      'live-monthly': '실제 운영 리포트를 공개용으로 마스킹한 사본입니다. 실제 메일에는 원본 그대로 담겨 내부 담당자에게만 발송되며, 여기서는 IP · 도메인 · 계정 등 보안상 민감한 정보만 마스킹했습니다. 상세 로그 표는 일부만 보여 드립니다.'
     };
     NOTE.live = NOTE['live-monthly'];
     var state = { source: 'demo', kind: 'windows', m: {} };
@@ -392,16 +397,27 @@
       var m = state.m[src]; if (!m) return [];
       return ['windows', 'linux'].filter(function (k) { return m[k] && (m[k].email || (m[k].reports || []).length); });
     }
-    function verdict(url) {
+    var escTxt = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
+    function swapIn(el, delay) {
+      el.classList.remove('swap-in'); void el.offsetWidth;
+      el.style.animationDelay = (delay || 0) + 'ms';
+      el.classList.add('swap-in');
+    }
+    function verdict(url, animate) {
       var dd = $('#v-verdict');
-      dd.innerHTML = '<span class="pill pill-dim">확인 중</span>';
+      // 이미 판정이 떠 있으면 '확인 중'으로 깜빡이지 않고 결과가 오면 바뀐 경우에만 교체
+      if (!dd.querySelector('.pill:not(.pill-dim)')) dd.innerHTML = '<span class="pill pill-dim">확인 중</span>';
       fetch(url, { cache: 'no-cache' }).then(function (r) { return r.text(); }).then(function (t) {
+        if (url !== lastFrameUrl) return;  // 그사이 다른 리포트로 바뀌었으면 무시
         var v = /종합:\s*(정상|주의|위험)/.exec(t);
         var cls = { '정상': 'pill-ok', '주의': 'pill-warn', '위험': 'pill-bad' };
-        dd.innerHTML = v ? '<span class="pill ' + cls[v[1]] + '"><i>●</i> ' + v[1] + '</span>'
+        // 운영 리포트(AI 요약 없음)는 장애 없이 지나간 기간이라 정상으로 표시
+        var lv = v ? v[1] : (state.source !== 'demo' ? '정상' : null);
+        var html = lv ? '<span class="pill ' + cls[lv] + '"><i>●</i> ' + lv + '</span>'
           : '<span class="pill pill-dim">AI 요약 없음</span>';
-        if (url === lastFrameUrl) fillStats(t);
-      }).catch(function () { dd.textContent = '—'; });
+        if (dd.innerHTML !== html) { dd.innerHTML = html; if (animate) swapIn(dd, 0); }
+        fillStats(t);
+      }).catch(function () { if (url === lastFrameUrl) dd.textContent = '—'; });
     }
 
     function render() {
@@ -417,24 +433,23 @@
         b.setAttribute('aria-pressed', String(b.dataset.period === periodOf(state.source)));
       });
       moveSegThumb();
-      if (lastSource && lastSource !== state.source) {  // 소스를 바꿀 때만 제목·설명·메타를 새로 들어오게
-        ['#r-title', '#r-note', '.meta'].forEach(function (sel, i) {
-          var el = $(sel, $('#viewer')); if (!el) return;
-          el.classList.remove('swap-in'); void el.offsetWidth;
-          el.style.animationDelay = (i * 60) + 'ms';
-          el.classList.add('swap-in');
-        });
-      }
+      // 소스를 바꿀 때 내용이 실제로 달라진 칸만 새로 들어오게 (같은 값은 그대로 둠)
+      var animate = !!lastSource && lastSource !== state.source, order = 0;
       lastSource = state.source;
+      var put = function (sel, html) {
+        var el = $(sel); if (!el || el.innerHTML === html) return;
+        el.innerHTML = html;
+        if (animate) swapIn(el, (order++) * 60);
+      };
 
       // 탭(Windows/Linux)마다 원본 주차가 다를 수 있음 → 탭에 기간이 있으면 그 값을 우선
       var cur = m[state.kind] || {};
       var pm = { period_key: cur.period_key || m.period_key, period_label: cur.period_label || m.period_label };
-      $('#r-title').innerHTML = title(pm);
-      $('#r-note').textContent = NOTE[state.source];
-      $('#v-period').textContent = period(pm);
-      $('#v-platform').textContent = PLATFORM[state.kind];
-      $('#v-source').textContent = state.source === 'demo' ? '데모 · 합성 로그' : '운영 서버 · 마스킹';
+      put('#r-title', title(pm));
+      put('#r-note', escTxt(NOTE[state.source]));
+      put('#v-period', escTxt(period(pm)));
+      put('#v-platform', escTxt(PLATFORM[state.kind]));
+      put('#v-source', state.source === 'demo' ? '데모 · 합성 로그' : '운영 서버 · 마스킹');
 
       var tabs = $('#kind-tabs'); $$('button', tabs).forEach(function (b) { tabs.removeChild(b); });
       ks.forEach(function (k) {
@@ -456,7 +471,7 @@
         : '이 기간은 메일 원본 대신 대표 리포트를 보여 드립니다.') + ' ' +
         (state.source === 'demo' ? 'IP는 문서용 예시 대역(RFC 5737)입니다.' : 'IP는 10.20.x.x · 198.18.x.x로 치환했습니다.');
       lastFrameUrl = url;
-      verdict(url);
+      verdict(url, animate);
       $('#get-this').href = 'contact.html?src=' + state.source + '&kind=' + state.kind;  // 보던 조합 그대로 미리 선택
 
       // 상세 리포트: 위 탭(Windows/Linux)에 맞춰 목록을 보여 주고, 줄마다 설명 + 메일 본문의 핵심 수치

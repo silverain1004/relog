@@ -70,7 +70,8 @@ details summary { cursor:pointer; color:var(--muted); padding:8px 0; }
 /* Re.log 웹과 같은 톤: 폰트(Inter Tight · Noto Sans KR · JetBrains Mono), 둥근 카드, 알약 칩 */
 body { font-family:'Inter Tight','Noto Sans KR',system-ui,sans-serif; letter-spacing:-.01em; padding:40px 24px 64px; }
 .header { margin-bottom:28px; }
-.header::before { content:"Re.log"; display:block; margin-bottom:18px; font-size:1.1rem; font-weight:700; letter-spacing:-.04em; color:var(--text); }
+.header .brand { display:block; margin-bottom:18px; font-size:1.1rem; font-weight:700; letter-spacing:-.04em; color:var(--text); }
+.header .brand b { color:var(--accent); font-weight:inherit; }
 .header h1 { font-size:2rem; font-weight:600; letter-spacing:-.04em; margin-bottom:6px; }
 .header .sub,.sub { font-family:'Noto Sans KR','Inter Tight',sans-serif; }
 .header a { font-size:.85rem; }
@@ -122,6 +123,7 @@ section .sub { color:var(--muted); font-size:.85rem; }
 @media (max-width:760px) { .top-pair { grid-template-columns:minmax(0,1fr); } }
 </style></head><body>
 <div class="header">
+  <div class="brand">Re<b>.</b>log</div>
   <p><a href="index_2026W44.html">← 목차</a></p>
   <h1>TOMCAT_INOUT 로그 분석</h1>
   <p class="sub">2026년 44주 (2026-10-26 ~ 2026-11-01)</p>
