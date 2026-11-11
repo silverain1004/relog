@@ -47,6 +47,16 @@ python win_analyzer.py --auto weekly --test-email   # Windows: 본인에게만 �
 python linux_analyzer.py --auto weekly --no-email    # Linux: 리포트만 생성
 ```
 
+장애 직후처럼 정기 일정을 기다릴 수 없을 때는 날짜를 지정해 **수시 분석**을 돌립니다. 리포트는 `reports/adhoc/`에 따로 저장됩니다.
+
+```bash
+python win_analyzer.py --today --test-email                        # 오늘 하루, 본인에게만 발송
+python win_analyzer.py --from 2026-10-29 --to 2026-10-29 --no-email # 특정 날짜 하루, 리포트만
+python linux_analyzer.py --from 2026-10-26 --test-email             # 10/26부터 오늘까지
+```
+
+Windows 서버에서는 [deploy/windows/run_today.bat](deploy/windows/run_today.bat)을 더블클릭하면 오늘 로그를 분석해 본인에게만 메일로 보냅니다. 옵션 없이 실행하면 메뉴에서 `3) 수시(날짜 지정)`를 고를 수도 있습니다.
+
 스케줄 등록은 [deploy/](deploy/), Linux 서버 배포 절차는 [deploy/README-linux.md](deploy/README-linux.md)를 참고하세요.
 
 ## AI 요약 안전장치

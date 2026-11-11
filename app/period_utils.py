@@ -1,4 +1,4 @@
-"""기간 계산 유틸 (ISO 주차 / 월별).
+"""기간 계산 유틸 (ISO 주차 / 월별 / 수시 날짜 구간).
 
 Python 3.6 호환 유지 필수 — WEB1 서버(Linux)가 3.6.8이라
 `X | None` 표기, `tuple[...]` 제네릭, `date.fromisocalendar`를 쓰면 안 됨.
@@ -45,7 +45,38 @@ def get_period_key(period_type: str, year: int, week: int = None, month: int = N
 
 
 def get_output_subdir(period_type: str) -> str:
+    if period_type == "range":
+        return "adhoc"
     return "weekly" if period_type == "weekly" else "monthly"
+
+
+def parse_date_range(start_str: str, end_str: Optional[str] = None) -> dict:
+    """수시 분석 — 원하는 날짜(또는 날짜 구간)만 분석. 장애 직후 수동 실행용.
+
+    end_str을 생략하면 오늘까지. key는 'D' 접두어로 주별·월별과 구분하고,
+    리포트는 별도 폴더(adhoc)에 저장 — ZIP은 폴더 안에서 key 포함 여부로 파일을
+    고르는데, 월별 key(202610)가 D20261029 안에도 들어 있어 같은 폴더면 섞이기 때문.
+    """
+    try:
+        start = datetime.strptime(start_str.strip(), "%Y-%m-%d").date()
+        end = datetime.strptime(end_str.strip(), "%Y-%m-%d").date() if end_str else date.today()
+    except ValueError:
+        raise ValueError("날짜는 YYYY-MM-DD 형식으로 입력해주세요. (예: 2026-10-29)")
+    if end < start:
+        raise ValueError(f"종료일({end})이 시작일({start})보다 앞섭니다.")
+    s, e = start.strftime("%Y%m%d"), end.strftime("%Y%m%d")
+    key = f"D{s}" if start == end else f"D{s}-{e}"
+    range_str = start.isoformat() if start == end else f"{start.isoformat()} ~ {end.isoformat()}"
+    return {
+        "period_type": "range",
+        "year": start.year,
+        "week": None,
+        "month": None,
+        "start": start,
+        "end": end,
+        "key": key,
+        "label": f"{range_str} 수시 분석",
+    }
 
 
 def format_period_label(period_type: str, start: date, end: date, year: int,
@@ -105,12 +136,24 @@ def parse_period_input(period_type: str, year_str: str, value_str: str) -> dict:
 
 
 def prompt_period() -> Optional[dict]:
-    """Win/Linux 공통 — 주별은 날짜 입력, 월별은 연도+월 입력."""
-    print("리포트 유형: 1) 주별  2) 월별")
-    choice = input("선택 (1 또는 2): ").strip()
-    if choice not in ("1", "2"):
-        print("[오류] 1 또는 2를 입력해주세요.")
+    """Win/Linux 공통 — 주별은 날짜 입력, 월별은 연도+월 입력, 수시는 날짜 구간 입력."""
+    print("리포트 유형: 1) 주별  2) 월별  3) 수시(날짜 지정)")
+    choice = input("선택 (1, 2, 3): ").strip()
+    if choice not in ("1", "2", "3"):
+        print("[오류] 1, 2, 3 중 하나를 입력해주세요.")
         return None
+
+    if choice == "3":
+        print("\n[수시] 분석할 날짜를 입력하세요. 종료일을 비우면 시작일 하루만 분석합니다.")
+        start_str = input("시작일 (YYYY-MM-DD, 비우면 오늘): ").strip() or date.today().isoformat()
+        end_str = input("종료일 (YYYY-MM-DD, 비우면 시작일과 같음): ").strip() or start_str
+        try:
+            period = parse_date_range(start_str, end_str)
+            print(f"  → {period['label']}")
+            return period
+        except ValueError as e:
+            print(f"[오류] {e}")
+            return None
 
     if choice == "1":
         print("\n[주별] 조회할 주에 포함된 아무 날짜나 입력하세요.")
