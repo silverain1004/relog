@@ -250,6 +250,51 @@ section .sub { color:var(--muted); font-size:.85rem; }
 .top-pair section { margin:0; max-width:none; }
 .top-pair .top-table td:first-child { word-break:break-all; }
 @media (max-width:760px) { .top-pair { grid-template-columns:minmax(0,1fr); } }
+""" + MOBILE_STYLES
+
+
+# 폰 화면 보정. 이미 만들어진 리포트에도 끼워 넣을 수 있게 따로 둔다 (tools/patch_mobile.py).
+MOBILE_MARK = "/* relog-mobile v2 */"
+# 막대 11개 이상이면 폰에서 숫자가 겹친다. 날짜 라벨은 개수에 따라 3·4·7칸마다 하나씩
+_DENSE = tuple(f".vbars.n{n}" for n in range(11, 32))
+_LBL_STEP = {n: 3 if n <= 16 else 4 if n <= 24 else 7 for n in range(11, 32)}
+
+
+def _dense(sel: str) -> str:
+    return ",".join(f"{d} {sel}".strip() for d in _DENSE)
+
+
+MOBILE_STYLES = f"""
+{MOBILE_MARK}
+/* IP·URL: 글자 단위로 끊지 않고, 넘칠 때만 '/' '-' 같은 자리에서 줄바꿈 */
+.top-table td:first-child,.top-pair .top-table td:first-child {{ word-break:normal; overflow-wrap:anywhere; }}
+@media (max-width:600px) {{
+  body {{ padding:28px 14px 48px; }}
+  .header h1 {{ font-size:1.6rem; }}
+  .grid {{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }}
+  .card {{ padding:16px; border-radius:16px; }}
+  .card .value {{ font-size:1.7rem; }}
+  section {{ padding:20px 16px; border-radius:18px; }}
+  .vtools {{ top:14px; right:12px; }}
+  .bar-row {{ grid-template-columns:84px minmax(0,1fr) 52px; }}
+  .bar-label {{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }}
+  .top-table th,.top-table td {{ padding:8px 6px; }}
+  .log-controls input {{ min-width:0; }}
+  /* 막대가 촘촘한 그래프(시간대 24개 · 일별 28~31개): 한 화면에 다 보이게,
+     숫자는 막대를 누를 때만 말풍선으로, 날짜는 띄엄띄엄 */
+  {_dense("")} {{ gap:2px; overflow:visible; padding-top:30px; }}
+  {_dense(".vbar")} {{ min-width:0; position:relative; cursor:pointer; }}
+  {_dense(".vbar-col")} {{ border-radius:3px 3px 0 0; }}
+  {_dense(".vbar-fill")} {{ border-radius:3px 3px 0 0; }}
+  {_dense(".vbar-val")} {{ position:absolute; top:-30px; left:50%; transform:translateX(-50%); z-index:3;
+    padding:3px 9px; border:1px solid var(--border); border-radius:999px; background:var(--bg);
+    font-size:.74rem; letter-spacing:0; opacity:0; pointer-events:none; transition:opacity .15s; }}
+  {_dense(".vbar:nth-child(-n+3) .vbar-val")} {{ left:0; transform:none; }}
+  {_dense(".vbar:nth-last-child(-n+3) .vbar-val")} {{ left:auto; right:0; transform:none; }}
+  {_dense(".vbar:hover .vbar-val")} {{ opacity:1; color:var(--text); }}
+  {_dense(".vbar-lbl")} {{ visibility:hidden; font-size:.6rem; letter-spacing:-.02em; }}
+  {",".join(f".vbars.n{n} .vbar:nth-child({s}n+1) .vbar-lbl" for n, s in _LBL_STEP.items())} {{ visibility:visible; }}
+}}
 """
 
 # 웹과 같은 폰트 (오프라인으로 ZIP을 열면 시스템 글꼴로 대체됨)
