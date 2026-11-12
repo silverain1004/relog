@@ -24,6 +24,7 @@ html{scrollbar-width:thin;scrollbar-color:rgba(14,14,12,.28) transparent}
 ::-webkit-scrollbar-corner{background:transparent}
 .codeblock::-webkit-scrollbar-thumb,.term::-webkit-scrollbar-thumb{background-color:rgba(244,243,239,.22)}
 .codeblock::-webkit-scrollbar-track,.term::-webkit-scrollbar-track{margin:0 16px}
+html{-webkit-tap-highlight-color:transparent}
 body{margin:0;overflow-x:clip;background:var(--paper);color:var(--ink);font-family:var(--sans);word-break:keep-all;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:inherit;text-decoration:none}
 a,button{transition:opacity .25s var(--ease),background-color .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}

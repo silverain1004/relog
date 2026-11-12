@@ -108,7 +108,9 @@ section .sub { color:var(--muted); font-size:.85rem; }
 .top-pair .top-table td:first-child { word-break:break-all; }
 @media (max-width:760px) { .top-pair { grid-template-columns:minmax(0,1fr); } }
 
-/* relog-mobile v2 */
+/* relog-mobile v3 */
+/* 터치할 때 번쩍이는 파란 하이라이트 끄기 */
+html { -webkit-tap-highlight-color:transparent; }
 /* IP·URL: 글자 단위로 끊지 않고, 넘칠 때만 '/' '-' 같은 자리에서 줄바꿈 */
 .top-table td:first-child,.top-pair .top-table td:first-child { word-break:normal; overflow-wrap:anywhere; }
 @media (max-width:600px) {

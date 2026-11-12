@@ -104,7 +104,9 @@ html,.log-wrap,.vbars,.top-table { scrollbar-width:thin; scrollbar-color:rgba(24
 section .sub { color:var(--muted); font-size:.85rem; }
 .top-table th:last-child { text-align:right; }
 
-/* relog-mobile v2 */
+/* relog-mobile v3 */
+/* 터치할 때 번쩍이는 파란 하이라이트 끄기 */
+html { -webkit-tap-highlight-color:transparent; }
 /* IP·URL: 글자 단위로 끊지 않고, 넘칠 때만 '/' '-' 같은 자리에서 줄바꿈 */
 .top-table td:first-child,.top-pair .top-table td:first-child { word-break:normal; overflow-wrap:anywhere; }
 @media (max-width:600px) {

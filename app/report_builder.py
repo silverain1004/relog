@@ -254,7 +254,7 @@ section .sub { color:var(--muted); font-size:.85rem; }
 
 
 # 폰 화면 보정. 이미 만들어진 리포트에도 끼워 넣을 수 있게 따로 둔다 (tools/patch_mobile.py).
-MOBILE_MARK = "/* relog-mobile v2 */"
+MOBILE_MARK = "/* relog-mobile v3 */"
 # 막대 11개 이상이면 폰에서 숫자가 겹친다. 날짜 라벨은 개수에 따라 3·4·7칸마다 하나씩
 _DENSE = tuple(f".vbars.n{n}" for n in range(11, 32))
 _LBL_STEP = {n: 3 if n <= 16 else 4 if n <= 24 else 7 for n in range(11, 32)}
@@ -266,6 +266,8 @@ def _dense(sel: str) -> str:
 
 MOBILE_STYLES = f"""
 {MOBILE_MARK}
+/* 터치할 때 번쩍이는 파란 하이라이트 끄기 */
+html {{ -webkit-tap-highlight-color:transparent; }}
 /* IP·URL: 글자 단위로 끊지 않고, 넘칠 때만 '/' '-' 같은 자리에서 줄바꿈 */
 .top-table td:first-child,.top-pair .top-table td:first-child {{ word-break:normal; overflow-wrap:anywhere; }}
 @media (max-width:600px) {{
