@@ -480,6 +480,9 @@ a.sched-cell:hover{background:rgba(244,243,239,.1);color:var(--paper);opacity:1}
   .rows .body{padding:0 0 28px;gap:20px}
   .rows .body code{max-width:100%;overflow-x:auto;align-self:center}
   .step{gap:16px;padding:36px 0}
+  /* 파이프라인 라인을 화면 끝에서 띄우고, 본문과도 숨 쉴 간격 */
+  .steps{padding-left:26px}
+  .pipe{left:5px}
   .step .idx{flex:none;font-size:56px}
   .step h2{font-size:34px}
   .step .aside{flex:none;width:100%}
